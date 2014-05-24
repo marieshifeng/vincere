@@ -13,6 +13,7 @@ Overall:
 		-Navigation bar
 			-Make sure there's a back button
 			-Make sure not able to go to drawing without agreeing to contract
+		-Decide on name
 
 Index
 	-Purpose wording (Natasha: in progress)
