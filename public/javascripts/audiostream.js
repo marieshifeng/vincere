@@ -1,25 +1,76 @@
 
-//our own PeerServer cloud API key
-//var peer = new Peer('abc', {key: 'ejpl0jusq1gaatt9'});
+var chatid = parseInt(Math.random()*1e4,10).toString(16);
+var socket = io.connect('/', {query: "user=" + chatid});
+var localStream = null;
+navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
 
-var session = Peer.initSession().addMedia('myvideo').connect(window.location.hash).on('media', function(e){
-		document.querySelector('div.demo').appendChild(e.video);
+
+//our own PeerServer cloud API key
+var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
+
+// peer.on('open', function(id) {
+// 	console.log("My peer ID is: " + id);
+// });
+
+
+
+
+function successCallback(stream) {
+	localStream = stream;
+}
+function errorCallback(error) {
+	console.error('An error occurred getting local audio stream: [CODE ' + error.code + ']');
+	return;
+}
+
+function muteAudio() {
+	$("#muteButton").hide();
+	$("#unmuteButton").show();
+
+	localStream.stop();
+	localStream = null;
+}
+
+function unmuteAudio() {
+
+  $("#unmuteButton").hide();
+  $("#muteButton").show();
+
+  if(localStream == null) navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+
+}
+
+socket.on('user:connecting', function(userchatid) {
+	console.log("User " + userchatid +  " joining chat room and getting called");
+	var call = peer.call('abc', localStream);
+	call.on('stream', function(remoteStream) {
+		//Received peer's MediaStrea.
+
+		console.log(remoteStream);
+		var remoteaudio = $("#remoteaudio");
+		console.log("Received stream.");
+		try {
+          remoteaudio.src = window.URL.createObjectURL(remoteStream);
+          remoteaudio.play();
+        } catch(e) {
+          console.log("Error setting audio src: ", e);
+        }
+	});
+});
+
+
+peer.on('call', function(call) { 
+
+	call.answer(localStream);
+	call.on('stream', function(remoteStream) {
+		var remoteaudio = $("#remoteaudio");
+		console.log("Received stream.");
+		try {
+	      remoteaudio.src = window.URL.createObjectURL(remoteStream);
+	      remoteaudio.play();
+	    } catch(e) {
+	      console.log("Error setting audio src: ", e);
+	    }
 	});
 
-// navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
-// function successCallback(stream) {
-// 	var session = Peer.initSession();
-// 	// .addMedia('remote_audio').connect(window.location.hash).on('media', function(e){
-// 	// 	document.querySelector('remote_audio').appendChild(e.audio);
-// 	// });
-// }
-// function errorCallback(error) {
-// 	console.error('An error occurred getting local audio stream: [CODE ' + error.code + ']');
-// 	return;
-// }
-
-// var link = document.getElementById('chatroom_link');
-// link.innerHTML = window.location.href;
-// link.href = window.location.href;
-
-
+});

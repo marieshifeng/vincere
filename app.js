@@ -44,6 +44,10 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 var io = require('socket.io').listen( server );
 // A user connects to the server (opens a socket)
 io.sockets.on('connection', function (socket) {
+  var user = socket.manager.handshaken[socket.id].query.user;
+  console.log("User connecting: " + user);
+
+  socket.broadcast.emit('user:connecting', user);
   // (2): The server recieves a ping event
   // from the browser on this socket
   socket.on('ping', function ( data ) {

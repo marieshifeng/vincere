@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include partials/header.ejs %>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+	 <script src='/socket.io/socket.io.js'> </script>
+	<script src='/javascripts/audiostream.js'> </script>
 </head>
 <body style="padding:0">
 	<script>
@@ -32,6 +36,15 @@ $.ajax({
 	<canvas id="draw" resize="true" keepalive="true"></canvas>
 	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
 	<a href="#" class="button style2 scrolly" onclick="doThis()">Connect and draw</a>
+	<button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
+      <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
+    </button> 
+
+    <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" >
+      <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
+    </button> 
+
+    <audio id="remoteaudio" autoplay> </audio>
 </body>
 
 
