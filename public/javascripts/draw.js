@@ -54,6 +54,15 @@ function drawCircle( x, y, radius, color ) {
   // Refresh the view, so we always get an update, even if the tab is not in focus
   view.draw();
 } 
+
+function saveImage() {
+  io.emit("in function");
+  getCanvas.view.draw();
+  getCanvas.view.element.toBlob(function(blob) { 
+    io.emit("created image");
+    saveAs(blob, "image.png");
+  });
+}
   
 
 // This function sends the data for a circle to the server

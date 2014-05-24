@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script class="pre" src="https://peer-server.herokuapp.com/peer.min.js"></script>
+	<%- include partials/header.ejs %>
+</head>
+<body>
+	<form class="msg">
+		<div class="demo">
+			<audio id="myaudio"></audio>	
+		</div>
+		<input type="text" name="input" placeholder="message"/>
+		<textarea name="textarea"></textarea>
+	</form>
+	<aside>Share chatroom link <a id="chat-room-link" target="_blank"></a></aside>
+	<script class="pre">
+		window.location.hash = (window.location.hash || parseInt(Math.random()*1e4,10).toString(16));
+	</script>
+	<script class="pre">
+		var session = Peer.initSession().addMedia('myaudio').connect(window.location.hash).on('media', function(e){
+			document.querySelector('div.demo').appendChild(e.video);
+		});
+	</script>
+	<script class="pre">
+	var form = document.querySelector('form.msg');
+	session.on('message', function(event){
+		form.textarea.value = event.data+"\n"+form.textarea.value;
+	});
+	form.addEventListener('submit', function(e){
+		e.preventDefault();
+		form.textarea.value = "me:" + this.input.value+"\n"+form.textarea.value;
+		session.send('message', {data:this.input.value});
+		this.input.value = '';
+	});
+	</script>
+</body>
+</html>
