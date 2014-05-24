@@ -42,13 +42,12 @@ function unmuteAudio() {
 
 socket.on('user:connecting', function(userchatid) {
 	console.log("User " + userchatid +  " joining chat room and getting called");
-	var call = peer.call('abc', localStream);
+	var call = peer.call(userchatid, localStream);
 	call.on('stream', function(remoteStream) {
 		//Received peer's MediaStrea.
 
-		console.log(remoteStream);
-		var remoteaudio = $("#remoteaudio");
-		console.log("Received stream.");
+		console.log("Received stream: " + remoteStream);
+		var remoteaudio = document.getElementById("remoteaudio");
 		try {
           remoteaudio.src = window.URL.createObjectURL(remoteStream);
           remoteaudio.play();
@@ -63,13 +62,13 @@ peer.on('call', function(call) {
 
 	call.answer(localStream);
 	call.on('stream', function(remoteStream) {
-		var remoteaudio = $("#remoteaudio");
-		console.log("Received stream.");
+		var remoteaudio = document.getElementById("remoteaudio");
+		console.log("Received stream: " + remoteStream);
 		try {
 	      remoteaudio.src = window.URL.createObjectURL(remoteStream);
-	      remoteaudio.play();
+	       remoteaudio.play();
 	    } catch(e) {
-	      console.log("Error setting audio src: ", e);
+	      console.log("Error setting audio src: " + e);
 	    }
 	});
 
