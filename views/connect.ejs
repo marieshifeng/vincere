@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include partials/header.ejs %>
+	<script>
+		var canvas = document.getElementById("draw");
+		var dataURL = canvas.toDataURL();
+		window.open(dataURL, "toDataURL() image", "width=800, height=200");
+		</script>
 </head>
 <body style="padding:0">
 	<canvas id="draw" resize="true" keepalive="true"></canvas>
-<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+	<footer>
+		<input type="button" id="savePNG" value="Save" onclick="saveImage()">
+	</footer>
 </body>
 </html>

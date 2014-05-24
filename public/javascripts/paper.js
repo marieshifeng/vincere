@@ -6716,6 +6716,11 @@ var View = this.View = PaperScopeItem.extend({
 		return this._getInverse()._transformPoint(Point.read(arguments));
 	},
 
+	onExportPNG : function(){
+		getCanvas.view.draw();
+		getCanvas.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
+    },
+
 	_getInverse: function() {
 		if (!this._inverse)
 			this._inverse = this._matrix.createInverse();

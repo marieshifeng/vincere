@@ -5,6 +5,7 @@
 tool.maxDistance = 50;
 
 
+
 // Returns an object specifying a semi-random color
 // The color will always have a red value of 0
 // and will be semi-transparent (the alpha value)
