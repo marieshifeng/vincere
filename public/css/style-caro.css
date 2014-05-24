@@ -1214,10 +1214,9 @@
 	#banner
 	{
 		position: relative;
-		color: #fff;
+		color: #E9F0ED;
 		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
-		text-align: center;
-		padding: 5em 0 5em 0;
+		padding: 2em 0 5em 0;
 		margin: 0;
 		background-size: 125% auto;
 	}
@@ -1230,7 +1229,7 @@
 
 		#banner header
 		{
-			margin: 0 0 2em 0;
+			margin: 0 0 1em 0;
 		}
 		
 			#banner header h2
@@ -1242,24 +1241,29 @@
 
 		#banner p
 		{
-			margin: 10px !important;
+			margin: 0 0 1em 0 !important;
 		}
 
 		#banner footer
 		{
 			margin: 2em 0 0 0;
+			font-weight:10;
+		}
+
+		#banner .indent_p {
+			text-indent:1em;
+		}
+
+		#banner .postscript_p {
+			color:#CBD1CE;
+			font-size:0.75em;
+		}
+
+		#banner .jerk_p {
+
 		}
 		
-		#banner a
-		{
-			color: inherit;
-			border-bottom-color: rgba(255,255,255,0.5);
-		}
-		
-			#banner a:hover
-			{
-				border-bottom-color: rgba(255,255,255,0);
-			}
+
 
 /*********************************************************************************/
 /* Footer                                                                        */
