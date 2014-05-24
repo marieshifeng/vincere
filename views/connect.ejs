@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include partials/header.ejs %>
+	<script class="pre" src="https://peer-server.herokuapp.com/peer.min.js"></script>
+	<script class="pre">
+		window.location.hash = (window.location.hash || parseInt(Math.random()*1e4,10).toString(16));
+	</script>
+	<script class="pre">
+			var session = Peer.initSession().addMedia('myvideo').connect(window.location.hash).on('media', function(e){
+			document.querySelector('div.demo').appendChild(e.video);
+		});
+	</script> 
+	<script src='/javascripts/audiostream.js'> </script>
+
 	<script>
 		var canvas = document.getElementById("draw");
 		var dataURL = canvas.toDataURL();
 		window.open(dataURL, "toDataURL() image", "width=800, height=200");
-		</script>
+	</script>
 </head>
 <body style="padding:0">
 	<canvas id="draw" resize="true" keepalive="true"></canvas>
 	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+	<div class="demo">
+	<div>Share chatroom link: 
+		<a href="/" id="chatroom_link"> </a>
+	</div>
+	<audio id="remote_audio"> </audio>
+	<video id="myvideo"></video>
 	<footer>
 		<input type="button" id="savePNG" value="Save" onclick="saveImage()">
 	</footer>

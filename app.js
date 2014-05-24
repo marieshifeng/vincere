@@ -34,7 +34,9 @@ app.get('/contract', contract.view);
 app.get('/connect', connect.view);
 
 // Enable Socket.io
-var server = http.createServer(app).listen( app.get('port') );
+var server = http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
 var io = require('socket.io').listen( server );
 // A user connects to the server (opens a socket)
 io.sockets.on('connection', function (socket) {
