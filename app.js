@@ -8,6 +8,7 @@ var express = require('express')
   , resources = require('./routes/resources')
   , about = require('./routes/about')
   , http = require('http')
+  , socket = require('socket.io')
   , path = require('path');
 
 var app = express();
@@ -45,8 +46,9 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var io = require('socket.io').listen( server );
+var io = socket.listen(server);
 // A user connects to the server (opens a socket)
+var active_connections = 0;
 io.sockets.on('connection', function (socket) {
   var user = socket.manager.handshaken[socket.id].query.user;
   console.log("User connecting: " + user);
@@ -54,16 +56,28 @@ io.sockets.on('connection', function (socket) {
   socket.broadcast.emit('user:connecting', user);
   // (2): The server recieves a ping event
   // from the browser on this socket
-  socket.on('ping', function ( data ) {
-    console.log('socket: server recieves ping (2)');
-    // (3): Emit a pong event all listening browsers
-    // with the data from the ping event
-    io.sockets.emit( 'pong', data );   
-    console.log('socket: server sends pong to all (3)');
+ 
+  // socket.on( 'drawCircle', function( data, session ) {
+  //   console.log( "session " + session + " drew:");
+  //   console.log( data );
+  //   socket.broadcast.emit( 'drawCircle', data );
+  // });
+
+    active_connections++;
+    console.log("Active connections: " + active_connections);
+    socket.broadcast.emit('user:connect', active_connections);
+    socket.on('disconnect', function () {
+      console.log("Disconnecting");
+      active_connections--;
+      io.sockets.emit('user:disconnect', active_connections);
+      io.sockets.emit("user:offline", user);
+    });
+    // EVENT: User starts drawing something
+    socket.on('draw:progress', function (uid, co_ordinates) {  
+      io.sockets.emit('draw:progress', uid, co_ordinates)
+    });
+    // EVENT: User stops drawing something
+    socket.on('draw:end', function (uid, co_ordinates) { 
+      io.sockets.emit('draw:end', uid, co_ordinates)
+    });
   });
-  socket.on( 'drawCircle', function( data, session ) {
-    console.log( "session " + session + " drew:");
-    console.log( data );
-    socket.broadcast.emit( 'drawCircle', data );
-  });
-});

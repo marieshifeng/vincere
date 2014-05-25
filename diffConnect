@@ -1,0 +1,54 @@
+diff --git a/views/connect.ejs b/views/connect.ejs
+index b67bf83..2fb8ced 100644
+--- a/views/connect.ejs
++++ b/views/connect.ejs
+@@ -1,11 +1,17 @@
+ <!DOCTYPE html>
+ <html lang="en">
+-	<%- include partials/header.ejs %>
++<head>
++	<%- include partials/header.ejs %>	
++	<% if (usingNewSite) { %>
++	<% } %>
++	
++	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
++	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
++	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
++	 <script src='/socket.io/socket.io.js'> </script>
++	<script src='/javascripts/audiostream.js'> </script>
+ </head>
+ <body style="padding:0">
+-<<<<<<< HEAD
+-=======
+-	<%- include partials/nav.ejs %>
+ 	<script>
+ 		function doThis() {
+ /**
+@@ -32,9 +38,7 @@ $.ajax({
+ };
+ 
+ </script>
+->>>>>>> FETCH_HEAD
+ 	<canvas id="draw" resize="true" keepalive="true"></canvas>
+-	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+ 	<input id="save" type="button" class="button style2 scrolly" value="Connect and draw"></input>
+ 		<script>
+         $("#save").click(function(){
+@@ -54,6 +58,15 @@ $.ajax({
+                 console.log(respond);
+             });*/
+         });
+-	</script>
++		</script>
++	<button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
++      <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
++    </button> 
++
++    <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" >
++      <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
++    </button> 
++
++    <audio id="remoteaudio" autoplay> </audio>
+ </body>
+ </html>
+\ No newline at end of file
