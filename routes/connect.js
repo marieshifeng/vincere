@@ -1,3 +1,4 @@
 exports.view = function(req, res){
-	res.render('connect', { title: "" });
+	
+	res.render('connect', { title: "", usingNewSite: true});
 };
