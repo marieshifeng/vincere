@@ -3,7 +3,7 @@
 // make sure the image-data exists and is not empty
 // xampp is particularly sensitive to empty image-data 
 if ( isset($_POST["image"]) && !empty($_POST["image"]) ) {    
-
+    console.log("5");
     // get the dataURL
     $dataURL = $_POST["image"];  
 
@@ -11,10 +11,12 @@ if ( isset($_POST["image"]) && !empty($_POST["image"]) ) {
     // that we don't want, so strip that prefix off
     $parts = explode(',', $dataURL);  
     $data = $parts[1];  
+    console.log("6");
 
     // Decode base64 data, resulting in an image
     $data = base64_decode($data);  
 
+console.log("7");
     // create a temporary unique file name
     $file = UPLOAD_DIR . uniqid() . '.png';
 

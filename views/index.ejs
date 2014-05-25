@@ -7,13 +7,18 @@
 	<!-- Header -->
 	<section id="header">
 		<header>
-			<h1>SAFE SPACE.</h1>
-			<p>Dedicated to a world free of sexual assault</p>
+			<h1>Vincere the Memory</h1>
+			<p>Talk to other survivors. Overcome the memory of your sexual assault.</p>
 		</header>
 		<footer>
-			<a href="#banner" class="button style2 scrolly scrolly-centered">Our purpose</a>
+			<a href="#banner" class="button style2 scrolly scrolly-centered">How does it work?</a>
 		</footer>
 	</section>
+
+	<!-- Chrome pop-up -->
+	<div class="notification">Use Google Chrome to access the full functionality of this site.
+		<a href="#" class="close_x icon-close"></a>
+	</div>
 
 	<!-- Banner -->
 	<section id="banner">
@@ -21,30 +26,32 @@
 			<h2>This is a Safe Space for You</h2>
 		</header>
 		<p class="jerk_p">Some people are jerks.  But the word ‘jerk’ doesn’t even begin to describe someone who sexually assaults you. This is not a place for them.</p>
-		<p>This site is a place for you*, the survivor of sexual assault, to come together with another survivor. Talk, bond, draw together...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas. It’s fun...but don’t take our word for it; take it out for a spin yourself. Or check out some of the <a href="#gallery">past creations</a>.</p>
+		<p>This site is a place for you*, the survivor of that horrible sexual assault, to come together with another survivor. Talk, bond, draw together...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas. It’s fun...but don’t take our word for it; take it out for a spin yourself by clicking "Talk to someone" below. Or check out some of the <a href="#gallery">past creations</a>.</p>
 		<p>Vincere means to overcome. You are unbreakable. </p>
 		<p class="postscript_p">*And yes, this means that if you’re not a survivor of sexual assault, this is not the place for you. We’re sorry, but we need to respect the privacy of survivors. If you want to talk, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.</p>
 
 		<footer>
-			<a href="#gallery" class="button style2 scrolly">Gallery</a>
-		</footer>
-		<footer>
-			<a href="/contract" class="button style2 scrolly">Talk to someone</a>
+			<div class="center_button">
+				<a href="#gallery" class="button style2 scrolly">Gallery</a>
+				<a href="/contract" class="button style2 scrolly">Talk to someone</a>
+			</div>
 		</footer>
 	</section>
 
 	<!-- Header -->
 	<section id="gallery">
 	<article class="container box style2">
-		<section id="banner">
+		<section id="banner themes">
 			<h1>Gallery Themes</h1>
 			<br/>
 			<p>We know that it can be a process to overcome sexual assault. We want you to keep talking to others as long as it's helpful for you, and then to come back to help others, too. Because part of that conversation is the shared drawing space, we change the theme every week. Here are some drawings from previous weeks.</p>
+			<br/>
+			<br/>
 		</section>
 		<header>
 			<h2>Squares</h2>
 			<p class="dates">May 18 - May 24</p>
-			<p>"The Internet is becoming the town <strong>square</strong> for the global village of tomorrow."<br /><span class="author">Bill Gates</span></p>
+			<p>"The Internet is becoming the town <strong>square</strong> for the global village of tomorrow."<br /><span class="author">-Bill Gates</span></p>
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
@@ -59,7 +66,7 @@
 		<header>
 			<h2>Triangles</h2>
 			<p class="dates">May 11 - May 17</p>
-			<p>"Climb the <strong>mountains</strong> and get their good tidings. Nature's peace will flow into you as sunshine flows into trees. The winds will blow their own freshness into you, and the storms their energy, while cares will drop away from you like the leaves of Autumn."<br /><span class="author">John Muir</span></p>
+			<p>"Climb the <strong>mountains</strong> and get their good tidings. Nature's peace will flow into you as sunshine flows into trees. The winds will blow their own freshness into you, and the storms their energy, while cares will drop away from you like the leaves of Autumn."<br /><span class="author">-John Muir</span></p>
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
@@ -74,7 +81,7 @@
 		<header>
 			<h2>Circles</h2>
 			<p class="dates">May 4 - May 10</p>
-			<p>"The life of man is a self-evolving <strong>circle</strong>, which, from a ring imperceptibly small, rushes on all sides outwards to new and larger circles, and that without end. The extent to which this generation of circles, wheel without wheel, will go, depends on the force or truth of the individual soul."<br /><span class="author">Ralph Waldo Emerson</span></p>
+			<p>"The life of man is a self-evolving <strong>circle</strong>, which, from a ring imperceptibly small, rushes on all sides outwards to new and larger circles, and that without end. The extent to which this generation of circles, wheel without wheel, will go, depends on the force or truth of the individual soul."<br /><span class="author">-Ralph Waldo Emerson</span></p>
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
@@ -86,5 +93,13 @@
 		</div>
 	</article>
 	</section>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		jQuery.noConflict();
+		$(".icon-close").click(function() {
+			$(".notification").hide();
+		});
+	});
+</script>
 </body>
 </html>
