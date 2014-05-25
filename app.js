@@ -46,18 +46,16 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var io = socket.listen(server);
+
 // A user connects to the server (opens a socket)
-var active_connections = 0;
+// var active_connections = 0;
+var io = socket.listen(server);
 io.sockets.on('connection', function (socket) {
   var user = socket.manager.handshaken[socket.id].query.user;
   console.log("User connecting: " + user);
 
   socket.broadcast.emit('user:connecting', user);
 
-  socket.on('user:drawingconnected', function() {
-    socket.broadcast.emit('user:connect', active_connections);
-  });
   // (2): The server recieves a ping event
   // from the browser on this socket
  
@@ -67,14 +65,13 @@ io.sockets.on('connection', function (socket) {
   //   socket.broadcast.emit( 'drawCircle', data );
   // });
 
-    active_connections++;
-    console.log("Active connections: " + active_connections);
+    // active_connections++;
+    // console.log("Active connections: " + active_connections);
   
     socket.on('disconnect', function () {
       console.log("Disconnecting");
-      active_connections--;
-      io.sockets.emit('user:disconnect', active_connections);
-      io.sockets.emit("user:offline", user);
+      io.sockets.emit('user:disconnect');
+     // active_connections--;
     });
     // EVENT: User starts drawing something
     socket.on('draw:progress', function (uid, co_ordinates) {  
