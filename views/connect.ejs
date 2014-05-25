@@ -3,19 +3,6 @@
 <head>
 	<%- include partials/header.ejs %>	
 	<% if (usingNewSite) { %>
-		<script>
-		 //$(document).ready(function() {
-			window.location.hash = (window.location.hash || parseInt(Math.random()*1e4,10).toString(16));
-			console.log("hi");
-			$('#new_chatroom').hide();
-			console.log("hi");
-			$('#old_chatroom').show();
-			console.log("hi");
-			document.getElementById("old_chatroom").href=window.location.href;
-			console.log("hi");
-			console.log(document.getElementById("old_chatroom").href);
-		//});
-		</script>
 	<% } %>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
