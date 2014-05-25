@@ -5,6 +5,8 @@ var express = require('express')
   , contract = require('./routes/contract')
   , connect = require('./routes/connect')
   , audio = require('./routes/audio')
+  , resources = require('./routes/resources')
+  , about = require('./routes/about')
   , http = require('http')
   , path = require('path');
 
@@ -34,6 +36,8 @@ app.get('/users', user.list);
 app.get('/contract', contract.view);
 app.get('/connect', connect.view);
 app.get('/audio', audio.view);
+app.get('/resources', resources.view);
+app.get('/about', about.view);
 
 // Enable Socket.io
 var server = http.createServer(app).listen( 

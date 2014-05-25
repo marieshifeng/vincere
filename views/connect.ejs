@@ -3,6 +3,36 @@
 	<%- include partials/header.ejs %>
 </head>
 <body style="padding:0">
+<<<<<<< HEAD
+=======
+	<%- include partials/nav.ejs %>
+	<script>
+		function doThis() {
+/**
+ *    Ken Fyrstenberg Nilsen
+ *    Abidas Software
+*/
+	console.log("in function")
+	var canvas = document.getElementById('draw');
+
+	// create a dataUrl from the canvas
+var dataURL= canvas.toDataURL();
+
+// use jQuery to POST the dataUrl to you php server
+$.ajax({
+    type: "POST",
+    url: "./public/php/upload.php",
+    data: {image: dataURL}
+}).done(function( respond ) {
+    // Done...report success or failure
+    // You will get back the temp file name
+    // or "Unable to save this image."
+    console.log(respond);
+});
+};
+
+</script>
+>>>>>>> FETCH_HEAD
 	<canvas id="draw" resize="true" keepalive="true"></canvas>
 	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
 	<input id="save" type="button" class="button style2 scrolly" value="Connect and draw"></input>
