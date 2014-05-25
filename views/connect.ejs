@@ -3,6 +3,8 @@
 	<%- include partials/header.ejs %>
 </head>
 <body style="padding:0">
+<<<<<<< HEAD
+=======
 	<%- include partials/nav.ejs %>
 	<script>
 		function doThis() {
@@ -30,11 +32,28 @@ $.ajax({
 };
 
 </script>
+>>>>>>> FETCH_HEAD
 	<canvas id="draw" resize="true" keepalive="true"></canvas>
 	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
-	<a href="#" class="button style2 scrolly" onclick="doThis()">Connect and draw</a>
+	<input id="save" type="button" class="button style2 scrolly" value="Connect and draw"></input>
+		<script>
+        $("#save").click(function(){
+        	console.log("1");
+        	var canvas = document.getElementById("draw");
+        	console.log("slkdfjlsdkfj");
+			var dataURL = canvas.toDataURL();
+			console.log("2");
+			console.log(dataURL);
+			window.open(dataURL, "toDataURL() image");
+			
+           /* $.ajax({
+                type: "POST",
+                url: "/php/upload.php",
+                data: {image: dataURL}
+            }).done(function(respond){
+                console.log(respond);
+            });*/
+        });
+	</script>
 </body>
-
-
-
 </html>
