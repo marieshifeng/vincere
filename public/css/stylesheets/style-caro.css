@@ -680,7 +680,7 @@
 			font-size:14px;
 			display:inline;
 			z-index:1;
-			position:fixed;
+			position:absolute;
 		}
 
 		.icon-close {
