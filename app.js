@@ -54,6 +54,10 @@ io.sockets.on('connection', function (socket) {
   console.log("User connecting: " + user);
 
   socket.broadcast.emit('user:connecting', user);
+
+  socket.on('user:drawingconnected', function() {
+    socket.broadcast.emit('user:connect', active_connections);
+  });
   // (2): The server recieves a ping event
   // from the browser on this socket
  
@@ -65,7 +69,7 @@ io.sockets.on('connection', function (socket) {
 
     active_connections++;
     console.log("Active connections: " + active_connections);
-    socket.broadcast.emit('user:connect', active_connections);
+  
     socket.on('disconnect', function () {
       console.log("Disconnecting");
       active_connections--;

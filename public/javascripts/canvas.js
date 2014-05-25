@@ -8,6 +8,7 @@ https://github.com/byrichardpowell/draw
 
 // Initialise Socket.io
 var socket = io.connect('/');
+scoket.emit('user:drawingconnected');
 
 // Random User ID
 // Used when sending data
