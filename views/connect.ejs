@@ -26,6 +26,12 @@
                 });
             });
         </script>
+        <script>
+            $(window).bind('beforeunload', function(){
+                var message = 'Your current session will be closed if you leave, and your drawing will be lost.' + '\n' + 'To save your drawing, scroll to the bottom of the page and click \'Save Drawing\'.';
+                return message;
+            });
+        </script>
     <%- include partials/nav.ejs %>
     <div class="notification canvas_page">Allow microphone access to start talking, and pick a color to start drawing.
         <a href="#" class="close_x icon-close"></a>
