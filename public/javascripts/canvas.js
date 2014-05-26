@@ -301,13 +301,13 @@ progress_external_path = function( points, artist ) {
 
 };
 
-function saveImage() {
-  io.emit("in function");
-  getCanvas.view.draw();
-  getCanvas.view.element.toBlob(function(blob) { 
-    io.emit("created image");
-    saveAs(blob, "image.png");
-  });
-}
+// function saveImage() {
+//   socket.emit("in function");
+//   getCanvas.view.draw();
+//   getCanvas.view.element.toBlob(function(blob) { 
+//     socket.emit("created image");
+//     saveAs(blob, "image.png");
+//   });
+// }
 
 
