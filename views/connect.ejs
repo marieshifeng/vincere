@@ -18,7 +18,18 @@
 			window.open(dataURL, "toDataURL() image");
         }
 		</script>
+        <script type="text/javascript">
+                 jQuery(document).ready(function($) {
+                jQuery.noConflict();
+                $(".icon-close").click(function() {
+                    $(".notification").hide();
+                });
+            });
+        </script>
     <%- include partials/nav.ejs %>
+    <div class="notification canvas_page">Allow microphone access to start talking, and pick a color to start drawing.
+        <a href="#" class="close_x icon-close"></a>
+    </div>
   	<div id="controls"> 
         <div id="userCountWrapper", style="opacity: 0"> 
         <p> artists: </p>
@@ -42,7 +53,7 @@
 
         <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
 
-        <label>Opacity
+        <label><span class="drawing_picker_label">Opacity:</span>
             <input type="range", min="0", max="255", value="200", id="opacity"> </input>
         </label>
 
