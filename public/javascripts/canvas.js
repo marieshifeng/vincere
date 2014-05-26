@@ -7,8 +7,7 @@ https://github.com/byrichardpowell/draw
 */
 
 // Initialise Socket.io
-var socket = io.connect('/');
-socket.emit('user:drawingconnected');
+//var socket = io.connect('/');
 
 // Random User ID
 // Used when sending data
@@ -55,11 +54,6 @@ var update_active_color = function() {
 
 // Get the active color from the UI eleements
 update_active_color();
-
-
-
-
-
 
 
 // --------------------------------- 
@@ -128,7 +122,7 @@ function onMouseDrag(event) {
 
 function onMouseUp(event) {
 
-     console.log("User mouse up - sending");
+    console.log("User mouse up - sending");
    
     // Close the users path
     path.add(event.point);
@@ -145,14 +139,6 @@ function onMouseUp(event) {
     timer_is_active = false;
 
 }
-
-
-
-
-
-
-
-
 
 
 // --------------------------------- 
@@ -173,15 +159,6 @@ $opacity.on('change', function() {
     update_active_color();
 
 });
-
-
-
-
-
-
-
-
-
 
 
 // --------------------------------- 
@@ -208,35 +185,31 @@ socket.on('draw:end', function( artist, data ) {
 
 }); 
 
-socket.on('user:connect', function(user_count) {
-    console.log("user connecting");
-    update_user_count( user_count );
+// socket.on('user:connect', function(user_count) {
+//     console.log("user connecting");
+//     update_user_count( user_count );
 
-});
+// });
 
-socket.on('user:disconnect', function(user_count) {
-    console.log("user disconnecting");
-    update_user_count( user_count );
-});
-
-
+// socket.on('user:disconnect', function(user_count) {
+//     console.log("user disconnecting");
+//     update_user_count( user_count );
+// });
 
 
+ // --------------------------------- 
+ // SOCKET.IO EVENT FUNCTIONS
 
 
-// --------------------------------- 
-// SOCKET.IO EVENT FUNCTIONS
+// // Updates the active connections
+// var $user_count = $('#userCount');
+// var $user_count_wrapper = $('#userCountWrapper');
+// function update_user_count( count ) {
 
+//     $user_count_wrapper.css('opacity', 1);
+//     $user_count.text( (count === 1) ? " just you, why not invite some friends?" : " " + count );
 
-// Updates the active connections
-var $user_count = $('#userCount');
-var $user_count_wrapper = $('#userCountWrapper');
-function update_user_count( count ) {
-
-    $user_count_wrapper.css('opacity', 1);
-    $user_count.text( (count === 1) ? " just you, why not invite some friends?" : " " + count );
-
-}
+// }
 
 
 var external_paths = {};
@@ -255,15 +228,11 @@ var end_external_path = function( points, artist ) {
 
         // Remove the old data
         external_paths[artist] = false;
-
     }
-
 };
 
 // Continues to draw a path in real time
 progress_external_path = function( points, artist ) {
-
-
     var path = external_paths[artist];
 
     // The path hasnt already been started
@@ -293,11 +262,7 @@ progress_external_path = function( points, artist ) {
     }
 
     path.smooth();
-
-
     view.draw();
-
-
 
 };
 

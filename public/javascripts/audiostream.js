@@ -12,9 +12,6 @@ var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
 // 	console.log("My peer ID is: " + id);
 // });
 
-
-
-
 function successCallback(stream) {
 	localStream = stream;
 }
