@@ -711,7 +711,6 @@
 			cursor: pointer;
 			text-decoration: none;
 			outline: 0;
-			padding: 1em 3em 1em 3em;
 			text-align: center;
 			border-radius: 3em;
 			font-weight: 400;
@@ -726,12 +725,24 @@
 			{
 				background: #45c89f;
 			}
+
+			.button.style4 {
+				color:black;
+				background: #FA8970;
+				box-shadow: inset 0 0 0 1px #2A7BB5;
+							padding: 0 1em 0em 1em;
+							font-size: 0.75em;
+				position:relative;
+				bottom:10px;
+				left:10px;
+			}
 		
 			.button.style2
 			{
 				color:black;
 				background: #FA8970;
 				box-shadow: inset 0 0 0 1px #2A7BB5;
+				padding: 1em 3em 1em 3em;
 			}
 
 				.button.style2:hover
@@ -739,10 +750,12 @@
 					background:#fae8e3;
 					color: black !important;
 					text-shadow: 0 0 0.5px rgba(255,255,255,0.25) !important;
+								padding: 1em 3em 1em 3em;
 				}
 				
 				.button.style2:active
 				{
+								padding: 1em 3em 1em 3em;
 				}
 				
 			.button.style3
@@ -750,11 +763,13 @@
 				background: none;
 				color: #3a3939;
 				box-shadow: inset 0 0 0 1px #dad9d9;
+							padding: 1em 3em 1em 3em;
 			}
 			
 				.button.style3:hover
 				{
 					background: rgba(58,57,57,0.025);
+								padding: 1em 3em 1em 3em;
 				}
 
 	/* Box */
@@ -1048,6 +1063,9 @@
 		{
 			margin: 2em 0 0 0;
 			font-weight:10;
+			margin-left:auto;
+			margin-right:auto;
+			width:100%;
 		}
 
 		.center_button {
@@ -1148,7 +1166,7 @@
 }
 
 #controls     { padding:30px 0px 5px 10px; margin-left: 15px; border-bottom:2px solid #ccc;}
-.color      { display:inline-block; width:50px; height:50px; margin:10px 30px 0 0; border:2px solid #ccc; cursor:pointer; opacity:0.5 }
+.color      { display:inline-block; width:50px; height:50px; margin:10px 20px 0 0; border:2px solid #ccc; cursor:pointer; opacity:0.5 }
 .color.active { opacity:1; border:2px solid #454343;}
 		
 /*********************************************************************************/
