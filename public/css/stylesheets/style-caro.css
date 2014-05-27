@@ -730,7 +730,7 @@
 				color:black;
 				background: #FA8970;
 				box-shadow: inset 0 0 0 1px #2A7BB5;
-							padding: 0 1em 0em 1em;
+							padding: 0 0.5em 0em 0.5em;
 							font-size: 0.75em;
 				position:relative;
 				bottom:10px;
@@ -1185,25 +1185,27 @@
 	height:300px;
     margin: 2px; 
     resize: none;
-    font-size:0.5em;
+    font-size:0.7em;
 }
 
 #message_form { 
-	width:25%;
 	margin:10px 0 0 0;
+	width:90%;
 }
 
 #message_input {
-	width:360%;
+	width:100%;
 	height: 22px; 
 	margin: 2px;
-	font-size:0.5em;
+	font-size:0.7em;
 }
 
 #send_button {
-	width: 60px; 
-	font-size:0.5em;
+	width:50%;
+	left:50%;
+	margin: 5px 0 0 0;
 }
+
 
 
 		
