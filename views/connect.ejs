@@ -66,6 +66,17 @@
         <audio id="remoteaudio" autoplay> </audio>
     </div>
     <canvas id="draw" resize="true" keepalive="true"></canvas>
+   	<textarea id="chat_box" readonly="readonly"
+                  style="width: 290px; height: 250px;
+                         margin: 2px; resize: none">
+    </textarea>
+    <form id="message_form">
+    	<input type=text id="message_input"
+    		style="width: 220px; height: 18px; margin: 2px">
+		<input type="submit" id="send_button" value="Send"
+            style="width: 60px; margin: 2px">
+    </form>
     <input id="save" type="button" onclick="saveImage();" class="button style2 scrolly" value="Save Drawing"></input>
+
 </body>
 </html>
