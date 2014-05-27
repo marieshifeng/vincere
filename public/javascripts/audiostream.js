@@ -8,14 +8,55 @@ navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, error
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
-var socket = null;
 // peer.on('open', function(id) {
 // 	console.log("My peer ID is: " + id);
 // });
 
 function successCallback(stream) {
 	localStream = stream;
-	socket = io.connect('/', {query: "user=" + chatid});
+	var socket = io.connect('/', {query: "user=" + chatid});
+
+	socket.on('user:connecting', function(userchatid) {
+		console.log("User " + userchatid +  " joining chat room and getting called");
+
+		var call = peer.call(userchatid, localStream);
+		console.log("1. what is localstream: " + localStream);
+			//console.log("1a. what is remotestream: " + remoteStream);
+		call.on('stream', function(remoteStream) {
+			console.log("1b. what is remotestream: " + remoteStream);
+			//Received peer's MediaStrea.
+
+			var remoteaudio = document.getElementById("remoteaudio");
+			console.log("Received stream: " + remoteStream);
+
+			try {
+	          remoteaudio.src = window.URL.createObjectURL(remoteStream);
+	          remoteaudio.play();
+	        } catch(e) {
+	          console.log("Error setting audio src: ", e);
+	        }
+		});
+	});
+
+
+	peer.on('call', function(call) { 
+		console.log("Received call");
+		call.answer(localStream);
+			console.log("2. what is localstream: " + localStream);
+			//console.log("2a. what is remotestream: " + remoteStream);
+		call.on('stream', function(remoteStream) {
+					console.log("2b. what is remotestream: " + remoteStream);
+			var remoteaudio = document.getElementById("remoteaudio");
+			console.log("Received stream: " + remoteStream);
+			try {
+		      remoteaudio.src = window.URL.createObjectURL(remoteStream);
+		       remoteaudio.play();
+		    } catch(e) {
+		      console.log("Error setting audio src: " + e);
+		    }
+		});
+
+	});
 }
 
 function errorCallback(error) {
@@ -40,47 +81,6 @@ function unmuteAudio() {
 
 }
 
-socket.on('user:connecting', function(userchatid) {
-	console.log("User " + userchatid +  " joining chat room and getting called");
-
-	var call = peer.call(userchatid, localStream);
-	console.log("1. what is localstream: " + localStream);
-		//console.log("1a. what is remotestream: " + remoteStream);
-	call.on('stream', function(remoteStream) {
-		console.log("1b. what is remotestream: " + remoteStream);
-		//Received peer's MediaStrea.
-
-		var remoteaudio = document.getElementById("remoteaudio");
-		console.log("Received stream: " + remoteStream);
-
-		try {
-          remoteaudio.src = window.URL.createObjectURL(remoteStream);
-          remoteaudio.play();
-        } catch(e) {
-          console.log("Error setting audio src: ", e);
-        }
-	});
-});
-
-
-peer.on('call', function(call) { 
-	console.log("something something");
-	call.answer(localStream);
-		console.log("2. what is localstream: " + localStream);
-		//console.log("2a. what is remotestream: " + remoteStream);
-	call.on('stream', function(remoteStream) {
-				console.log("2b. what is remotestream: " + remoteStream);
-		var remoteaudio = document.getElementById("remoteaudio");
-		console.log("Received stream: " + remoteStream);
-		try {
-	      remoteaudio.src = window.URL.createObjectURL(remoteStream);
-	       remoteaudio.play();
-	    } catch(e) {
-	      console.log("Error setting audio src: " + e);
-	    }
-	});
-
-});
 
 
 
