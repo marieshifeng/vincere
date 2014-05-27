@@ -33,7 +33,7 @@
 	{
 		font-family: 'BariolReg', Helvetica, sans-serif;
 		font-size: 18pt;
-		line-height: 1.75em;
+		line-height: 1.5em;
 		font-weight: 300;
 		letter-spacing: 1px;
 		color: black;
@@ -700,16 +700,18 @@
 
 		#when_to_login {
 			position:absolute;
-			top:120px;
-			left:60%;
+			top:80px;
+			left:20px;
 			float:left;
 			background-color:white;
 			border:3px solid red;
-			padding:8px;
-			font-size:0.8em;
-			width:35%;
+			padding:30px;
+			line-height:26px;
+			font-size:22px;
+			width:250px;
+			height:250px;
 			text-align:center;
-			border-radius:15px;
+			border-radius:125px;
 		}
 
 		#login_subtext {
