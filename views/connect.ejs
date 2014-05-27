@@ -21,7 +21,7 @@
 		</script>
         <script>
             $(window).bind('beforeunload', function(){
-                var message = 'Your current session will be closed if you leave, and your drawing will be lost.';
+                var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
                 return message;
             });
         </script>
@@ -62,21 +62,20 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
         </button> 
+         <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
+
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
     <canvas id="draw" resize="true" keepalive="true"></canvas>
-   	<textarea id="chat_box" readonly="readonly"
-                  style="width: 290px; height: 250px;
-                         margin: 2px; resize: none">
-    </textarea>
-    <form id="message_form">
-    	<input type=text id="message_input"
-    		style="width: 220px; height: 18px; margin: 2px">
-		<input type="submit" id="send_button" value="Send"
-            style="width: 60px; margin: 2px">
-    </form>
-    <input id="save" type="button" onclick="saveImage();" class="button style2 scrolly" value="Save Drawing"></input>
-
+    <div id="whole_chat_box">
+       	<textarea id="chat_box" readonly="readonly">
+        </textarea>
+        <form id="message_form">
+        	<input type=text id="message_input">
+    		<input type="submit" id="send_button" value="Send">
+        </form>
+    </div>
+   
 </body>
 </html>
