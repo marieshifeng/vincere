@@ -1019,7 +1019,7 @@
 		position: relative;
 		color: #000000;
 		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
-		padding: 0em 0 0em 0;
+		padding: 3em 0 0em 0;
 		margin: 0;
 		width:100%;
 		background-size: 125% auto;
@@ -1027,7 +1027,7 @@
 
 		#banner header
 		{
-			margin: 0 0 1em 0;
+			margin: 0 0 0 0;
 		}
 		
 			#banner header h2
@@ -1063,6 +1063,7 @@
 		}
 
 		#banner .themes {
+			padding: 2em 0 0 0;
 			background-color:#FFF;
 		}
 		
