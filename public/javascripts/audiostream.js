@@ -11,6 +11,7 @@ if(navigator.getUserMedia) navigator.getUserMedia({video: false, audio: true}, s
 else console.log("getUserMedia not supported by this browser.");
 
 var socket = io.connect('/', {query: "user=" + chatid});
+window.location.hash = (window.location.hash || parseInt(Math.random()*1e4,10).toString(16));
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
@@ -19,6 +20,7 @@ var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
 // });
 
 function successCallback(stream) {
+	$("#muteButton").show();
 	localStream = stream;
 	socket.emit('user:connecting', chatid);
 
@@ -74,17 +76,14 @@ function muteAudio() {
 	if(localStream) {
 		$("#muteButton").hide();
 		$("#unmuteButton").show();
-
 		localStream.getAudioTracks()[0].enabled = false;
 	}
 }
 
 function unmuteAudio() {
 	if(localStream) {
-
 	  $("#unmuteButton").hide();
 	  $("#muteButton").show();
-
 	  localStream.getAudioTracks()[0].enabled = true;
 	}
 }

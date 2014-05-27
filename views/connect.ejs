@@ -11,13 +11,6 @@
 </head>
 <body class="canvas">
 
-		<% if(usingNewSite) { %>
-			<script>
-				var newurl = "<%- newurl %>";
-				window.location.hash = newurl;
-			</script>
-		<% } %>
-
 		<script>
         function saveImage(){
         	console.log("Saving image");
@@ -75,7 +68,7 @@
           <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
         </button> 
 
-        <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();">
+        <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
         </button> 
 
