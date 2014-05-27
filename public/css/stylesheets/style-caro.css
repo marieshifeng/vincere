@@ -691,6 +691,11 @@
 			z-index:50;
 		}
 
+		.icon-close {
+			font-size:11px;
+			color:black;
+		}
+
 	/* Buttons */
 		
 		.button
