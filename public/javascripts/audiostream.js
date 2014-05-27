@@ -3,8 +3,8 @@ var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var socket = io.connect('/', {query: "user=" + chatid});
 var localStream = null;
 
-//	navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
-	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+//	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
 
 
 //our own PeerServer cloud API key
