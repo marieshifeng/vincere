@@ -430,8 +430,8 @@
 			position:fixed;
 			bottom: 10px;
 			right:10px;
-			background-color:#F23047;
-			font-size:14px;
+			background-color:#E84825;
+			font-size:16px;
 			padding:8px;
 			border-radius:5px;
 			border:1px solid black;
@@ -671,10 +671,8 @@
 		.notification {
 			border-radius:10px;
 			border: 1px solid black;
-			background-color:#f9edbe;
 			padding:10px;
 			margin: 0 auto;
-			left:35%;
 			text-align:center;
 			font-size:14px;
 			display:inline;
@@ -684,11 +682,15 @@
 
 		.normal_page {
 			top:80px;
+			background-color:#f9edbe;
+			left:35%;
 		}
 
 		.canvas_page {
 			top:10px;
 			z-index:50;
+			background-color:#F52A2A;
+			right:65px;
 		}
 
 		.icon-close {
@@ -1019,7 +1021,7 @@
 		position: relative;
 		color: #000000;
 		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
-		padding: 0em 0 0em 0;
+		padding: 3em 0 0em 0;
 		margin: 0;
 		width:100%;
 		background-size: 125% auto;
@@ -1027,7 +1029,7 @@
 
 		#banner header
 		{
-			margin: 0 0 1em 0;
+			margin: 0 0 0 0;
 		}
 		
 			#banner header h2
@@ -1063,6 +1065,7 @@
 		}
 
 		#banner .themes {
+			padding: 2em 0 0 0;
 			background-color:#FFF;
 		}
 		
