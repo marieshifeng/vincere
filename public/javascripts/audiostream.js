@@ -27,8 +27,16 @@ function successCallback(stream) {
 	localStream = stream;
 	socket.emit('user:connecting', chatid);
 
+	//first user in chat
+	socket.on('firstuserjoining', function() {
+		textArea.value = textArea.value + "\n" + "Thanks for coming. You’re the first person here. We’re working on finding another survivor to join you.";
+	});
+
+
 	socket.on('user:connecting', function(userchatid) {
 		console.log("User " + userchatid +  " joining chat room and getting called");
+
+		textArea.value = textArea.value + "\n" + "Someone else has joined you! Say hi, and start sharing whenever you’re ready.";
 
 		//connecting for audio
 		var call = peer.call(userchatid, localStream);
@@ -52,7 +60,7 @@ function successCallback(stream) {
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
 			console.log("Sending user " + userchatid + " message!");
-			conn.send("Welcome, another survivor is already here in this safe space, begin talking and drawing when ready.");
+			conn.send("Thanks for coming. The other survivor is already here, so say hi, and start sharing whenever you’re ready.");
 		});
 
 		conn.on('data', function(message) {

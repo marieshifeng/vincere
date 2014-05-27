@@ -67,6 +67,8 @@ io.sockets.on('connection', function (socket) {
     socket.room = active_room;
     socket.join(active_room);
     console.log("User " + user + " joining new room: " + active_room);
+    //tell them they're the first user in chat room
+    io.sockets.socket(socket.id).emit('firstuserjoining');
   } else {
     socket.room = active_room;
     socket.join(active_room);
