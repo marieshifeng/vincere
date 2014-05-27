@@ -450,7 +450,7 @@
 			color:#57210A;
 			height:2em;
 			display:table;
-			z-index:5;
+			z-index:20;
 			background-color:#16C1DB;
 			font-family:'BariolReg', Helvetica, sans-serif;
 			text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
@@ -534,7 +534,7 @@
 		.icon-menu {
 			color:inherit !important;
 		  text-decoration:none !important;
-		  font-size: 30px !important;
+		  font-size: 2em !important;
 		  z-index:1;
 		}
 
@@ -687,7 +687,8 @@
 		}
 
 		.canvas_page {
-			top:140px;
+			top:10px;
+			z-index:50;
 		}
 
 		.icon-close {
