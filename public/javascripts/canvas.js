@@ -65,7 +65,7 @@ var timer_is_active = false;
 
 function onMouseDown(event) {
 
-    console.log("User mouse down - drawing");
+    //console.log("User mouse down - drawing");
 
     var point = event.point;
 
@@ -74,7 +74,7 @@ function onMouseDown(event) {
     path.add(event.point);
 
     // The data we will send every 100ms on mouse drag
-    console.log("Color:" + active_color_rgb);
+    //console.log("Color:" + active_color_rgb);
 
     path_to_send = {
         rgba : active_color_json,
@@ -122,7 +122,7 @@ function onMouseDrag(event) {
 
 function onMouseUp(event) {
 
-    console.log("User mouse up - sending");
+    //console.log("User mouse up - sending");
    
     // Close the users path
     path.add(event.point);
