@@ -2,8 +2,13 @@
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
 
-navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
-//	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+navigator.getUserMedia = (navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+if(navigator.getUserMedia) navigator.getUserMedia({video: false, audio: true}, successCallback, errorCallback);
+else console.log("getUserMedia not supported by this browser.");
 
 var socket = io.connect('/', {query: "user=" + chatid});
 
@@ -66,20 +71,22 @@ function errorCallback(error) {
 }
 
 function muteAudio() {
-	$("#muteButton").hide();
-	$("#unmuteButton").show();
+	if(localStream) {
+		$("#muteButton").hide();
+		$("#unmuteButton").show();
 
-	localStream.stop();
-	localStream = null;
+		localStream.getAudioTracks()[0].enabled = false;
+	}
 }
 
 function unmuteAudio() {
+	if(localStream) {
 
-  $("#unmuteButton").hide();
-  $("#muteButton").show();
+	  $("#unmuteButton").hide();
+	  $("#muteButton").show();
 
-  if(localStream == null) navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
-
+	  localStream.getAudioTracks()[0].enabled = true;
+	}
 }
 
 
