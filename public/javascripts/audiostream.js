@@ -146,7 +146,7 @@ window.onload = function() {
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
 	textArea = document.getElementById("chat_box");
-	textArea.value = "Welcome to your personal safe space! \nYou’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.\nWhile you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.\nQuick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
+	textArea.value = "Welcome to your personal safe space! \n \nYou’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.\n \nWhile you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.\n \nQuick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
 }
 
 
