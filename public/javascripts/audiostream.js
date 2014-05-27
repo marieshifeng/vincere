@@ -1,6 +1,5 @@
 
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
-var socket = io.connect('/', {query: "user=" + chatid});
 var localStream = null;
 
 navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
@@ -9,13 +8,14 @@ navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, error
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
-
+var socket = null;
 // peer.on('open', function(id) {
 // 	console.log("My peer ID is: " + id);
 // });
 
 function successCallback(stream) {
 	localStream = stream;
+	socket = io.connect('/', {query: "user=" + chatid});
 }
 
 function errorCallback(error) {
