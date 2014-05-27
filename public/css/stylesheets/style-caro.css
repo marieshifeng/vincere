@@ -1165,9 +1165,47 @@
 	background: #FFFFFF;
 }
 
+#draw {
+	width:80%;
+	float:right;
+}
+
 #controls     { padding:30px 0px 5px 10px; margin-left: 15px; border-bottom:2px solid #ccc;}
 .color      { display:inline-block; width:50px; height:50px; margin:10px 20px 0 0; border:2px solid #ccc; cursor:pointer; opacity:0.5 }
 .color.active { opacity:1; border:2px solid #454343;}
+
+#whole_chat_box {
+	width:19%;
+	float:left;
+	margin: 20px 0 0 5px;
+}
+
+#chat_box {
+	width: 90%; 
+	height:300px;
+    margin: 2px; 
+    resize: none;
+    font-size:0.5em;
+}
+
+#message_form { 
+	width:25%;
+	margin:10px 0 0 0;
+}
+
+#message_input {
+	width:360%;
+	height: 22px; 
+	margin: 2px;
+	font-size:0.5em;
+}
+
+#send_button {
+	width: 60px; 
+	font-size:0.5em;
+}
+
+
 		
 /*********************************************************************************/
 /* Poptrox                                                                       */
