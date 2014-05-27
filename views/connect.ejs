@@ -10,6 +10,14 @@
 	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
 </head>
 <body class="canvas">
+
+		<% if(usingNewSite) { %>
+			<script>
+				var newurl = "<%- newurl %>";
+				window.location.hash = newurl;
+			</script>
+		<% } %>
+
 		<script>
         function saveImage(){
         	console.log("Saving image");
