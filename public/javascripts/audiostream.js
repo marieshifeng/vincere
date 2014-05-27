@@ -3,6 +3,10 @@ var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
 var messageForm = null;
 var textArea = null;
+var otherVoiceEnabled = false;
+var yourVoiceEnabled = false;
+var anotherPersonInChat = false;
+var otherPersonLeft = false;
 
 navigator.getUserMedia = (navigator.getUserMedia ||
                        navigator.webkitGetUserMedia ||
@@ -23,11 +27,13 @@ var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
 var conn = null;
 
 function successCallback(stream) {
+	yourVoiceEnabled = true;
 	$("#muteButton").show();
 	localStream = stream;
 	socket.emit('user:connecting', chatid);
 
 	socket.on('user:connecting', function(userchatid) {
+		otherVoiceEnabled = true;
 		console.log("User " + userchatid +  " joining chat room and getting called");
 
 		//connecting for audio
@@ -97,21 +103,24 @@ function successCallback(stream) {
 
 //first user in chat
 socket.on('firstuserjoining', function() {
-	textArea.value = textArea.value + "\n" + "Thanks for coming. You’re the first person here. We’re working on finding another survivor to join you.";
+	textArea.value = textArea.value + "\n" + "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.\n";
 });
 
 socket.on('seconduserjoined', function() {
-	textArea.value = textArea.value + "\n" + "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
+	anotherPersonInChat = true;
+	textArea.value = textArea.value + "\n" + "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.\n";
 	textArea.scrollTop = textArea.scrollHeight;
 });
 
 //second user in chat
 socket.on('seconduserjoining', function() {
-	textArea.value = textArea.value + "\n" + "Thanks for coming. The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
+	anotherPersonInChat = true;
+	textArea.value = textArea.value + "\n" + "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.\n";
 });
 
 
 socket.on('user:disconnecting', function() {
+	otherPersonLeft = true;
 	textArea.value = textArea.value + "\n" + "The other survivor has left. If you want a copy of your drawing, be sure to save it!";
 	textArea.scrollTop = textArea.scrollHeight;
 });
@@ -154,7 +163,15 @@ function onSendMessage(event) {
 		}
 	} else {
 		//put that there is no connection in chat box
-		textArea.value = textArea.value + "\n" + "Either no one else has joined the room yet or you must enable your audio to allow for voice and text communication.";
+		if(!anotherPersonInChat) {
+			textArea.value = textArea.value + "\n" + "We can't send your message because no one else has joined yet. We're still looking!\n";
+		} else if (!yourVoiceEnabled) {
+			textArea.value = textArea.value + "\n" + "We can't send your message because you haven't enabled your audio yet. Don't worry, you can mute it later if you'd like.\n";
+		} else if (!otherVoiceEnabled) {
+			textArea.value = textArea.value + "\n" + "We can't send your message because the other person hasn't enabled their audio yet. They know you're here, so just give them a minute!\n";
+		} else if (otherPersonLeft) {
+			textArea.value = textArea.value + "\n" + "We can't send your message because the other person has left the conversation. Join again if you'd like to talk to someone else!\n";
+		}
 		textArea.scrollTop = textArea.scrollHeight;
 		console.log("No connection - can't send.");
 	}
@@ -169,7 +186,7 @@ window.onload = function() {
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
 	textArea = document.getElementById("chat_box");
-	textArea.value = "Welcome to your personal safe space! \n \nYou’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.\n \nWhile you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.\n \nQuick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
+	textArea.value = "Welcome to your personal safe space! \n \nYou’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.\n \nWhile you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.\n \nQuick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.\n";
 }
 
 
