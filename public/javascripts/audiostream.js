@@ -27,16 +27,8 @@ function successCallback(stream) {
 	localStream = stream;
 	socket.emit('user:connecting', chatid);
 
-	//first user in chat
-	socket.on('firstuserjoining', function() {
-		textArea.value = textArea.value + "\n" + "Thanks for coming. You’re the first person here. We’re working on finding another survivor to join you.";
-	});
-
-
 	socket.on('user:connecting', function(userchatid) {
 		console.log("User " + userchatid +  " joining chat room and getting called");
-
-		textArea.value = textArea.value + "\n" + "Someone else has joined you! Say hi, and start sharing whenever you’re ready.";
 
 		//connecting for audio
 		var call = peer.call(userchatid, localStream);
@@ -59,15 +51,15 @@ function successCallback(stream) {
 		//connecting for data (chatbox messaging)
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
-			console.log("Sending user " + userchatid + " message!");
-			conn.send("Thanks for coming. The other survivor is already here, so say hi, and start sharing whenever you’re ready.");
+			textArea.value = textArea.value + "\n" + "Me: Connection enabled!";
+		textArea.scrollTop = textArea.scrollHeight;
+			conn.send("Connection enabled!");
 		});
 
 		conn.on('data', function(message) {
 			console.log("Received message! " + message);
 			textArea.value = textArea.value + "\n" + "Friend: " + message;
 			textArea.scrollTop = textArea.scrollHeight;
-
 		});
 	});
 
@@ -102,6 +94,27 @@ function successCallback(stream) {
 		});
 	});
 }
+
+//first user in chat
+socket.on('firstuserjoining', function() {
+	textArea.value = textArea.value + "\n" + "Thanks for coming. You’re the first person here. We’re working on finding another survivor to join you.";
+});
+
+socket.on('seconduserjoined', function() {
+	textArea.value = textArea.value + "\n" + "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
+	textArea.scrollTop = textArea.scrollHeight;
+});
+
+//second user in chat
+socket.on('seconduserjoining', function() {
+	textArea.value = textArea.value + "\n" + "Thanks for coming. The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
+});
+
+
+socket.on('user:disconnecting', function() {
+	textArea.value = textArea.value + "\n" + "The other survivor has left. If you want a copy of your drawing, be sure to save it!";
+	textArea.scrollTop = textArea.scrollHeight;
+});
 
 function errorCallback(error) {
 	console.error('An error occurred getting local audio stream: [CODE ' + error.code + ']');
@@ -141,6 +154,8 @@ function onSendMessage(event) {
 		}
 	} else {
 		//put that there is no connection in chat box
+		textArea.value = textArea.value + "\n" + "Either no one else has joined the room yet or you must enable your audio to allow for voice and text communication.";
+		textArea.scrollTop = textArea.scrollHeight;
 		console.log("No connection - can't send.");
 	}
 

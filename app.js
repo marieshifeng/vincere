@@ -74,6 +74,10 @@ io.sockets.on('connection', function (socket) {
     socket.join(active_room);
     console.log("User " + user + " joining old room: " + active_room);
     active_room = null;
+    //tell them they're the second user in chat room
+    io.sockets.socket(socket.id).emit('seconduserjoining');
+    //tell other person another user's joined
+    socket.broadcast.to(socket.room).emit('seconduserjoined');
   }
 
   socket.on('user:connecting', function(user) {
@@ -96,7 +100,7 @@ io.sockets.on('connection', function (socket) {
   
     socket.on('disconnect', function () {
       console.log("Disconnecting");
-      io.sockets.in(socket.room).emit('user:disconnect');
+      socket.broadcast.to(socket.room).emit('user:disconnecting');
      // active_connections--;
     });
     // EVENT: User starts drawing something
