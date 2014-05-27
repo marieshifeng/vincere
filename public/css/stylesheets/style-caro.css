@@ -1189,10 +1189,27 @@
 
 #chat_box {
 	width: 90%; 
+	background:#ddd;
+	overflow-y: scroll;
+	border: 5px solid #CCC;
 	height:300px;
     margin: 2px; 
     resize: none;
     font-size:0.7em;
+}
+
+span.appMessage {
+	color: #000;
+	font-weight: 700 !important;
+}
+
+/* TODO: change font for their messages vs. ours */
+span.friendMessage {
+	color: #0099CC;
+}
+
+span.myMessage {
+	color: #FFA500;
 }
 
 #message_form { 
