@@ -6,8 +6,7 @@ Based on collaborative drawing app code by Richard Powell
 https://github.com/byrichardpowell/draw
 */
 
-// Initialise Socket.io
-//var socket = io.connect('/');
+
 
 // Random User ID
 // Used when sending data
@@ -184,6 +183,7 @@ socket.on('draw:end', function( artist, data ) {
     }
 
 }); 
+
 
 // socket.on('user:connect', function(user_count) {
 //     console.log("user connecting");

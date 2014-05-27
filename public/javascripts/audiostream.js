@@ -5,6 +5,7 @@ var localStream = null;
 navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
 //	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
 
+var socket = io.connect('/', {query: "user=" + chatid});
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
@@ -14,7 +15,7 @@ var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
 
 function successCallback(stream) {
 	localStream = stream;
-	var socket = io.connect('/', {query: "user=" + chatid});
+	socket.emit('user:connecting', chatid);
 
 	socket.on('user:connecting', function(userchatid) {
 		console.log("User " + userchatid +  " joining chat room and getting called");
