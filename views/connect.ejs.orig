@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include partials/header.ejs %>	
+<<<<<<< HEAD
+   <% if (usingNewSite) { %>
+	<% } %>
+    <script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+    <script src='/socket.io/socket.io.js'> </script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+	<script src='/javascripts/audiostream.js'> </script>
+</head>
+	<canvas id="draw" style="z-index:500;"resize="true" keepalive="true"></canvas>
+	<input id="save" type="button" class="button style2 scrolly" value="Connect and draw"></input>
+	<script>
+    $("#save").click(function(){
+    	var canvas = document.getElementById("draw");
+		var dataURL = canvas.toDataURL();
+		console.log(dataURL);
+		window.open(dataURL, "toDataURL() image");
+    });
+	</script>
+ 	<button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
+      <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
+    </button> 
+    <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" >
+      <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
+    </button> 
+    <audio id="remoteaudio" autoplay> </audio> 
+=======
+
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+	<script src="/javascripts/audiostream.js"> </script>
+	<script src="/javascripts/paper.js"></script>
+	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+</head>
+<body class="canvas">
+
+		<script>
+        //console.log("<%=story%>");
+
+        function saveImage(){
+        	console.log("Saving image");
+        	var canvas = document.getElementById("draw");
+			var dataURL = canvas.toDataURL();
+			window.open(dataURL, "toDataURL() image");
+        }
+		</script>
+        <script>
+            $(window).bind('beforeunload', function(){
+                var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
+                return message;
+            });
+        </script>
+    <%- include partials/nav.ejs %>
+    <div class="notification canvas_page">Overwhelmed? See Resources -->
+    </div>
+  	<div id="controls"> 
+        <div id="userCountWrapper", style="opacity: 0"> 
+        <p> artists: </p>
+            <span id="userCount"> </span>
+        </div>
+        <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
+
+        <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
+
+        <div data-color="233,34,41", class="color", style="background:rgb(233,34,41);"> </div>
+
+        <div data-color="57,178,73", class="color", style="background:rgb(57,178,73);" ></div>
+
+        <div data-color="247,219,31", class="color", style="background:rgb(247,219,31);"> </div>
+
+        <div data-color="248,172,60", class="color", style="background:rgb(248,172,60);" ></div>
+
+        <div data-color="142,42,140", class="color active", style="background:rgb(142,42,140);" ></div>
+
+        <div data-color="77,42,255", class="color", style="background:rgb(77,42,255);" ></div>
+
+        <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
+
+        <label><span class="drawing_picker_label">Opacity:</span>
+            <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+        </label>
+
+        <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
+          <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
+        </button> 
+
+        <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
+          <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
+        </button> 
+         
+        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
+
+
+        <audio id="remoteaudio" autoplay> </audio>
+    </div>
+    <canvas id="draw" resize="true" keepalive="true"></canvas>
+    <div id="whole_chat_box">
+       	<div id="chat_box"></div>
+        <form id="message_form">
+        	<input type=text id="message_input" placeholder="Say something">
+    		<input type="submit" id="send_button" class="button style4 scrolly" value="Send">
+        </form>
+    </div>
+    <!--commenting out for now <div id="friend_story"><p><%=story%></p></div> -->
+   
+>>>>>>> FETCH_HEAD
+</body>
+</html>
