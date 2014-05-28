@@ -12,6 +12,8 @@
 <body class="canvas">
 
 		<script>
+        //console.log("<%=story%>");
+
         function saveImage(){
         	console.log("Saving image");
         	var canvas = document.getElementById("draw");
@@ -62,7 +64,8 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
         </button> 
-         <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
+         
+        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
 
 
         <audio id="remoteaudio" autoplay> </audio>
@@ -75,6 +78,7 @@
     		<input type="submit" id="send_button" class="button style4 scrolly" value="Send">
         </form>
     </div>
+    <div id="friend_story"><p><%=story%></p></div>
    
 </body>
 </html>

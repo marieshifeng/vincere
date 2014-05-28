@@ -752,6 +752,11 @@
 				padding: 1em 3em 1em 3em;
 			}
 
+			/* story box */
+			#message_input {
+				
+			}
+
 				.button.style2:hover
 				{
 					background:#fae8e3;

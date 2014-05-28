@@ -197,6 +197,7 @@ function onSendMessage(event) {
 
 window.onload = function() {	
 	console.log("Document ready");
+
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
 	textArea = $("#chat_box");

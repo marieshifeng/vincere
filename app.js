@@ -6,7 +6,7 @@ var express = require('express')
   , contract = require('./routes/contract')
   , connect = require('./routes/connect')
   , audio = require('./routes/audio')
-  , chatroom = require('./routes/chatroom')
+  // , chatroom = require('./routes/chatroom')
   , resources = require('./routes/resources')
   , about = require('./routes/about')
   , http = require('http')
@@ -41,11 +41,12 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/contract', contract.view);
 app.get('/connect', connect.view);
+app.post('/connect', connect.view);
 app.get('/audio', audio.view);
 app.get('/resources', resources.view);
 app.get('/about', about.view);
-app.get('/chatroom/getUrl', chatroom.getUrl);
-app.post('/chatroom/setUrl', chatroom.setUrl);
+// app.get('/chatroom/getUrl', chatroom.getUrl);
+// app.post('/chatroom/setUrl', chatroom.setUrl);
 
 // Enable Socket.io
 
