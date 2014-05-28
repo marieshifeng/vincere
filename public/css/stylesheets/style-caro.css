@@ -33,7 +33,7 @@
 	{
 		font-family: 'BariolReg', Helvetica, sans-serif;
 		font-size: 18pt;
-		line-height: 1.75em;
+		line-height: 1.5em;
 		font-weight: 300;
 		letter-spacing: 1px;
 		color: black;
@@ -674,14 +674,14 @@
 			padding:10px;
 			margin: 0 auto;
 			text-align:center;
-			font-size:14px;
+			font-size:0.5em;
 			display:inline;
 			z-index:1;
 			position:absolute;
 		}
 
 		.normal_page {
-			top:80px;
+			top:65px;
 			background-color:#f9edbe;
 			left:35%;
 		}
@@ -696,6 +696,26 @@
 		.icon-close {
 			font-size:11px;
 			color:black;
+		}
+
+		#when_to_login {
+			position:absolute;
+			top:80px;
+			left:20px;
+			float:left;
+			background-color:white;
+			border:3px solid red;
+			padding:30px;
+			line-height:26px;
+			font-size:22px;
+			width:250px;
+			height:250px;
+			text-align:center;
+			border-radius:125px;
+		}
+
+		#login_subtext {
+			font-size:0.6em;
 		}
 
 	/* Buttons */
