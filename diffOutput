@@ -1,0 +1,336 @@
+diff --git a/diffOutput b/diffOutput
+deleted file mode 100644
+index 5acdb7f..0000000
+--- a/diffOutput
++++ /dev/null
+@@ -1,290 +0,0 @@
+-diff --git a/public/css/stylesheets/style-caro.css b/public/css/stylesheets/style-caro.css
+-index a29d091..1b21a07 100644
+---- a/public/css/stylesheets/style-caro.css
+-+++ b/public/css/stylesheets/style-caro.css
+-@@ -499,7 +499,7 @@
+- 			height:35px;
+- 			border:solid 1px #57210A;
+- 			background-color:white;
+--			width:170px;
+-+			width:140px;
+- 			padding:3px;
+- 		}
+- 
+-@@ -515,10 +515,6 @@
+- 			top:70px;
+- 		}
+- 
+--		.menu4 {
+--			top:105px;
+--		}
+--
+- 		#nav {
+- 			display: none;
+- 			height:5em;
+-@@ -678,6 +674,7 @@
+- 			border: 1px solid black;
+- 			background-color:#f9edbe;
+- 			padding:10px;
+-+			top:80px;
+- 			margin: 0 auto;
+- 			left:35%;
+- 			text-align:center;
+-@@ -687,14 +684,6 @@
+- 			position:absolute;
+- 		}
+- 
+--		.normal_page {
+--			top:80px;
+--		}
+--
+--		.canvas_page {
+--			top:140px;
+--		}
+--
+- 		.icon-close {
+- 			font-size:11px;
+- 			color:black;
+-@@ -1557,28 +1546,20 @@
+- 
+- .soundButton {
+-   display: inline-block;
+--  width: 65px;
+--  height: 65px;
+--  margin: 5px; /* 30px 0 0; */
+--  border: 2px solid  background-color: white;
+-+  width: 70px;
+-+  height: 70px;
+-+  margin: 10px; /* 30px 0 0; */
+-+  border: 2px solid #ccc;
+-+  background-color: white;
+- }
+- 
+- .sound-icon {
+-  max-width: 100%; 
+- }
+- 
+--.drawing_picker_label {
+--	font-size:0.75em;
+--}
+--
+--.canvas {
+--	padding:0;
+--	background: #FFFFFF;
+--}
+--
+- #controls     { padding:30px 0px 5px 10px; margin-left: 15px; border-bottom:2px solid #ccc;}
+--.color      { display:inline-block; width:50px; height:50px; margin:10px 30px 0 0; border:2px solid #ccc; cursor:pointer; opacity:0.5 }
+--.color.active { opacity:1; border:2px solid #454343;}
+-+.color      { display:inline-block; width:50px; height:50px; margin:10px 30px 0 0; border:2px solid #ccc; cursor:pointer; opacity:0.3 }
+-+.color.active { opacity:1; }
+- 		
+- /*********************************************************************************/
+- /* Poptrox                                                                       */
+-diff --git a/public/javascripts/audiostream.js b/public/javascripts/audiostream.js
+-index b612c12..98f9107 100644
+---- a/public/javascripts/audiostream.js
+-+++ b/public/javascripts/audiostream.js
+-@@ -2,9 +2,7 @@
+- var chatid = parseInt(Math.random()*1e4,10).toString(16);
+- var socket = io.connect('/', {query: "user=" + chatid});
+- var localStream = null;
+--
+--//	navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+--	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+-+navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+- 
+- 
+- //our own PeerServer cloud API key
+-@@ -42,17 +40,12 @@ function unmuteAudio() {
+- 
+- socket.on('user:connecting', function(userchatid) {
+- 	console.log("User " + userchatid +  " joining chat room and getting called");
+--
+- 	var call = peer.call(userchatid, localStream);
+--	console.log("1. what is localstream: " + localStream);
+--		//console.log("1a. what is remotestream: " + remoteStream);
+- 	call.on('stream', function(remoteStream) {
+--		console.log("1b. what is remotestream: " + remoteStream);
+- 		//Received peer's MediaStrea.
+- 
+--		var remoteaudio = document.getElementById("remoteaudio");
+- 		console.log("Received stream: " + remoteStream);
+--
+-+		var remoteaudio = document.getElementById("remoteaudio");
+- 		try {
+-           remoteaudio.src = window.URL.createObjectURL(remoteStream);
+-           remoteaudio.play();
+-@@ -64,12 +57,9 @@ socket.on('user:connecting', function(userchatid) {
+- 
+- 
+- peer.on('call', function(call) { 
+--	console.log("something something");
+-+
+- 	call.answer(localStream);
+--		console.log("2. what is localstream: " + localStream);
+--		//console.log("2a. what is remotestream: " + remoteStream);
+- 	call.on('stream', function(remoteStream) {
+--				console.log("2b. what is remotestream: " + remoteStream);
+- 		var remoteaudio = document.getElementById("remoteaudio");
+- 		console.log("Received stream: " + remoteStream);
+- 		try {
+-diff --git a/public/javascripts/canvas.js b/public/javascripts/canvas.js
+-index adcdc79..555e78d 100644
+---- a/public/javascripts/canvas.js
+-+++ b/public/javascripts/canvas.js
+-@@ -65,7 +65,7 @@ var timer_is_active = false;
+- 
+- function onMouseDown(event) {
+- 
+--    //console.log("User mouse down - drawing");
+-+    console.log("User mouse down - drawing");
+- 
+-     var point = event.point;
+- 
+-@@ -74,7 +74,7 @@ function onMouseDown(event) {
+-     path.add(event.point);
+- 
+-     // The data we will send every 100ms on mouse drag
+--    //console.log("Color:" + active_color_rgb);
+-+    console.log("Color:" + active_color_rgb);
+- 
+-     path_to_send = {
+-         rgba : active_color_json,
+-@@ -122,7 +122,7 @@ function onMouseDrag(event) {
+- 
+- function onMouseUp(event) {
+- 
+--    //console.log("User mouse up - sending");
+-+    console.log("User mouse up - sending");
+-    
+-     // Close the users path
+-     path.add(event.point);
+-diff --git a/public/javascripts/init.js b/public/javascripts/init.js
+-index d0be056..c2b8255 100644
+---- a/public/javascripts/init.js
+-+++ b/public/javascripts/init.js
+-@@ -105,12 +105,12 @@
+- 
+- 			var	$window = $(window),
+- 				$body = $('body');
+--/*
+-+
+- 			// Scrolly links
+- 				$('.scrolly').n33_scrolly(function() {
+- 					return (skel.isActive('mobile') ? 70 : 190);
+- 				});
+--*/
+-+
+- 			// Forms
+- 				if (skel.vars.IEVersion < 10)
+- 					$('form').n33_formerize();
+-@@ -169,10 +169,10 @@
+- 				}
+- 				
+- 			// Poptrox
+--			/*
+-+			
+- 				if (skel.vars.IEVersion < 9)
+- 					_settings.poptrox.overlayOpacity = 0;
+- 			
+- 				$('.gallery').poptrox(_settings.poptrox);
+--*/
+-+
+- 		});
+-\ No newline at end of file
+-diff --git a/views/connect.ejs b/views/connect.ejs
+-index 01f5a0c..0afbccc 100644
+---- a/views/connect.ejs
+-+++ b/views/connect.ejs
+-@@ -4,12 +4,12 @@
+- 	<%- include partials/header.ejs %>	
+- 	
+- 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+--    <script src="/socket.io/socket.io.js"></script>
+-+	<script src='/socket.io/socket.io.js'> </script>
+- 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+--	<script src="/javascripts/audiostream.js"> </script>
+-+	<script src='/javascripts/audiostream.js'> </script>
+- 	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+- </head>
+--<body class="canvas">
+-+<body style="padding:0">
+- 		<script>
+-         function saveImage(){
+-         	console.log("Saving image");
+-@@ -18,24 +18,6 @@
+- 			window.open(dataURL, "toDataURL() image");
+-         }
+- 		</script>
+--        <script type="text/javascript">
+--                 jQuery(document).ready(function($) {
+--                jQuery.noConflict();
+--                $(".icon-close").click(function() {
+--                    $(".notification").hide();
+--                });
+--            });
+--        </script>
+--        <script>
+--            $(window).bind('beforeunload', function(){
+--                var message = 'Your current session will be closed if you leave, and your drawing will be lost.' + '\n' + 'To save your drawing, scroll to the bottom of the page and click \'Save Drawing\'.';
+--                return message;
+--            });
+--        </script>
+--    <%- include partials/nav.ejs %>
+--    <div class="notification canvas_page">Allow microphone access to start talking, and pick a color to start drawing.
+--        <a href="#" class="close_x icon-close"></a>
+--    </div>
+-   	<div id="controls"> 
+-         <div id="userCountWrapper", style="opacity: 0"> 
+-         <p> artists: </p>
+-@@ -59,7 +41,7 @@
+- 
+-         <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
+- 
+--        <label><span class="drawing_picker_label">Opacity:</span>
+-+        <label>Opacity
+-             <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+-         </label>
+- 
+-diff --git a/views/index.ejs b/views/index.ejs
+-index 9c54a97..bc990e0 100644
+---- a/views/index.ejs
+-+++ b/views/index.ejs
+-@@ -16,7 +16,7 @@
+- 	</section>
+- 
+- 	<!-- Chrome pop-up -->
+--	<div class="notification normal_page">Use Google Chrome to access the full functionality of this site.
+-+	<div class="notification">Use Google Chrome to access the full functionality of this site.
+- 		<a href="#" class="close_x icon-close"></a>
+- 	</div>
+- 
+-diff --git a/views/partials/header.ejs b/views/partials/header.ejs
+-index 1f6ce31..1224f02 100644
+---- a/views/partials/header.ejs
+-+++ b/views/partials/header.ejs
+-@@ -5,6 +5,7 @@
+- <meta name="apple-mobile-web-app-capable" content="yes">
+- <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
+-+<link rel="stylesheet" href="/css/stylesheets/style.css" />
+- <link rel="stylesheet" href="/css/stylesheets/skel-noscript.css" />
+- <link href="css/stylesheets/fonts.css" rel="stylesheet" type="text/css" />
+- <link rel="stylesheet" href="/css/stylesheets/style-caro.css" />
+-diff --git a/views/partials/nav.ejs b/views/partials/nav.ejs
+-index c0fe649..e23a874 100644
+---- a/views/partials/nav.ejs
+-+++ b/views/partials/nav.ejs
+-@@ -7,9 +7,8 @@
+- 				<a href="#" class="menubut icon-menu show_hide"></a>
+- 					<div class="menubar">
+- 						<div class="center_menu"><a href="/" class="menuitem menu1">Home</a></div>
+--						<div class="center_menu"><a href="/contract" class="menuitem menu2">New Conversation</a></div>
+--						<div class="center_menu"><a href="/resources" class="menuitem menu3">Resources</a></div>
+--						<div class="center_menu"><a href="/about" class="menuitem menu4">About</a></div>
+-+						<div class="center_menu"><a href="/resources" class="menuitem menu2">Resources</a></div>
+-+						<div class="center_menu"><a href="/about" class="menuitem menu3">About</a></div>
+- 					</div>
+- 			</li>
+- 		</ul>
+diff --git a/public/javascripts/audiostream.js b/public/javascripts/audiostream.js
+index 4ea8a76..b612c12 100644
+--- a/public/javascripts/audiostream.js
++++ b/public/javascripts/audiostream.js
+@@ -3,8 +3,8 @@ var chatid = parseInt(Math.random()*1e4,10).toString(16);
+ var socket = io.connect('/', {query: "user=" + chatid});
+ var localStream = null;
+ 
+-navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+-//	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
++//	navigator.webkitGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
++	navigator.mozGetUserMedia({video: false, audio: true}, successCallback, errorCallback);
+ 
+ 
+ //our own PeerServer cloud API key
+diff --git a/views/connect.ejs b/views/connect.ejs
+index e741cae..01f5a0c 100644
+--- a/views/connect.ejs
++++ b/views/connect.ejs
+@@ -3,6 +3,7 @@
+ <head>
+ 	<%- include partials/header.ejs %>	
+ 	
++	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+ 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+ 	<script src="/javascripts/audiostream.js"> </script>
+diff --git a/views/partials/header.ejs b/views/partials/header.ejs
+index 79afdfd..1f6ce31 100644
+--- a/views/partials/header.ejs
++++ b/views/partials/header.ejs
+@@ -9,6 +9,8 @@
+ <link href="css/stylesheets/fonts.css" rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" href="/css/stylesheets/style-caro.css" />
+ <script src="/socket.io/socket.io.js"></script>
++<script src="/javascripts/socket.js"></script>
++<script src="/javascripts/paper.js"></script>
+ <script src="/javascripts/jquery.min.js"></script>
+ <script src="/javascripts/jquery.poptrox.min.js"></script>
+ <script src="/javascripts/skel.min.js"></script>
