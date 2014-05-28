@@ -442,6 +442,10 @@
 			color:black;
 		}
 
+		.canvas_page a {
+			color:black;
+		}
+
 		.nav_bar_link {
 			position:fixed;
 			top:0px;
