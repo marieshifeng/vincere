@@ -70,14 +70,32 @@
         <audio id="remoteaudio" autoplay> </audio>
     </div>
     <canvas id="draw" resize="true" keepalive="true"></canvas>
+
     <div id="whole_chat_box">
-       	<div id="chat_box"></div>
+        <div id="chat_box"></div>
         <form id="message_form">
-        	<input type=text id="message_input" placeholder="Say something">
-    		<input type="submit" id="send_button" class="button style4 scrolly" value="Send">
+            <input type=text id="message_input" placeholder="Say something">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
         </form>
     </div>
-    <!--commenting out for now <div id="friend_story"><p><%=story%></p></div> -->
+    <div id="friend_story">
+        <h3 style="text-align:center">Your partner's story</h3>
+        <br/>
+        <p><%=story%></p>
+        <br/>
+        <div id="intro_but">
+            <div class="button style4 scrolly">Nice to meet you</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery.noConflict();
+        $("#intro_but").click(function() {
+            $("#friend_story").fadeOut('slow');
+        });
+    });
+</script>
+
    
    <!-- Google analytics -->
 <script>
