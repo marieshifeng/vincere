@@ -2,7 +2,10 @@
 /*
  * GET home page.
  */
+var Image = require('../models/image');
 
 exports.index = function(req, res){
-  res.render('index', { title: "" });
+	Image.find( function ( err, images ){
+		res.render('index', { title: "", images: images });  		
+	});
 };

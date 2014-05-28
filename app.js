@@ -11,9 +11,24 @@ var express = require('express')
   , about = require('./routes/about')
   , http = require('http')
   , socket = require('socket.io')
-  , path = require('path');
+  , path = require('path')
+  , fs = require('fs')
+  , sys = require('sys')
+  , mongoose = require('mongoose');
 
 var app = express();
+
+//Setting up database
+var local_database_name = 'finalprojectdb';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri, function (err, res) {
+    if (err) {
+      console.log ('Error connecting to: ' + database_uri + '. ' + err);
+    } else {
+      console.log ('Succeeded connected to: ' + database_uri);
+  }
+});
 
 // Configure our application
 app.configure(function(){
@@ -41,7 +56,7 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/contract', contract.view);
 app.get('/connect', connect.view);
-app.post('/connect', connect.view);
+app.post('/connect', connect.post);
 app.get('/audio', audio.view);
 app.get('/resources', resources.view);
 app.get('/about', about.view);

@@ -8,6 +8,10 @@
 	<script src="/javascripts/audiostream.js"> </script>
 	<script src="/javascripts/paper.js"></script>
 	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+
+<script type="text/javascript" src="/javascripts/html2canvas.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
+<!-- -->
 </head>
 <body class="canvas">
 
@@ -15,10 +19,14 @@
         //console.log("<%=story%>");
 
         function saveImage(){
-        	console.log("Saving image");
+            $("#save").hide();
+            $("#submit_button").show();
         	var canvas = document.getElementById("draw");
 			var dataURL = canvas.toDataURL();
-			window.open(dataURL, "toDataURL() image");
+			//window.open(dataURL, "toDataURL() image");
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            console.log("dataURL: "+elem.value);
         }
 		</script>
         <script>
@@ -64,9 +72,12 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
         </button> 
-         
-        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
-
+        
+        <form action="/connect" method="post">
+            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save drawing"></input>
+            <input id="hidden_button" type="hidden" name="img">
+            <button id="submit_button" style="display:none"type="submit" class="button style4 scrolly" value="submit">Submit drawing</button>
+        </form>       
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
@@ -78,6 +89,8 @@
     		<input type="submit" id="send_button" class="button style4 scrolly" value="Send">
         </form>
     </div>
+
+
     <!--commenting out for now <div id="friend_story"><p><%=story%></p></div> -->
    
    <!-- Google analytics -->
