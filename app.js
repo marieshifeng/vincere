@@ -13,22 +13,22 @@ var express = require('express')
   , socket = require('socket.io')
   , path = require('path')
   , fs = require('fs')
-  , sys = require('sys')
-  , mongoose = require('mongoose');
+  , sys = require('sys');
+  // , mongoose = require('mongoose');
 
 var app = express();
 
-//Setting up database
-var local_database_name = 'finalprojectdb';
-var local_database_uri  = 'mongodb://localhost/' + local_database_name
-var database_uri = process.env.MONGOLAB_URI || local_database_uri
-mongoose.connect(database_uri, function (err, res) {
-    if (err) {
-      console.log ('Error connecting to: ' + database_uri + '. ' + err);
-    } else {
-      console.log ('Succeeded connected to: ' + database_uri);
-  }
-});
+// //Setting up database
+// var local_database_name = 'finalprojectdb';
+// var local_database_uri  = 'mongodb://localhost/' + local_database_name
+// var database_uri = process.env.MONGOLAB_URI || local_database_uri
+// mongoose.connect(database_uri, function (err, res) {
+//     if (err) {
+//       console.log ('Error connecting to: ' + database_uri + '. ' + err);
+//     } else {
+//       console.log ('Succeeded connected to: ' + database_uri);
+//   }
+// });
 
 // Configure our application
 app.configure(function(){
