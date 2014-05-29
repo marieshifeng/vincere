@@ -24,6 +24,7 @@
         <script>
             $(window).bind('beforeunload', function(){
                 var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
+                saveImageToFile();
                 return message;
             });
         </script>

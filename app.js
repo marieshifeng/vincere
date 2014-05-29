@@ -11,6 +11,7 @@ var express = require('express')
   , about = require('./routes/about')
   , http = require('http')
   , socket = require('socket.io')
+  , fs = require('fs')
   , path = require('path');
 
 var app = express();
