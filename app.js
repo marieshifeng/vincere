@@ -1,3 +1,4 @@
+
 // Express requires these dependencies
 var express = require('express')
   , session = require ('express-session')
@@ -11,9 +12,24 @@ var express = require('express')
   , about = require('./routes/about')
   , http = require('http')
   , socket = require('socket.io')
-  , path = require('path');
+  , path = require('path')
+  , fs = require('fs')
+  , sys = require('sys');
+  // , mongoose = require('mongoose');
 
 var app = express();
+
+// //Setting up database
+// var local_database_name = 'finalprojectdb';
+// var local_database_uri  = 'mongodb://localhost/' + local_database_name
+// var database_uri = process.env.MONGOLAB_URI || local_database_uri
+// mongoose.connect(database_uri, function (err, res) {
+//     if (err) {
+//       console.log ('Error connecting to: ' + database_uri + '. ' + err);
+//     } else {
+//       console.log ('Succeeded connected to: ' + database_uri);
+//   }
+// });
 
 // Configure our application
 app.configure(function(){
@@ -40,7 +56,6 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/contract', contract.view);
-app.get('/connect', connect.view);
 app.post('/connect', connect.view);
 app.get('/audio', audio.view);
 app.get('/resources', resources.view);
@@ -58,27 +73,31 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 // A user connects to the server (opens a socket)
 // var active_connections = 0;
 var active_room = null;
+var active_room_story = null;
 var active_room_num = 0;
 var io = socket.listen(server);
 io.sockets.on('connection', function (socket) {
-  var user = socket.manager.handshaken[socket.id].query.user;
+  var story = socket.manager.handshaken[socket.id].query.story;
   if(active_room == null) {
     active_room_num++;
     active_room = "room" + active_room_num;
+    active_room_story = story;
     socket.room = active_room;
     socket.join(active_room);
-    console.log("User " + user + " joining new room: " + active_room);
+    console.log("User joining new room: " + active_room);
     //tell them they're the first user in chat room
-    io.sockets.socket(socket.id).emit('firstuserjoining');
+    io.sockets.sockets[socket.id].emit('firstuserjoining');
   } else {
     socket.room = active_room;
     socket.join(active_room);
-    console.log("User " + user + " joining old room: " + active_room);
+    console.log("User joining old room: " + active_room);
     active_room = null;
+
     //tell them they're the second user in chat room
-    io.sockets.socket(socket.id).emit('seconduserjoining');
+    io.sockets.sockets[socket.id].emit('seconduserjoining', active_room_story);
+    active_room_story = null;
     //tell other person another user's joined
-    socket.broadcast.to(socket.room).emit('seconduserjoined');
+    socket.broadcast.to(socket.room).emit('seconduserjoined', story);
   }
 
   socket.on('user:connecting', function(user) {
@@ -99,17 +118,18 @@ io.sockets.on('connection', function (socket) {
     // active_connections++;
     // console.log("Active connections: " + active_connections);
   
-    socket.on('disconnect', function () {
-      console.log("Disconnecting");
-      socket.broadcast.to(socket.room).emit('user:disconnecting');
-     // active_connections--;
-    });
-    // EVENT: User starts drawing something
-    socket.on('draw:progress', function (uid, co_ordinates) {  
-      io.sockets.in(socket.room).emit('draw:progress', uid, co_ordinates)
-    });
-    // EVENT: User stops drawing something
-    socket.on('draw:end', function (uid, co_ordinates) { 
-      io.sockets.in(socket.room).emit('draw:end', uid, co_ordinates)
-    });
+  socket.on('disconnect', function () {
+    if(socket.room == active_room) active_room = null;
+    console.log("Disconnecting");
+    socket.broadcast.to(socket.room).emit('user:disconnecting');
+   // active_connections--;
   });
+  // EVENT: User starts drawing something
+  socket.on('draw:progress', function (uid, co_ordinates) {  
+    io.sockets.in(socket.room).emit('draw:progress', uid, co_ordinates)
+  });
+  // EVENT: User stops drawing something
+  socket.on('draw:end', function (uid, co_ordinates) { 
+    io.sockets.in(socket.room).emit('draw:end', uid, co_ordinates)
+  });
+});
