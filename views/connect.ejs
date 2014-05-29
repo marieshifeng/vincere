@@ -9,7 +9,11 @@
 </head>
 <body class="canvas">
     <script>
-        var story = "<%=story%>";
+
+        var storyData = <%-story%>;
+        console.log(storyData);
+        console.log(storyData.story);
+        story = storyData.story;
     </script>
 
     <script src="/javascripts/audiostream.js"> </script>
