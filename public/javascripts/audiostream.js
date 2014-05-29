@@ -2,13 +2,13 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
-// var story = <%=story%>;
-var story = "";
+console.log("Story: " + story);
 
 var myAuthor = 'Me';
 var friendAuthor = "Friend";
 
 var firstMessage = null;
+var secondMessage = null;
 
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
@@ -68,7 +68,7 @@ function successCallback(stream) {
 		//connecting for data (chatbox messaging)
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
-			addMessage("Connection enabled!", myAuthor, myClass);
+			addMessage("Connection enabled", myAuthor, myClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 			conn.send("Connection enabled!");
 		});
@@ -116,6 +116,10 @@ function successCallback(stream) {
 socket.on('firstuserjoining', function() {
 	firstMessage = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
 	console.log(firstMessage);
+	if(textArea != null) {
+		addMessage(firstMessage, undefined, appClass);
+		firstMessage = null;
+	}
 });
 
 socket.on('seconduserjoined', function(otherStory) {
@@ -123,6 +127,7 @@ socket.on('seconduserjoined', function(otherStory) {
 	var message = "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
+
 	$("#friend_story_text").text(otherStory);
 	$("#friend_story").show();
 
@@ -131,8 +136,12 @@ socket.on('seconduserjoined', function(otherStory) {
 //second user in chat
 socket.on('seconduserjoining', function(otherStory) {
 	anotherPersonInChat = true;
-	var message = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
-	addMessage(message, undefined, appClass);
+	secondMessage = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
+	if(textArea != null) {
+		addMessage(secondMessage, undefined, appClass);
+		secondMessage = null;
+	}
+
 	$("#friend_story_text").text(otherStory);
 	$("#friend_story").show();
 });
@@ -219,8 +228,12 @@ window.onload = function() {
 	addMessage(greeting4, undefined, appClass);
 
 	if(firstMessage != null) {
-		console.log(firstMessage);
 		addMessage(firstMessage, undefined, appClass);
+	}
+
+	if(secondMessage != null) {
+		addMessage(secondMessage, undefined, appClass);
+		textArea.scrollTop(textArea[0].scrollHeight);
 	}
 }
 

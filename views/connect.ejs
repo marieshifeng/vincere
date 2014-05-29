@@ -5,29 +5,35 @@
 
     <script src="/socket.io/socket.io.js"></script>
 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
-	<script src="/javascripts/audiostream.js"> </script>
-	<script src="/javascripts/paper.js"></script>
-	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+	
 </head>
 <body class="canvas">
+    <script>
+        var story = "<%=story%>";
+    </script>
 
-		<script>
-        //console.log("<%=story%>");
+    <script src="/javascripts/audiostream.js"> </script>
+    <script src="/javascripts/paper.js"></script>
+    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+
+	<script>
 
         function saveImage(){
         	console.log("Saving image");
         	var canvas = document.getElementById("draw");
-			var dataURL = canvas.toDataURL();
-			window.open(dataURL, "toDataURL() image");
+    		var dataURL = canvas.toDataURL();
+    		window.open(dataURL, "toDataURL() image");
         }
-		</script>
-        <script>
-            $(window).bind('beforeunload', function(){
-                var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
-                return message;
-            });
-        </script>
+
+        $(window).bind('beforeunload', function(){
+            var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
+            return message;
+        });
+
+    </script>
+
     <%- include partials/nav.ejs %>
+
     <div class="notification canvas_page"><a href="/resources" target="_blank">Overwhelmed? See Resources.</a></div>
   	<div id="controls"> 
         <div id="userCountWrapper", style="opacity: 0"> 
