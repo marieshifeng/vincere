@@ -2,12 +2,13 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
-var story = "<%=story%>";
+// var story = <%=story%>;
+var story = "";
 
 var myAuthor = 'Me';
 var friendAuthor = "Friend";
 
-
+var firstMessage = null;
 
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
@@ -113,8 +114,8 @@ function successCallback(stream) {
 
 //first user in chat
 socket.on('firstuserjoining', function() {
-	var message = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
-	addMessage(message, undefined, appClass);
+	firstMessage = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
+	console.log(firstMessage);
 });
 
 socket.on('seconduserjoined', function(otherStory) {
@@ -123,6 +124,7 @@ socket.on('seconduserjoined', function(otherStory) {
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
 	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
 
 });
 
@@ -132,6 +134,7 @@ socket.on('seconduserjoining', function(otherStory) {
 	var message = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
 	addMessage(message, undefined, appClass);
 	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
 });
 
 
@@ -200,12 +203,12 @@ function onSendMessage(event) {
 	return false;
 }
 
-window.onload = function() {	
+window.onload = function() {
+	textArea = $("#chat_box");	
 	console.log("Document ready");
 
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
-	textArea = $("#chat_box");
 	var greeting1 = "Welcome to your personal safe space!";
 	var greeting2 = "You’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.";
 	var greeting3 = "While you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.";
@@ -214,6 +217,11 @@ window.onload = function() {
 	addMessage(greeting2, undefined, appClass);
 	addMessage(greeting3, undefined, appClass);
 	addMessage(greeting4, undefined, appClass);
+
+	if(firstMessage != null) {
+		console.log(firstMessage);
+		addMessage(firstMessage, undefined, appClass);
+	}
 }
 
  /**

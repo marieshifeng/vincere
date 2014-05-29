@@ -86,7 +86,7 @@ io.sockets.on('connection', function (socket) {
     socket.join(active_room);
     console.log("User joining new room: " + active_room);
     //tell them they're the first user in chat room
-    io.sockets.sockets[socket.id].emit('firstuserjoining');
+    io.sockets.socket(socket.id).emit('firstuserjoining');
   } else {
     socket.room = active_room;
     socket.join(active_room);
@@ -94,7 +94,7 @@ io.sockets.on('connection', function (socket) {
     active_room = null;
 
     //tell them they're the second user in chat room
-    io.sockets.sockets[socket.id].emit('seconduserjoining', active_room_story);
+    io.sockets.socket(socket.id).emit('seconduserjoining', active_room_story);
     active_room_story = null;
     //tell other person another user's joined
     socket.broadcast.to(socket.room).emit('seconduserjoined', story);
