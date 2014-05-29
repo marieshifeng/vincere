@@ -2,6 +2,8 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
+var story = "<%=story%>";
+
 var myAuthor = 'Me';
 var friendAuthor = "Friend";
 
@@ -24,7 +26,7 @@ navigator.getUserMedia = (navigator.getUserMedia ||
 if(navigator.getUserMedia) navigator.getUserMedia({video: false, audio: true}, successCallback, errorCallback);
 else console.log("getUserMedia not supported by this browser.");
 
-var socket = io.connect('/', {query: "user=" + chatid});
+var socket = io.connect('/', {query: "story=" + story});
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
@@ -115,18 +117,21 @@ socket.on('firstuserjoining', function() {
 	addMessage(message, undefined, appClass);
 });
 
-socket.on('seconduserjoined', function() {
+socket.on('seconduserjoined', function(otherStory) {
 	anotherPersonInChat = true;
 	var message = "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
+	$("#friend_story_text").text(otherStory);
+
 });
 
 //second user in chat
-socket.on('seconduserjoining', function() {
+socket.on('seconduserjoining', function(otherStory) {
 	anotherPersonInChat = true;
 	var message = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
 	addMessage(message, undefined, appClass);
+	$("#friend_story_text").text(otherStory);
 });
 
 
