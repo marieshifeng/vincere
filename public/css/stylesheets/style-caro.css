@@ -739,7 +739,7 @@
 		{
 			position: relative;
 			display: inline-block;
-			border: 0;
+			border: 2px solid background:white;
 			background: #35b88f;
 			color: black;
 			text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
@@ -765,7 +765,7 @@
 				color:black;
 				background: #FA8970;
 				box-shadow: inset 0 0 0 1px #2A7BB5;
-							padding: 0 10px 0em 10px;
+							padding: 6px 10px 6px 10px;
 							font-size: 26px;
 				position:relative;
 				bottom:10px;
@@ -785,6 +785,7 @@
 				background: #FA8970;
 				box-shadow: inset 0 0 0 1px #2A7BB5;
 				padding: 1em 3em 1em 3em;
+
 			}
 
 			/* story box */
@@ -1229,14 +1230,14 @@
   height: 55px;
   margin: 5px; /* 30px 0 0; */
   border: 2px solid background:white;
-  background-color:white;
-  border-radius:8px;
+  background-color:#FA8970;
+  border-radius:20px;
 }
 
 .sound-icon {
  	max-width: 100%; 
- 	font-size:40px;
- 	color:#FA8970;
+ 	font-size:35px;
+ 	color:black;
 }
 
 
