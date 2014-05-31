@@ -499,6 +499,10 @@
 		color:#575554;
 	}
 
+	.question {
+		font-weight:bold;
+	}
+
 	/* Resouces */
 
 
@@ -1000,6 +1004,20 @@
 				background: url('../images/arrow.png') no-repeat;
 			}
 
+		#vincere_means {
+			background-color:#B9E6ED;	
+			border:2px solid #999999;
+			position:absolute;
+			top:15%;
+			left:30%;
+			z-index:100;
+			font-size:14px;
+			border-radius:25px;
+			padding:10px;
+			width:20%;
+			display:none;
+		}
+
 /*********************************************************************************/
 /* Banner                                                                        */
 /*********************************************************************************/
@@ -1034,11 +1052,12 @@
 
 		#banner footer
 		{
-			margin: 2em 0 0 0;
+			margin: 0 0 0 0;
 			font-weight:10;
 			margin-left:auto;
 			margin-right:auto;
 			width:100%;
+
 		}
 
 		.center_button {

@@ -6,8 +6,9 @@
 	<%- include partials/nav.ejs %>
 	<!-- Header -->
 	<section id="header">
+		<div id="vincere_means">Vincere means to overcome in Italian. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>
 		<header>
-			<h1>Vincere the Memory</h1>
+			<h1><span id="what_does_it_mean">Vincere</span> the Memory</h1>
 			<p>Talk to other survivors. Overcome the memory of an unwanted sexual experience.</p>
 		</header>
 		<footer>
@@ -24,19 +25,20 @@
 
 	<!-- Banner -->
 	<section id="banner">
-		<header>
-			<h2>This is a Safe Space for You</h2>
-		</header>
-		<p>This site is a place for you*, someone who has experienced sexual assault or any kind of confusing and unwanted sexual experience, to talk with another survivor. Talk, bond, draw together...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas. <br><br> We hope talking will help you understand that what happened to you was not your fault and give you tools to overcome it. It’s also fun...but don’t take our word for it; take it out for a spin yourself by clicking "Talk to someone" below.</p>
-		<p>Vincere means to overcome. You are unbreakable. </p>
-		<p class="postscript_p">*And yes, this means that if you don't have an experience of your own you want to talk about, this is not the place for you. We’re sorry, but we need to respect the privacy of our users. If you want to talk about anything else, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.</p>
+		<article class="container">
+			<header>
+				<h2>This is a Safe Space for You,</h2>
+			</header>
+			<p>someone who has experienced <span style="font-weight:bold">sexual assault</span> or any kind of confusing and <span style="font-weight:bold">unwanted sexual experience</span>, to talk with another survivor. <br/><br><span style="font-weight:bold">Talk, bond, draw together</span>...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas.
 
-		<footer>
-			<div class="center_button">
-				<a href="#gallery" class="button style2 scrolly">Gallery</a>
-				<a href="/contract" class="button style2 scrolly">Talk to someone</a>
-			</div>
-		</footer>
+			<footer>
+				<div class="center_button">
+					<a href="/contract" class="button style2 scrolly scrolly-centered">Talk to someone</a>
+				</div>
+				<br/>
+				<p class="postscript_p">**If you don't have an experience of your own you want to talk about, this is not the place for you. We’re sorry, but we need to respect the privacy of our users. If you want to talk about anything else, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.**</p>
+			</footer>
+		</article>
 	</section>
 
 	<!-- Header -->
@@ -97,6 +99,14 @@
 				} else {
 					$(".gallery_nav").css('font-weight', 'normal');
 					$(".home_nav").css('font-weight', 'bold');					
+				}
+			});
+			$("#what_does_it_mean").on({
+				mouseenter: function() {
+					$("#vincere_means").fadeIn();
+				},
+				mouseleave: function() {
+					$("#vincere_means").fadeOut();
 				}
 			});
 		});
