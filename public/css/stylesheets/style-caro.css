@@ -9,6 +9,16 @@
 	src:url('../font/bariol_regular.svg') format('svg');
 }
 
+@font-face{font-family:'BariolReg';
+	src:url('../font/bariol_bold.otf') format('openformat');
+	src:url('../font/bariol_bold.eot') format('embedded-opentype');
+	src:url('../font/bariol_bold.woff') format('woff');
+	src:url('../font/bariol_bold.ttf') format('truetype');
+	src:url('../font/bariol_bold.svg') format('svg');
+	font-weight: bold;
+}
+
+
 /*
 	Overflow 1.1 by HTML5 UP
 	html5up.net | @n33co
