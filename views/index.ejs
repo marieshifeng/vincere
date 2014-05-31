@@ -86,13 +86,21 @@
 	</article>
 	</section>
 	<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		jQuery.noConflict();
-		$(".icon-close").click(function() {
-			$(".notification").hide();
+		jQuery(document).ready(function($) {
+			jQuery.noConflict();
+			$(".home_nav").css('font-weight', 'bold');
+			$(document).on("scroll", function() {
+				var scrollAmount = $(document).scrollTop();
+				if(scrollAmount > 1400) {
+					$(".gallery_nav").css('font-weight', 'bold');
+					$(".home_nav").css('font-weight', 'normal');
+				} else {
+					$(".gallery_nav").css('font-weight', 'normal');
+					$(".home_nav").css('font-weight', 'bold');					
+				}
+			});
 		});
-	});
-</script>
+	</script>
 
 <!-- Google analytics -->
 <script>
@@ -105,5 +113,6 @@
   ga('send', 'pageview');
 
 </script>
+
 </body>
 </html>
