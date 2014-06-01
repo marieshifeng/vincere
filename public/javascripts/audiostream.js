@@ -77,7 +77,7 @@ function successCallback(stream) {
 		conn.on('data', function(message) {
 			console.log("Received message! " + message);
 			enableChatInput();
-			addMessage(message, friendAuthor, friendClass);
+			addMessage(message, undefined, friendClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
 	});
