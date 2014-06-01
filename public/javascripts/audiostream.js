@@ -76,8 +76,7 @@ function successCallback(stream) {
 
 		conn.on('data', function(message) {
 			console.log("Received message! " + message);
-			addMessage(message, undefined, friendClass);
-			enableChatInput();
+			addMessage(message, friendAuthor, friendClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
 	});
@@ -108,7 +107,8 @@ function successCallback(stream) {
 
 		conn.on("data", function(message) {
 			console.log("Received message! " + message);
-			addMessage(message, friendAuthor, friendClass);
+			addMessage(message, undefined, friendClass);
+			enableChatInput();
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
 	});
