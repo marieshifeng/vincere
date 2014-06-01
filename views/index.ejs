@@ -42,11 +42,13 @@
 	</section>
 
 	<!-- Header -->
-	<section id="gallery">
+	<section>
 	<article class="container box style2">
 		<section id="banner themes">
-			<h1>Gallery</h1>
+			<section id="gallery">
+			<h1 id="gallery_title">Gallery</h1>
 			<br/>
+		</section>
 		</section>
 		<header>
 			<h2>May 18 - May 24</h2>
@@ -93,7 +95,7 @@
 			$(".home_nav").css('font-weight', 'bold');
 			$(document).on("scroll", function() {
 				var scrollAmount = $(document).scrollTop();
-				if(scrollAmount > 1400) {
+				if(scrollAmount > 1300) {
 					$(".gallery_nav").css('font-weight', 'bold');
 					$(".home_nav").css('font-weight', 'normal');
 				} else {
