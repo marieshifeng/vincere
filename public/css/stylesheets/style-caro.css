@@ -1004,7 +1004,7 @@
 				background: url('../images/arrow.png') no-repeat;
 			}
 
-		#vincere_means {
+		.hover_box {
 			background-color:#B9E6ED;	
 			border:2px solid #999999;
 			position:absolute;
@@ -1016,6 +1016,12 @@
 			padding:10px;
 			width:20%;
 			display:none;
+		}
+
+		.chat_hover_box {
+			position:fixed;
+			top:400px;
+			left:50px;
 		}
 
 /*********************************************************************************/
@@ -1211,24 +1217,26 @@
 	left:110px}
 
 .soundButton {
+	position:relative;
   display: inline-block;
   width: 55px;
   height: 55px;
+  top:-10px;
   margin: 5px; /* 30px 0 0; */
-  border: 2px solid background:white;
-  background-color:#FA8970;
-  border-radius:20px;
+  border: 2px solid background:##FA8970;
+  background-color:white;
+  border-radius:10px;
 }
 
 .sound-icon {
  	max-width: 100%; 
  	font-size:35px;
- 	color:black;
+ 	color:#FA8970;
 }
 
 
 .drawing_picker_label {
-	font-size:0.75em;
+	font-size:20px;
 }
 
 .opacity_label {
@@ -1238,10 +1246,10 @@
 
 #canvas-holder {
 	border: 1px solid black;
-	margin:20px 30px 20px 20px;
+	margin:20px 45px 20px 20px;
 	background: white;
 	float:right;
-	width:77%;
+	width:73%;
 }
 
 #draw {
@@ -1253,7 +1261,7 @@
 }
 
 #controls     { 
-	padding:55px 0px 0px 0px; 
+	padding:60px 0px 0px 0px; 
 	float:right;
 	width:77%;
 }
@@ -1282,14 +1290,22 @@
 
 #chat_box {
 	width: 95%; 
-	background:#ddd;
+	background:#e9eaed;
 	overflow-y: scroll;
-	border: 5px solid #CCC;
+	border: 2px solid #CCC;
 	height:250px;
     margin: 2px 0 0 0; 
     padding:5px;
     resize: none;
-    font-size:0.7em;
+    font-size:17px;
+}
+
+.save_drawing {
+	float:right;
+	margin-right:55px;
+	top:15px;
+	font-size:18px !important;
+	background-color:#B9E6ED !important;
 }
 
 #welcome {
@@ -1332,14 +1348,14 @@ span.myMessage {
 
 #message_form { 
 	margin:10px 0 0 0;
-	width:90%;
+	width:94%;
 }
 
 #message_input {
 	width:100%;
 	height: 30px; 
 	margin: 2px;
-	font-size:0.7em;
+	font-size:17px;
 }
 
 #send_button {

@@ -6,7 +6,7 @@
 	<%- include partials/nav.ejs %>
 	<!-- Header -->
 	<section id="header">
-		<div id="vincere_means">Vincere means to overcome in Italian. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>
+		<div class="hover_box">Vincere means to overcome in Italian. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>
 		<header>
 			<h1><span id="what_does_it_mean">Vincere</span> the Memory</h1>
 			<p>Talk to other survivors. Overcome the memory of an unwanted sexual experience.</p>
@@ -103,10 +103,10 @@
 			});
 			$("#what_does_it_mean").on({
 				mouseenter: function() {
-					$("#vincere_means").fadeIn();
+					$(".hover_box").fadeIn();
 				},
 				mouseleave: function() {
-					$("#vincere_means").fadeOut();
+					$(".hover_box").fadeOut();
 				}
 			});
 		});

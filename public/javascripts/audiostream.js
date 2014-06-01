@@ -68,7 +68,8 @@ function successCallback(stream) {
 		//connecting for data (chatbox messaging)
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
-			addMessage("Connection enabled", myAuthor, myClass);
+			addMessage("Connection enabled", undefined, myClass);
+			enableChatInput();
 			textArea.scrollTop(textArea[0].scrollHeight);
 			conn.send("Connection enabled!");
 		});
@@ -153,6 +154,13 @@ socket.on('user:disconnecting', function() {
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
 });
+
+
+function enableChatInput() {
+	$("#send_button").show();
+	$("#message_input").show();
+	$("#chat_box").removeClass("chat_hover");
+}
 
 function errorCallback(error) {
 	console.error('An error occurred getting local audio stream: [CODE ' + error.code + ']');

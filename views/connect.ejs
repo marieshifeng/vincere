@@ -51,18 +51,22 @@
             <p id="welcome">Welcome to your personal safe space.</p>
             <ol>
                 <li>Enable your microphone</li>
-                <li>Start drawing</li>
                 <li>Say hi & share your story</li>
+                <li>Start drawing</li>
                 <p class="postscript_p"><span style="color:red; text-align:center">Be supportive.</span></p>
             </ol>
             <br/>
         </div>
-        <div id="chat_box"></div>
+
+        <div id="chat_box" class="chat_hover"></div>
+
+        <div class="hover_box chat_hover_box">Your chat will be enabled once both participants arrive and enable their microphones.</div>
         <form id="message_form">
-            <input type=text id="message_input" placeholder="Say something">
-            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
+            <input type=text id="message_input" placeholder="Say something..."  style="display: none">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send" style="display: none">
         </form>
-        <p class="postscript_p">Talking about your sexual assault experience can be therapeutic. Be supportive.</p>
+        <p class="postscript_p">Talking about your sexual assault experience can be therapeutic.</p>
+        <br/>
     </div>
 
   	<div id="controls"> 
@@ -105,7 +109,7 @@
           <div class="sound-icon icon-volume-medium"> </div>
         </button> 
          
-        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save Drawing"></input>
+        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Save Drawing"></input>
 
 
         <audio id="remoteaudio" autoplay> </audio>
@@ -133,15 +137,23 @@
         });
         $(".show_hide_left").click(function() {
             $("#whole_chat_box").toggle("slide");
-            $("#canvas-holder").css('width','95%');
+            $("#canvas-holder").css('width','94%');
             $("#controls").css('width', '95%');
             $("#show_hide_right").show();
         });
         $("#show_hide_right").click(function() {
             $("#whole_chat_box").toggle("slide");
-            $("#canvas-holder").css('width','77%');
+            $("#canvas-holder").css('width','73%');
             $("#controls").css('width', '78%');
             $("#show_hide_right").hide();
+        });
+        $(".chat_hover").on({
+            mouseenter: function() {
+                $(".hover_box").fadeIn();
+            },
+            mouseleave: function() {
+                $(".hover_box").fadeOut();
+            }
         });
     });
 </script>
