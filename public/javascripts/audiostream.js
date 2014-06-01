@@ -76,6 +76,7 @@ function successCallback(stream) {
 
 		conn.on('data', function(message) {
 			console.log("Received message! " + message);
+			enableChatInput();
 			addMessage(message, friendAuthor, friendClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
@@ -159,7 +160,7 @@ socket.on('user:disconnecting', function() {
 function enableChatInput() {
 	$("#send_button").show();
 	$("#message_input").show();
-	$("#chat_box").removeClass("chat_hover");
+	$("div#chat_box").removeClass("chat_hover");
 }
 
 function errorCallback(error) {
