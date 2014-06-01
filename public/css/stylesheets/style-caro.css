@@ -1253,9 +1253,9 @@
 }
 
 #controls     { 
-	padding:50px 0px 0px 0px; 
+	padding:55px 0px 0px 0px; 
 	float:right;
-	width:78%;
+	width:77%;
 }
 .color      { 
 	display:inline-block; 
@@ -1278,7 +1278,6 @@
 	float:left;
 	padding:95px 0 0 20px;
 	background-color:white;
-	border-right:1px solid black;
 }
 
 #chat_box {
