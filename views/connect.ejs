@@ -38,11 +38,41 @@
 
     <%- include partials/nav.ejs %>
 
+    <div id="show_hide_right"  style="display:none">
+        <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
+    </div>
+
+    <div class="show_hide_left">
+        <div class="icon-arrow-left3"><span id="hide_label">Hide</span></div>
+    </div>
+
+     <div id="whole_chat_box">
+        <div id="instructions">
+            <p id="welcome">Welcome to your personal safe space.</p>
+            <ol>
+                <li>Enable your microphone</li>
+                <li>Start drawing</li>
+                <li>Say hi & share your story</li>
+                <p class="postscript_p"><span style="color:red; text-align:center">Be supportive.</span></p>
+            </ol>
+            <br/>
+        </div>
+        <div id="chat_box"></div>
+        <form id="message_form">
+            <input type=text id="message_input" placeholder="Say something">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
+        </form>
+        <p class="postscript_p">Talking about your sexual assault experience can be therapeutic. Be supportive.</p>
+    </div>
+
   	<div id="controls"> 
+        <div class="drawing_picker_label" id="color_label">Color<span class="opacity_label">Opacity</span></div>
+        <!--
         <div id="userCountWrapper", style="opacity: 0"> 
         <p> artists: </p>
             <span id="userCount"> </span>
         </div>
+        -->
         <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
 
         <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
@@ -61,8 +91,10 @@
 
         <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
 
-        <label><span class="drawing_picker_label">Opacity:</span>
-            <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+        <label>
+            <span id="opacity_slider">
+                <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+            </span>
         </label>
 
         <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
@@ -78,15 +110,11 @@
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
-    <canvas id="draw" resize="true" keepalive="true"></canvas>
-
-    <div id="whole_chat_box">
-        <div id="chat_box"></div>
-        <form id="message_form">
-            <input type=text id="message_input" placeholder="Say something">
-            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
-        </form>
+    <div id="canvas-holder">
+        <canvas id="draw" resize="true" keepalive="true"></canvas>
     </div>
+
+   
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
         <br/>
@@ -96,11 +124,24 @@
             <div class="button style4 scrolly">Nice to meet you</div>
         </div>
     </div>
+
     <script type="text/javascript">
     jQuery(document).ready(function($) {
         jQuery.noConflict();
         $("#intro_but").click(function() {
             $("#friend_story").fadeOut('slow');
+        });
+        $(".show_hide_left").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','95%');
+            $("#controls").css('width', '95%');
+            $("#show_hide_right").show();
+        });
+        $("#show_hide_right").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','77%');
+            $("#controls").css('width', '78%');
+            $("#show_hide_right").hide();
         });
     });
 </script>
