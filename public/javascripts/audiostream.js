@@ -107,7 +107,7 @@ function successCallback(stream) {
 
 		conn.on("data", function(message) {
 			console.log("Received message! " + message);
-			addMessage(message, undefined, friendClass);
+			addMessage(message, friendAuthor, friendClass);
 			enableChatInput();
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
@@ -161,6 +161,7 @@ function enableChatInput() {
 	$("#send_button").show();
 	$("#message_input").show();
 	$("div#chat_box").removeClass("chat_hover");
+	//e.stopPropagation();
 }
 
 function errorCallback(error) {
@@ -231,6 +232,8 @@ window.onload = function() {
 	//var greeting2 = "You’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.";
 	//var greeting3 = "While you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.";
 	//var greeting4 = "Quick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
+	var greeting6 = "Your chat will be enabled once you're both here with enabled microphones.";
+	addMessage(greeting6, undefined, appClass);
 	//addMessage(greeting1, undefined, appClass);
 	//addMessage(greeting2, undefined, appClass);
 	//addMessage(greeting3, undefined, appClass);
