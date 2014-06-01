@@ -76,8 +76,7 @@ function successCallback(stream) {
 
 		conn.on('data', function(message) {
 			console.log("Received message! " + message);
-			enableChatInput();
-			addMessage(message, undefined, friendClass);
+			addMessage(message, friendAuthor, friendClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
 	});
@@ -139,6 +138,7 @@ socket.on('seconduserjoined', function(otherStory) {
 socket.on('seconduserjoining', function(otherStory) {
 	anotherPersonInChat = true;
 	secondMessage = "The other survivor is here.";
+	enableChatInput();
 	if(textArea != null) {
 		addMessage(secondMessage, undefined, appClass);
 		secondMessage = null;
