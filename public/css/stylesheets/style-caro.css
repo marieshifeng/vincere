@@ -454,16 +454,18 @@
  		}
 
  		.action_link {
- 			position:fixed;
- 			background-color:white;
- 			color:#E35434 !important;
- 			padding:5px 10px 5px 10px;
- 			border-left:1px solid black;
- 			 border-right:1px solid black;
+ 			float:right;
+ 			color:#57210A !important;
+ 			padding:0px 10px 5px 10px;
  		}
 
  		.convo_action {
- 			right:175px;
+ 			right:225px;
+ 			border:1px solid black;
+ 			border-radius:5px;
+ 			background: white;
+ 			color:#E35434 !important;
+ 			padding:3px 10px 3px 10px;
  		}
 
  		.feedback_action {
@@ -476,8 +478,10 @@
 			left:0px;
 			width:100%;
 			color:#57210A;
-			height:34px;
+			height:38px;
 			z-index:100;
+			padding:0;
+			margin:0;
 			background-color:#16C1DB;
 			font-family:'BariolReg', Helvetica, sans-serif;
 			text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
@@ -487,7 +491,8 @@
 		}
 
 		.title_nav_text {
-			vertical-align:middle;
+			top:5px;
+			margin:0;
 			position:relative;
 			left:10px;
 			z-index:200;
@@ -752,7 +757,7 @@
 				
 				.button.style2:active
 				{
-								padding: 1em 3em 1em 3em;
+								padding: 1em 2em 1em 2em;
 				}
 				
 			.button.style3
@@ -1056,7 +1061,7 @@
 		position: relative;
 		color: #000000;
 		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
-		padding: 2em 0 0em 0;
+		padding: 0em 0 0em 0;
 		margin: 0;
 		width:100%;
 		background-size: 125% auto;
@@ -1181,16 +1186,15 @@
 
 /* CONTRACT */
 #contract_agree {
-	width:60%;
+	width:80%;
 }
 
-.text_input {
-	width:50%;
+.contract_reminder {
+	font-size:20px !important;
 }
 
-#message_input {
-	width:50%;
-}
+
+
 
 /* DRAWING */
 
