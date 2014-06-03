@@ -81,6 +81,11 @@
 				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
 				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 22: 15 minutes" /></a></div>
 			</div>
+			<div class="row flush">
+			<% images.forEach( function( image ){ %>
+			<div class="4u"><a href="<%= image.URL %>" class="image full"><img src="<%= image.URL %>" alt="" title="May 19: 6 minutes" /></a></div>
+			<% }); %>
+			</div>
 		</div>
 	</article>
 	<article class="container box style2">
