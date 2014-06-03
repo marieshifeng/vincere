@@ -12,8 +12,6 @@
     
 </head>
 <body class="canvas">
-
-
     <script>
         var isSaved = false;
         var storyData = <%-story%>;
@@ -22,7 +20,46 @@
         story = storyData.story;
     </script>
     <script src="/javascripts/audiostream.js"> </script>    
-	
+	<script>
+        function saveImage(){
+            isSaved = true;
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing_button").submit();
+        };
+/*        $(document).on('mousedown', '#save', offBeforeUnload)
+            .on('mouseleave', '#save', function () {
+                $(window).on('beforeunload', windowBeforeUnload);
+        });
+        function offBeforeUnload(event) {
+            $(window).off('beforeunload');
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing_button").submit();
+        }
+        function windowBeforeUnload() {
+            if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
+              return "If you leave, your current conversation will be closed and your drawing will be lost."; 
+            } else{ 
+            return false; 
+            } 
+        }*/
+
+        function windowBeforeUnload() {
+            if (!isSaved) {
+                if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
+                  return "If you leave, your current conversation will be closed and your drawing will be lost."; 
+                } else{ 
+                return false; 
+                }
+            }    
+        }
+        $(window).on('beforeunload', windowBeforeUnload);
+    </script>
     <div id="show_hide_right"  style="display:none">
         <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
     </div>
@@ -98,46 +135,7 @@
         <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
-    <script>
-        function saveImage(){
-            isSaved = true;
-            var canvas = document.getElementById("draw");
-            var dataURL = canvas.toDataURL();
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            $("#save_drawing_button").submit();
-        };
-/*        $(document).on('mousedown', '#save', offBeforeUnload)
-            .on('mouseleave', '#save', function () {
-                $(window).on('beforeunload', windowBeforeUnload);
-        });
-        function offBeforeUnload(event) {
-            $(window).off('beforeunload');
-            var canvas = document.getElementById("draw");
-            var dataURL = canvas.toDataURL();
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            $("#save_drawing_button").submit();
-        }
-        function windowBeforeUnload() {
-            if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
-              return "If you leave, your current conversation will be closed and your drawing will be lost."; 
-            } else{ 
-            return false; 
-            } 
-        }*/
 
-        function windowBeforeUnload() {
-            if (!isSaved) {
-                if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
-                  return "If you leave, your current conversation will be closed and your drawing will be lost."; 
-                } else{ 
-                return false; 
-                }
-            }    
-        }
-        $(window).on('beforeunload', windowBeforeUnload);
-    </script>
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
         <br/>
