@@ -20,7 +20,8 @@ exports.post = function(req, res){
   fs.writeFile(filename, buf, function (err, data) {
     if (err) return console.log(err);
   });
-  Image.find( function ( err, images ){
-    res.render('index', { title: "", images: images });           
-  });
+  res.redirect('/');
+/*  Image.find( function ( err, images ){
+   res.render('index', { title: "", images: images });           
+  });*/
 }

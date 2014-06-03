@@ -101,17 +101,16 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <div class="sound-icon icon-volume-medium"> </div>
         </button> 
-
-        
-        <form id="save_drawing" action="/" method="post">
-            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save drawing"></input>
-            <input id="hidden_button" type="hidden" name="img">
-        </form>       
+    
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
     <div id="canvas-holder">
         <canvas id="draw" resize="true" keepalive="true"></canvas>
+        <form id="save_drawing" action="/" method="post">
+            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Save drawing"></input>
+            <input id="hidden_button" type="hidden" name="img">
+        </form>   
     </div>
 
     <div id="whole_chat_box">
