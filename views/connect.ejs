@@ -2,19 +2,11 @@
 <html lang="en">
 <head>
 	<%- include partials/header.ejs %>	
-
+     <%- include partials/nav.ejs %>
     <script src="/socket.io/socket.io.js"></script>
 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
-<<<<<<< HEAD
-	<script src="/javascripts/audiostream.js"> </script>
-	<script src="/javascripts/paper.js"></script>
-	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
-
-<script type="text/javascript" src="/javascripts/html2canvas.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
-<!-- -->
-=======
-	
+    <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
 </head>
 <body class="canvas">
     <script>
@@ -27,41 +19,19 @@
     <script src="/javascripts/audiostream.js"> </script>
     <script src="/javascripts/paper.js"></script>
     <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
-
 	<script>
         function saveImage(){
-<<<<<<< HEAD
             var canvas = document.getElementById("draw");
             var dataURL = canvas.toDataURL();
             var elem = document.getElementById("hidden_button");
             elem.value = dataURL;
             $("#save_drawing").submit();
         };
-=======
-            $("#save").hide();
-            $("#submit_button").show();
-        	var canvas = document.getElementById("draw");
-<<<<<<< HEAD
-			var dataURL = canvas.toDataURL();
-			//window.open(dataURL, "toDataURL() image");
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            console.log("dataURL: "+elem.value);
-=======
-    		var dataURL = canvas.toDataURL();
-    		window.open(dataURL, "toDataURL() image");
-        }
-
->>>>>>> FETCH_HEAD
         $(window).bind('beforeunload', function(){
             var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
             return message;
         });
-
     </script>
-
-    <%- include partials/nav.ejs %>
-
     <div id="show_hide_right"  style="display:none">
         <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
     </div>
@@ -132,20 +102,12 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <div class="sound-icon icon-volume-medium"> </div>
         </button> 
-<<<<<<< HEAD
 
-        <form id="save_drawing" action="/" method="post">
-            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Submit drawing"></input>
-            <input id="hidden_button" type="hidden" name="img">
-        </form>
-=======
         
-        <form action="/connect" method="post">
+        <form id="save_drawing" action="/" method="post">
             <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save drawing"></input>
             <input id="hidden_button" type="hidden" name="img">
-            <button id="submit_button" style="display:none"type="submit" class="button style4 scrolly" value="submit">Submit drawing</button>
         </form>       
->>>>>>> FETCH_HEAD
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
