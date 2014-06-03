@@ -1,7 +1,6 @@
 // Express requires these dependencies
 var express = require('express')
   , session = require ('express-session')
-  , mongoose = require ('mongoose')
   , routes = require('./routes')
   , index = require('./routes/index')
   , user = require('./routes/user')
