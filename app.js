@@ -1,6 +1,13 @@
 // Express requires these dependencies
+var favicon = require('static-favicon');
+var methodOverride = require('method-override');
+var flash = require('connect-flash');
+var errorHandler = require ('errorhandler');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 var express = require('express')
   , session = require ('express-session')
+  , cookieParser = require('cookie-parser')
   , routes = require('./routes')
   , index = require('./routes/index')
   , user = require('./routes/user')
@@ -30,27 +37,24 @@ mongoose.connect(database_uri, function (err, res) {
 });
 
 var app = express();
+app.use(bodyParser());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs'); // set up ejs for templating
+app.use(favicon());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(methodOverride());
+app.use(cookieParser());
+app.use(session({secret: "SECRET"}));
+app.use(flash());
+app.use(express.static(path.join(__dirname, '/public')));
+app.set('port', process.env.PORT || 3000);
 
-// Configure our application
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.cookieParser());
-  app.use(express.favicon());
-  var store = new express.session.MemoryStore;
-  app.use(express.session({secret: "SECRET", store: store}));
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
-});
-
-// Configure error handling
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
+// development only
+if ('development' == app.get('env')) {
+  app.use(errorHandler());
+}
 
 // Setup Routes
 app.get('/', routes.index);
