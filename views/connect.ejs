@@ -9,7 +9,6 @@
 </head>
 <body class="canvas">
     <script>
-
         var storyData = <%-story%>;
         console.log(storyData);
         console.log(storyData.story);
@@ -21,14 +20,13 @@
     <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
 
 	<script>
-
         function saveImage(){
-        	console.log("Saving image");
-        	var canvas = document.getElementById("draw");
-    		var dataURL = canvas.toDataURL();
-    		window.open(dataURL, "toDataURL() image");
-        }
-
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing").submit();
+        };
         $(window).bind('beforeunload', function(){
             var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
             return message;
@@ -108,9 +106,11 @@
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <div class="sound-icon icon-volume-medium"> </div>
         </button> 
-         
-        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Save Drawing"></input>
 
+        <form id="save_drawing" action="/" method="post">
+            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Submit drawing"></input>
+            <input id="hidden_button" type="hidden" name="img">
+        </form>
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>

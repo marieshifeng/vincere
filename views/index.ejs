@@ -49,7 +49,28 @@
 			<h1 id="gallery_title">Gallery</h1>
 			<br/>
 		</section>
-		</section>
+		<header>
+			<h2>June 1 - June 7</h2>
+			<p>"There is no greater agony than bearing an untold story inside you."<span class="author">-Maya Angelou</span></p>
+		</header>
+		<div class="inner gallery">
+			<div class="row flush">
+				<% images.forEach( function( image ){ %>
+					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
+				<% }); %>
+			</div>
+		</div>
+		<header>
+			<h2>May 25 - May 31</h2>
+			<p>"I am not what happened to me, I am what I choose to become."<span class="author">-Carl Jung</span></p>
+		</header>
+		<div class="inner gallery">
+			<div class="row flush">
+				<div class="4u"><a href="images/1.png" class="image full"><img src="images/1.png" alt="" title="May 19: 6 minutes" /></a></div>
+				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
+				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 22: 15 minutes" /></a></div>
+			</div>
+		</div>
 		<header>
 			<h2>May 18 - May 24</h2>
 			<p>"The Internet is becoming the town <strong>square</strong> for the global village of tomorrow."<br /><span class="author">-Bill Gates</span></p>
