@@ -22,5 +22,5 @@ exports.post = function(req, res){
   fs.writeFile(filename, buf, function (err, data) {
     if (err) return console.log(err);
   });
-  res.redirect('/');
+  res.redirect('/#gallery');
 }

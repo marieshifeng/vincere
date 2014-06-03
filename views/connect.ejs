@@ -28,10 +28,25 @@
             elem.value = dataURL;
             $("#save_drawing").submit();
         };
-/*        $(window).bind('beforeunload', function(){
-            var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
-            return message;
-        });*/
+        $(document).on('mousedown', '#save', offBeforeUnload)
+            .on('mouseleave', '#save', function () {
+                $(window).on('beforeunload', windowBeforeUnload);
+        });
+        function offBeforeUnload(event) {
+            $(window).off('beforeunload');
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing").submit();
+        }
+        function windowBeforeUnload() {
+             if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
+                  return "If you leave, your current conversation will be closed and your drawing will be lost."; 
+              } else{ 
+                return false; 
+              } 
+        }
     </script>
     <div id="show_hide_right"  style="display:none">
         <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
@@ -106,6 +121,7 @@
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
+
     <div id="canvas-holder">
         <canvas id="draw" resize="true" keepalive="true"></canvas>  
     </div>
