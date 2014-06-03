@@ -29,8 +29,10 @@
 
 				<script>
 					function submitForm() {
+						var storyText = $('#message_input').val();
+						if(storyText.length == 0) storyText = "No story.";
 						var storyData = JSON.stringify({
-        					story: $('#message_input').val()
+        					story: storyText
     					});
 						$('<input type="hidden" name="storyData"/>').val(storyData).appendTo('#tell_story_connect');
 						$("#tell_story_connect").submit();
