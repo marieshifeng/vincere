@@ -1,4 +1,3 @@
-
 // Express requires these dependencies
 var express = require('express')
   , session = require ('express-session')
