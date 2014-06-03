@@ -2,7 +2,6 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
-var story = "<%=story%>";
 console.log("Story: " + story);
 
 var myAuthor = 'Me';

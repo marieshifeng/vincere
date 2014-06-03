@@ -7,17 +7,20 @@
 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
     <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
-    <script src="/javascripts/audiostream.js"> </script>
-    <script src="/javascripts/paper.js"></script>
-    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+    
 </head>
 <body class="canvas">
+
     <script>
         var storyData = <%-story%>;
         console.log("connect.ejs1:"+storyData);
         console.log("connect.ejs2:"+storyData.story);
         story = storyData.story;
     </script>
+
+    <script src="/javascripts/audiostream.js"> </script>
+    <script src="/javascripts/paper.js"></script>
+    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
 
     
 	<script>
