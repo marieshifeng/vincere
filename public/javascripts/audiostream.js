@@ -2,10 +2,13 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
+console.log("Story: " + story);
+
 var myAuthor = 'Me';
 var friendAuthor = "Friend";
 
-
+var firstMessage = null;
+var secondMessage = null;
 
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
@@ -24,7 +27,7 @@ navigator.getUserMedia = (navigator.getUserMedia ||
 if(navigator.getUserMedia) navigator.getUserMedia({video: false, audio: true}, successCallback, errorCallback);
 else console.log("getUserMedia not supported by this browser.");
 
-var socket = io.connect('/', {query: "user=" + chatid});
+var socket = io.connect('/', {query: "story=" + story});
 
 //our own PeerServer cloud API key
 var peer = new Peer(chatid, {key: 'ejpl0jusq1gaatt9'});
@@ -65,7 +68,7 @@ function successCallback(stream) {
 		//connecting for data (chatbox messaging)
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
-			addMessage("Connection enabled!", myAuthor, myClass);
+			addMessage("Connection enabled", myAuthor, myClass);
 			textArea.scrollTop(textArea[0].scrollHeight);
 			conn.send("Connection enabled!");
 		});
@@ -111,22 +114,36 @@ function successCallback(stream) {
 
 //first user in chat
 socket.on('firstuserjoining', function() {
-	var message = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
-	addMessage(message, undefined, appClass);
+	firstMessage = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
+	console.log(firstMessage);
+	if(textArea != null) {
+		addMessage(firstMessage, undefined, appClass);
+		firstMessage = null;
+	}
 });
 
-socket.on('seconduserjoined', function() {
+socket.on('seconduserjoined', function(otherStory) {
 	anotherPersonInChat = true;
 	var message = "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
+
+	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
+
 });
 
 //second user in chat
-socket.on('seconduserjoining', function() {
+socket.on('seconduserjoining', function(otherStory) {
 	anotherPersonInChat = true;
-	var message = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
-	addMessage(message, undefined, appClass);
+	secondMessage = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
+	if(textArea != null) {
+		addMessage(secondMessage, undefined, appClass);
+		secondMessage = null;
+	}
+
+	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
 });
 
 
@@ -195,12 +212,12 @@ function onSendMessage(event) {
 	return false;
 }
 
-window.onload = function() {	
+window.onload = function() {
+	textArea = $("#chat_box");	
 	console.log("Document ready");
 
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
-	textArea = $("#chat_box");
 	var greeting1 = "Welcome to your personal safe space!";
 	var greeting2 = "You’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.";
 	var greeting3 = "While you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.";
@@ -209,6 +226,15 @@ window.onload = function() {
 	addMessage(greeting2, undefined, appClass);
 	addMessage(greeting3, undefined, appClass);
 	addMessage(greeting4, undefined, appClass);
+
+	if(firstMessage != null) {
+		addMessage(firstMessage, undefined, appClass);
+	}
+
+	if(secondMessage != null) {
+		addMessage(secondMessage, undefined, appClass);
+		textArea.scrollTop(textArea[0].scrollHeight);
+	}
 }
 
  /**

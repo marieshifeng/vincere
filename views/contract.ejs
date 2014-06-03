@@ -4,7 +4,6 @@
 </head>
 <body>
 	<%- include partials/nav.ejs %>
-	<br/>
 	<!-- Banner -->
 	<section id="banner">
 		<header>
@@ -20,11 +19,21 @@
 
 		<footer>
 			<div id="contract_agree">
-				<form class="tell_story_connect" method="post" action="/connect">
-					<textarea id="message_input" class="text_input" name="user_story" placeholder="Tell your upcoming partner your story. Just a quick version - you can elaborate once you meet them in a minute."></textarea>
+				<form id="tell_story_connect" method="post" action="/connect">
+					<textarea id="message_input" class="text_input" name="user_story" placeholder="Tell your upcoming partner your story. Just a short version - you can elaborate once you meet them in a minute."></textarea>
 					<br/>
-					<input type="submit" class="button style2 scrolly" value="I agree. I'm ready to meet another survivor!">
-			</form>
+					<input type="button" class="button style2 scrolly" onClick="submitForm();" value="I agree. I'm ready to meet another survivor!">
+				</form>
+
+				<script>
+					function submitForm() {
+						var storyData = JSON.stringify({
+        					story: $('#message_input').val()
+    					});
+						$('<input type="hidden" name="storyData"/>').val(storyData).appendTo('#tell_story_connect');
+						$("#tell_story_connect").submit();
+					}
+				</script>
 			</div>
 		</footer>
 		
