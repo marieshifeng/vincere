@@ -23,7 +23,4 @@ exports.post = function(req, res){
     if (err) return console.log(err);
   });
   res.redirect('/');
-/*  Image.find( function ( err, images ){
-   res.render('index', { title: "", images: images });           
-  });*/
 }

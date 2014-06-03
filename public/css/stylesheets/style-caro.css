@@ -1287,15 +1287,16 @@
 }
 
 #canvas-holder {
-	border: 1px solid black;
 	margin:20px 45px 20px 20px;
-	background: white;
+	
 	float:right;
 	width:73%;
 }
 
 #draw {
 	width:100%;
+	border: 1px solid black;
+	background: white;
 }
 
 .canvas {
@@ -1346,10 +1347,16 @@
 /*	float:right;
 	margin-right:55px;
 	top:15px;*/
-	position: relative;
 	font-size:18px !important;
 	background-color:#B9E6ED !important;
-	top: 50px;
+	margin-bottom: 30px;
+	
+}
+
+#save {
+	width: 500px;
+float: right;
+margin-right: 60px;
 }
 
 #welcome {
