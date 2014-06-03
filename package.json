@@ -10,23 +10,17 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "^4.1.2",
-    "express-session": "^1.2.1",
-    "ejs": "^0.8.8",
-    "socket.io": "^0.9.17",
-    "body-parser": "^1.3.0",
+    "express": "3.0.x",
+    "express-session": "1.0.3",
+    "ejs": "*",
+    "socket.io": "0.9.x",
+    "body-parser": "1.0.2",
     "connect-flash": "0.1.1",
-    "cookie-parser": "^1.1.0",
+    "cookie-parser": "1.0.1",
     "debug": "^0.7.4",
     "errorhandler": "1.0.1",
-<<<<<<< HEAD
-=======
     "ejs" : "~0.8.5",
->>>>>>> FETCH_HEAD
     "mongodb": "*",
-    "mongoose": "^3.8.9",
-    "static-favicon": "^2.0.0-alpha",
-    "method-override": "^2.0.1",
-    "morgan": "^1.1.1"
+    "mongoose": "^3.8.9"
   }
 }
