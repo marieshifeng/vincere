@@ -3,11 +3,13 @@ var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
 var story = "<%=story%>";
+console.log("Story: " + story);
 
 var myAuthor = 'Me';
 var friendAuthor = "Friend";
 
-
+var firstMessage = null;
+var secondMessage = null;
 
 var chatid = parseInt(Math.random()*1e4,10).toString(16);
 var localStream = null;
@@ -67,7 +69,8 @@ function successCallback(stream) {
 		//connecting for data (chatbox messaging)
 		conn = peer.connect(userchatid);
 		conn.on('open', function() {
-			addMessage("Connection enabled!", myAuthor, myClass);
+			addMessage("Connection enabled", undefined, myClass);
+			enableChatInput();
 			textArea.scrollTop(textArea[0].scrollHeight);
 			conn.send("Connection enabled!");
 		});
@@ -106,6 +109,7 @@ function successCallback(stream) {
 		conn.on("data", function(message) {
 			console.log("Received message! " + message);
 			addMessage(message, friendAuthor, friendClass);
+			enableChatInput();
 			textArea.scrollTop(textArea[0].scrollHeight);
 		});
 	});
@@ -113,25 +117,35 @@ function successCallback(stream) {
 
 //first user in chat
 socket.on('firstuserjoining', function() {
-	var message = "Thanks for coming! You’re the first person here. We’re working on finding another survivor to join you.";
-	addMessage(message, undefined, appClass);
+	firstMessage = "You’re the first person here. We’re working on finding another survivor to join you.";
+	console.log(firstMessage);
+	if(textArea != null) {
+		addMessage(firstMessage, undefined, appClass);
+		firstMessage = null;
+	}
 });
 
 socket.on('seconduserjoined', function(otherStory) {
 	anotherPersonInChat = true;
-	var message = "Someone else has joined you! Make sure your audio is enabled so you can say hi, and start sharing whenever you’re ready.";
+	var message = "Someone else has joined you!";
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
 	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
 
 });
 
 //second user in chat
 socket.on('seconduserjoining', function(otherStory) {
 	anotherPersonInChat = true;
-	var message = "Thanks for coming! The other survivor is already here, so say hi, and start sharing whenever you’re ready.";
-	addMessage(message, undefined, appClass);
+	secondMessage = "The other survivor is here.";
+	if(textArea != null) {
+		addMessage(secondMessage, undefined, appClass);
+		secondMessage = null;
+	}
+
 	$("#friend_story_text").text(otherStory);
+	$("#friend_story").show();
 });
 
 
@@ -141,6 +155,14 @@ socket.on('user:disconnecting', function() {
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
 });
+
+
+function enableChatInput() {
+	$("#send_button").show();
+	$("#message_input").show();
+	$("div#chat_box").removeClass("chat_hover");
+	//e.stopPropagation();
+}
 
 function errorCallback(error) {
 	console.error('An error occurred getting local audio stream: [CODE ' + error.code + ']');
@@ -182,13 +204,13 @@ function onSendMessage(event) {
 		//put that there is no connection in chat box
 		var errorMessage;
 		if(!anotherPersonInChat) {
-			errorMessage = "We can't send your message because no one else has joined yet. We're still looking!";
+			errorMessage = "We can't send your message because no one else has joined yet.";
 		} else if (!yourVoiceEnabled) {
 			errorMessage = "We can't send your message because you haven't enabled your audio yet. Don't worry, you can mute it later if you'd like.";
 		} else if (!otherVoiceEnabled) {
-			errorMessage = "We can't send your message because the other person hasn't enabled their audio yet. They know you're here, so just give them a minute!";
+			errorMessage = "We can't send your message because the other person hasn't enabled their audio yet.";
 		} else if (otherPersonLeft) {
-			errorMessage = "We can't send your message because the other person has left the conversation. Join again if you'd like to talk to someone else!";
+			errorMessage = "We can't send your message because the other person has left the conversation.";
 		}
 		addMessage(errorMessage, undefined, appClass);
 		textArea.scrollTop(textArea[0].scrollHeight);
@@ -200,20 +222,31 @@ function onSendMessage(event) {
 	return false;
 }
 
-window.onload = function() {	
+window.onload = function() {
+	textArea = $("#chat_box");	
 	console.log("Document ready");
 
 	messageForm = document.getElementById("message_form");
 	messageForm.onsubmit = onSendMessage;
-	textArea = $("#chat_box");
-	var greeting1 = "Welcome to your personal safe space!";
-	var greeting2 = "You’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.";
-	var greeting3 = "While you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.";
-	var greeting4 = "Quick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
-	addMessage(greeting1, undefined, appClass);
-	addMessage(greeting2, undefined, appClass);
-	addMessage(greeting3, undefined, appClass);
-	addMessage(greeting4, undefined, appClass);
+	//var greeting1 = "Welcome to your personal safe space!";
+	//var greeting2 = "You’ll get to know another survivor of sexual assault today. We encourage you to share the stories of your assault experiences, as it can be therapeutic to share - but it’s totally up to you what you actually talk about.";
+	//var greeting3 = "While you talk, have some fun by doodling in the shared drawing space. Just pick a color, set the opacity, and get started.";
+	//var greeting4 = "Quick reminder: don’t forget to allow the site to access your microphone, so you can talk to each other.";
+	var greeting6 = "Your chat will be enabled once you're both here with enabled microphones.";
+	addMessage(greeting6, undefined, appClass);
+	//addMessage(greeting1, undefined, appClass);
+	//addMessage(greeting2, undefined, appClass);
+	//addMessage(greeting3, undefined, appClass);
+	//addMessage(greeting4, undefined, appClass);
+
+	if(firstMessage != null) {
+		addMessage(firstMessage, undefined, appClass);
+	}
+
+	if(secondMessage != null) {
+		addMessage(secondMessage, undefined, appClass);
+		textArea.scrollTop(textArea[0].scrollHeight);
+	}
 }
 
  /**

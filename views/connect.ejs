@@ -2,47 +2,74 @@
 <html lang="en">
 <head>
 	<%- include partials/header.ejs %>	
-
+     <%- include partials/nav.ejs %>
     <script src="/socket.io/socket.io.js"></script>
 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
-	<script src="/javascripts/audiostream.js"> </script>
-	<script src="/javascripts/paper.js"></script>
-	<script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
-
-<script type="text/javascript" src="/javascripts/html2canvas.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
-<!-- -->
+    <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
 </head>
 <body class="canvas">
+    <script>
+        var storyData = <%-story%>;
+        console.log(storyData);
+        console.log(storyData.story);
+        story = storyData.story;
+    </script>
 
-		<script>
-        //console.log("<%=story%>");
-
+    <script src="/javascripts/audiostream.js"> </script>
+    <script src="/javascripts/paper.js"></script>
+    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+	<script>
         function saveImage(){
-            $("#save").hide();
-            $("#submit_button").show();
-        	var canvas = document.getElementById("draw");
-			var dataURL = canvas.toDataURL();
-			//window.open(dataURL, "toDataURL() image");
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
             var elem = document.getElementById("hidden_button");
             elem.value = dataURL;
-            console.log("dataURL: "+elem.value);
-        }
-		</script>
-        <script>
-            $(window).bind('beforeunload', function(){
-                var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
-                saveImageToFile();
-                return message;
-            });
-        </script>
-    <%- include partials/nav.ejs %>
-    <div class="notification canvas_page"><a href="/resources" target="_blank">Overwhelmed? See Resources.</a></div>
+            $("#save_drawing").submit();
+        };
+        $(window).bind('beforeunload', function(){
+            var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
+            return message;
+        });
+    </script>
+    <div id="show_hide_right"  style="display:none">
+        <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
+    </div>
+
+    <div class="show_hide_left">
+        <div class="icon-arrow-left3"><span id="hide_label">Hide</span></div>
+    </div>
+
+     <div id="whole_chat_box">
+        <div id="instructions">
+            <p id="welcome">Welcome to your personal safe space.</p>
+            <ol>
+                <li> Enable your microphone</li>
+                <li> Say hi & share your story</li>
+                <li> Start drawing</li>
+                <p class="postscript_p"><span style="color:red; text-align:center">Be supportive.</span></p>
+            </ol>
+            <br/>
+        </div>
+
+        <div id="chat_box" class="chat_hover"></div>
+
+        <div class="hover_box chat_hover_box">Your chat will be enabled once both participants arrive and enable their microphones.</div>
+        <form id="message_form">
+            <input type=text id="message_input" placeholder="Say something..."  style="display: none">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send" style="display: none">
+        </form>
+        <p class="postscript_p">Talking about your sexual assault experience can be therapeutic.</p>
+        <br/>
+    </div>
   	<div id="controls"> 
+        <div class="drawing_picker_label" id="color_label">Color<span class="opacity_label">Opacity</span></div>
+        <!--
         <div id="userCountWrapper", style="opacity: 0"> 
         <p> artists: </p>
             <span id="userCount"> </span>
         </div>
+        -->
         <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
 
         <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
@@ -61,27 +88,31 @@
 
         <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
 
-        <label><span class="drawing_picker_label">Opacity:</span>
-            <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+        <label>
+            <span id="opacity_slider">
+                <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+            </span>
         </label>
 
         <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
-          <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
+          <div class="sound-icon icon-volume-mute2"> </div>
         </button> 
 
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
-          <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
+          <div class="sound-icon icon-volume-medium"> </div>
         </button> 
+
         
-        <form action="/connect" method="post">
+        <form id="save_drawing" action="/" method="post">
             <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save drawing"></input>
             <input id="hidden_button" type="hidden" name="img">
-            <button id="submit_button" style="display:none"type="submit" class="button style4 scrolly" value="submit">Submit drawing</button>
         </form>       
 
         <audio id="remoteaudio" autoplay> </audio>
     </div>
-    <canvas id="draw" resize="true" keepalive="true"></canvas>
+    <div id="canvas-holder">
+        <canvas id="draw" resize="true" keepalive="true"></canvas>
+    </div>
 
     <div id="whole_chat_box">
         <div id="chat_box"></div>
@@ -90,7 +121,8 @@
             <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
         </form>
     </div>
-    <div id="friend_story">
+   
+    <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
         <br/>
         <p id="friend_story_text"></p>
@@ -104,6 +136,18 @@
         jQuery.noConflict();
         $("#intro_but").click(function() {
             $("#friend_story").fadeOut('slow');
+        });
+        $(".show_hide_left").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','94%');
+            $("#controls").css('width', '95%');
+            $("#show_hide_right").show();
+        });
+        $("#show_hide_right").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','73%');
+            $("#controls").css('width', '78%');
+            $("#show_hide_right").hide();
         });
     });
 </script>

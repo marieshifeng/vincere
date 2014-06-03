@@ -6,8 +6,9 @@
 	<%- include partials/nav.ejs %>
 	<!-- Header -->
 	<section id="header">
+		<div class="hover_box">Vincere means to overcome in Italian. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>
 		<header>
-			<h1>Vincere the Memory</h1>
+			<h1><span id="what_does_it_mean">Vincere</span> the Memory</h1>
 			<p>Talk to other survivors. Overcome the memory of an unwanted sexual experience.</p>
 		</header>
 		<footer>
@@ -24,28 +25,52 @@
 
 	<!-- Banner -->
 	<section id="banner">
-		<header>
-			<h2>This is a Safe Space for You</h2>
-		</header>
-		<p>This site is a place for you*, someone who has experienced sexual assault or any kind of confusing and unwanted sexual experience, to talk with another survivor. Talk, bond, draw together...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas. <br><br> We hope talking will help you understand that what happened to you was not your fault and give you tools to overcome it. It’s also fun...but don’t take our word for it; take it out for a spin yourself by clicking "Talk to someone" below. Or check out some of the <a href="#gallery">past creations</a>.</p>
-		<p>Vincere means to overcome. You are unbreakable. </p>
-		<p class="postscript_p">*And yes, this means that if you don't have an experience of your own you want to talk about, this is not the place for you. We’re sorry, but we need to respect the privacy of our users. If you want to talk about anything else, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.</p>
+		<article class="container">
+			<header>
+				<h2>This is a Safe Space for You,</h2>
+			</header>
+			<p>someone who has experienced <span style="font-weight:bold">sexual assault</span> or any kind of confusing and <span style="font-weight:bold">unwanted sexual experience</span>, to talk with another survivor. <br/><br><span style="font-weight:bold">Talk, bond, draw together</span>...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas.
 
-		<footer>
-			<div class="center_button">
-				<a href="#gallery" class="button style2 scrolly">Gallery</a>
-				<a href="/contract" class="button style2 scrolly">Talk to someone</a>
-			</div>
-		</footer>
+			<footer>
+				<div class="center_button">
+					<a href="/contract" class="button style2 scrolly scrolly-centered">Talk to someone</a>
+				</div>
+				<br/>
+				<p class="postscript_p">**If you don't have an experience of your own you want to talk about, this is not the place for you. We’re sorry, but we need to respect the privacy of our users. If you want to talk about anything else, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.**</p>
+			</footer>
+		</article>
 	</section>
 
 	<!-- Header -->
-	<section id="gallery">
+	<section>
 	<article class="container box style2">
 		<section id="banner themes">
-			<h1>Gallery</h1>
+			<section id="gallery">
+			<h1 id="gallery_title">Gallery</h1>
 			<br/>
 		</section>
+		<header>
+			<h2>June 1 - June 7</h2>
+			<p>"There is no greater agony than bearing an untold story inside you."<span class="author">-Maya Angelou</span></p>
+		</header>
+		<div class="inner gallery">
+			<div class="row flush">
+				<% images.forEach( function( image ){ %>
+					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
+				<% }); %>
+			</div>
+		</div>
+		<header>
+			<h2>May 25 - May 31</h2>
+			<p>"I am not what happened to me, I am what I choose to become."<span class="author">-Carl Jung</span></p>
+		</header>
+		<div class="inner gallery">
+			<div class="row flush">
+				<div class="4u"><a href="images/1.png" class="image full"><img src="images/1.png" alt="" title="May 19: 6 minutes" /></a></div>
+				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
+				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 22: 15 minutes" /></a></div>
+			</div>
+		</div>
 		<header>
 			<h2>May 18 - May 24</h2>
 			<p>"The Internet is becoming the town <strong>square</strong> for the global village of tomorrow."<br /><span class="author">-Bill Gates</span></p>
@@ -91,13 +116,29 @@
 	</article>
 	</section>
 	<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		jQuery.noConflict();
-		$(".icon-close").click(function() {
-			$(".notification").hide();
+		jQuery(document).ready(function($) {
+			jQuery.noConflict();
+			$(".home_nav").css('font-weight', 'bold');
+			$(document).on("scroll", function() {
+				var scrollAmount = $(document).scrollTop();
+				if(scrollAmount > 1300) {
+					$(".gallery_nav").css('font-weight', 'bold');
+					$(".home_nav").css('font-weight', 'normal');
+				} else {
+					$(".gallery_nav").css('font-weight', 'normal');
+					$(".home_nav").css('font-weight', 'bold');					
+				}
+			});
+			$("#what_does_it_mean").on({
+				mouseenter: function() {
+					$(".hover_box").fadeIn();
+				},
+				mouseleave: function() {
+					$(".hover_box").fadeOut();
+				}
+			});
 		});
-	});
-</script>
+	</script>
 
 <!-- Google analytics -->
 <script>
@@ -110,5 +151,6 @@
   ga('send', 'pageview');
 
 </script>
+
 </body>
 </html>

@@ -4,29 +4,43 @@
 </head>
 <body>
 	<%- include partials/nav.ejs %>
-	<br/>
 	<!-- Banner -->
 	<section id="banner">
+		<article class="container">
 		<header>
 			<h2>Before you get started...</h2>
 		</header>
-		<p>Did we mention that this site is only for <b>survivors</b> of sexual assault? Not their friends or anyone else. Sorry, but we want survivors to feel like they’re in a safe space.</p>
-		<p>So with that in mind, repeat after me:</p>
-		<p class="indent_p">I had an unwanted sexual experience. It was horrible, but I'm ready to talk to someone about it.</p>
-		<p class="indent_p">We’re going to help each other.</p>
-		<p class="indent_p">We’re going to be supportive.</p>
-		<p class="indent_p">And we’re going to have as much fun as we can by drawing silly pictures.</p>
+		<br/>
+		<p class="contract_reminder">Did we mention that this site is only for <span style="font-weight:bold">survivors</span> of sexual assault? Not their friends or anyone else. Sorry, but we want survivors to feel like they’re in a safe space.</p>
+		<br/>
+		<p class="contract_reminder" style="text-transform: uppercase">So with that in mind, repeat after me:</p>
+		<p class="indent_p odd">I had an unwanted sexual experience.</p> 
+		<p class="indent_p even">I'm ready to talk to someone about it.</p>
+		<p class="indent_p odd">We’re going to help each other.</p>
+		<p class="indent_p even">We’re going to be supportive.</p>
+		<p class="indent_p odd">And we’re going to have as much fun as we can by drawing silly pictures.</p>
 
 
 		<footer>
 			<div id="contract_agree">
-				<form class="tell_story_connect" method="post" action="/connect">
-					<textarea id="message_input" class="text_input" name="user_story" placeholder="Tell your upcoming partner your story. Just a quick version - you can elaborate once you meet them in a minute."></textarea>
+				<form id="tell_story_connect" method="post" action="/connect">
+					<textarea id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea>
 					<br/>
-					<input type="submit" class="button style2 scrolly" value="I agree. I'm ready to meet another survivor!">
-			</form>
+					<input type="button" class="button style2 scrolly" onClick="submitForm();" value="I agree. I'm ready to meet another survivor!">
+				</form>
+
+				<script>
+					function submitForm() {
+						var storyData = JSON.stringify({
+        					story: $('#message_input').val()
+    					});
+						$('<input type="hidden" name="storyData"/>').val(storyData).appendTo('#tell_story_connect');
+						$("#tell_story_connect").submit();
+					}
+				</script>
 			</div>
 		</footer>
+	</article>
 		
 	</section>
 

@@ -1,33 +1,12 @@
 <!DOCTYPE html>
 <div class="nav_bar_link">
-	<a href="/" class="title_nav_text">Vincere the Memory</a>
-	<nav id="colorNav">
-		<ul>
-			<li class="nav_lines">
-				<a href="#" class="menubut icon-menu show_hide"></a>
-					<div class="menubar">
-						<div class="center_menu"><a href="/" class="menuitem menu1">Home</a></div>
-						<div class="center_menu"><a href="/contract" class="menuitem menu2">New Conversation</a></div>
-						<div class="center_menu"><a href="/resources" class="menuitem menu3">Resources</a></div>
-						<div class="center_menu"><a href="/about" class="menuitem menu4">About</a></div>
-					</div>
-			</li>
-		</ul>
-	</nav>
+	<a href="/" class="title_nav_text home_nav">Home</a>
+	<a href="/#gallery" class="title_nav_text gallery_nav">Gallery</a>
+	<a href="/resources" class="title_nav_text resources_nav">Resources</a>
+	<a href="/about" class="title_nav_text about_nav">About</a>
+	<div class="action_link">
+		<a href="/contract" class="title_nav_text"><span class="convo_action">New Conversation</span></a>
+		<a href="https://docs.google.com/forms/d/19FEq5Fmr95Du4eRdjp3Gsi1c9mxasBO1pdqD9Iy1nTU/viewform" target="_blank" class="title_nav_text"><span class="feedback_action">Feedback</span></a>
+	</div>
 </div>
-<div class="survey_link"><a href="https://docs.google.com/forms/d/19FEq5Fmr95Du4eRdjp3Gsi1c9mxasBO1pdqD9Iy1nTU/viewform" target="_blank">Give us feedback</a></div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		jQuery.noConflict();
-		$(".icon-menu").show();
-		$(".menubar").hide();
-		$(".icon-menu").toggle(
-		function(){
-	  		$(".menubar").slideUp().slideToggle(400);
-		},
-		function(){
-	  		$(".menubar").slideDown().slideToggle(400);
-		});
-	});
-</script>

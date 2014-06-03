@@ -12,5 +12,4 @@ exports.setUrl = function(req, res) {
 		req.session.url = newurl;
 		res.send(200, "Url changed to " + req.session.url);
 	}
-	
 }
