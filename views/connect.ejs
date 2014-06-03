@@ -13,7 +13,9 @@
 </head>
 <body class="canvas">
 
+
     <script>
+        var isSaved = false;
         var storyData = <%-story%>;
         console.log("connect.ejs1:"+storyData);
         console.log("connect.ejs2:"+storyData.story);
@@ -93,18 +95,19 @@
         <canvas id="draw" resize="true" keepalive="true"></canvas>  
     </div>
     <form id="save_drawing_button" action="/" method="post">
-        <input id="save" type="button" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
+        <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
     <script>
         function saveImage(){
+            isSaved = true;
             var canvas = document.getElementById("draw");
             var dataURL = canvas.toDataURL();
             var elem = document.getElementById("hidden_button");
             elem.value = dataURL;
             $("#save_drawing_button").submit();
         };
-        $(document).on('mousedown', '#save', offBeforeUnload)
+/*        $(document).on('mousedown', '#save', offBeforeUnload)
             .on('mouseleave', '#save', function () {
                 $(window).on('beforeunload', windowBeforeUnload);
         });
@@ -122,7 +125,18 @@
             } else{ 
             return false; 
             } 
+        }*/
+
+        function windowBeforeUnload() {
+            if (!isSaved) {
+                if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
+                  return "If you leave, your current conversation will be closed and your drawing will be lost."; 
+                } else{ 
+                return false; 
+                }
+            }    
         }
+        $(window).on('beforeunload', windowBeforeUnload);
     </script>
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
