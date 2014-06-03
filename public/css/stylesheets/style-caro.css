@@ -749,6 +749,7 @@
 				.button.style2:hover
 				{
 					border:2px solid black;
+					background:#F26344;
 					font-size:30px;
 					color: black !important;
 					text-shadow: 0 0 0.5px rgba(255,255,255,0.25) !important;
@@ -758,6 +759,7 @@
 				.button.style2:active
 				{
 								padding: 1em 2em 1em 2em;
+								background:#F26344;
 				}
 				
 			.button.style3
@@ -1304,7 +1306,7 @@
 }
 
 #controls     { 
-	padding:60px 0px 0px 0px; 
+	padding:50px 0px 0px 0px; 
 	float:right;
 	width:77%;
 }

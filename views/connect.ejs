@@ -19,47 +19,14 @@
         console.log("connect.ejs2:"+storyData.story);
         story = storyData.story;
     </script>
-
-    <script src="/javascripts/audiostream.js"> </script>
-    
-
-    
-	<script>
-        function saveImage(){
-            var canvas = document.getElementById("draw");
-            var dataURL = canvas.toDataURL();
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            $("#save_drawing").submit();
-        };
-        $(document).on('mousedown', '#save', offBeforeUnload)
-            .on('mouseleave', '#save', function () {
-                $(window).on('beforeunload', windowBeforeUnload);
-        });
-        function offBeforeUnload(event) {
-            $(window).off('beforeunload');
-            var canvas = document.getElementById("draw");
-            var dataURL = canvas.toDataURL();
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            $("#save_drawing").submit();
-        }
-        function windowBeforeUnload() {
-             if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
-                  return "If you leave, your current conversation will be closed and your drawing will be lost."; 
-              } else{ 
-                return false; 
-              } 
-        }
-    </script>
+    <script src="/javascripts/audiostream.js"> </script>    
+	
     <div id="show_hide_right"  style="display:none">
         <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
     </div>
-
     <div class="show_hide_left">
         <div class="icon-arrow-left3"><span id="hide_label">Hide</span></div>
     </div>
-
      <div id="whole_chat_box">
         <div id="instructions">
             <p id="welcome">Welcome to your personal safe space.</p>
@@ -113,35 +80,50 @@
                 <input type="range", min="0", max="255", value="200", id="opacity"> </input>
             </span>
         </label>
-
         <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
           <div class="sound-icon icon-volume-mute2"> </div>
         </button> 
-
         <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
           <div class="sound-icon icon-volume-medium"> </div>
         </button> 
-    
-
         <audio id="remoteaudio" autoplay> </audio>
     </div>
 
     <div id="canvas-holder">
         <canvas id="draw" resize="true" keepalive="true"></canvas>  
     </div>
-    <form id="save_drawing" action="/" method="post">
-            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
-            <input id="hidden_button" type="hidden" name="img">
-        </form> 
-   
-<!--     <div id="whole_chat_box">
-        <div id="chat_box"></div>
-        <form id="message_form">
-            <input type=text id="message_input" placeholder="Say something">
-            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
-        </form>
-    </div> -->
-
+    <form id="save_drawing_button" action="/" method="post">
+        <input id="save" type="button" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
+        <input id="hidden_button" type="hidden" name="img">
+    </form> 
+    <script>
+        function saveImage(){
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing_button").submit();
+        };
+        $(document).on('mousedown', '#save', offBeforeUnload)
+            .on('mouseleave', '#save', function () {
+                $(window).on('beforeunload', windowBeforeUnload);
+        });
+        function offBeforeUnload(event) {
+            $(window).off('beforeunload');
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing_button").submit();
+        }
+        function windowBeforeUnload() {
+            if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
+              return "If you leave, your current conversation will be closed and your drawing will be lost."; 
+            } else{ 
+            return false; 
+            } 
+        }
+    </script>
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
         <br/>
