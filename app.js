@@ -24,6 +24,7 @@ var express = require('express')
   , sys = require('sys')
   , mongoose = require('mongoose');
 
+
 //Setting up database
 var local_database_name = 'finalprojectdb';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name
@@ -123,6 +124,7 @@ io.sockets.on('connection', function (socket) {
     // active_connections++;
     // console.log("Active connections: " + active_connections);
   
+
   socket.on('disconnect', function () {
     if(socket.room == active_room) active_room = null;
     console.log("Disconnecting");

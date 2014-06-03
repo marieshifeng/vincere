@@ -2,6 +2,7 @@ var appClass = 'appMessage';
 var friendClass = 'friendMessage';
 var myClass = 'myMessage';
 
+var story = "<%=story%>";
 console.log("Story: " + story);
 
 var myAuthor = 'Me';
@@ -129,7 +130,6 @@ socket.on('seconduserjoined', function(otherStory) {
 	var message = "Someone else has joined you!";
 	addMessage(message, undefined, appClass);
 	textArea.scrollTop(textArea[0].scrollHeight);
-
 	$("#friend_story_text").text(otherStory);
 	$("#friend_story").show();
 
