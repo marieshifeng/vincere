@@ -14,8 +14,8 @@ var express = require('express')
   , socket = require('socket.io')
   , path = require('path')
   , fs = require('fs')
-  , sys = require('sys');
-  // , mongoose = require('mongoose');
+  , sys = require('sys')
+  , mongoose = require('mongoose');
 
 
 //Setting up database
