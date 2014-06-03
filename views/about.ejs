@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51450801-1', 'vincere.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
+<html lang="en">
+	<%- include partials/header.ejs %>
+</head>
+<body>
+	<%- include partials/nav.ejs %>
+	<br/>
+	<p class="page_title">About</p>
+	<br/>
+	<h4>FAQs</h4>
+	<br/>
+	<div class="QandA">
+		<p class="question">What is the purpose of this site?</p>
+		<p class="answer">Sexual assault is a traumatic experience, and it's even worse if you don't have anyone to talk to. Our mission here is to help connect you to other survivors of sexual assault who know what you're going through.</p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">What about privacy?</p>
+		<p class="answer">For your privacy, we don't require any sort of user information, and we're not storing anything about you while you visit our site, including IP addresses.</p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">How do I know I'm talking to another survivor?</p>
+		<p class="answer">We know it's hard to open up about this topic, so we wanted to make it as easy as possible for you by not requiring any personal information. This means that we can't guarantee anything about the person you'll connect to, but we anticipate that users will adhere to our contract that requires you to confirm that you're a survivor of sexual assault and that you will be supportive of others.</p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">So what's up with the drawing stuff?</p>
+		<p class="answer">Talking about sexual assault is hard. We hope the drawings will help ease the tension and make you more comfortable.</p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">Can I give you some ideas about how to make this better?</p>
+		<p class="answer">Of course! <a href="https://docs.google.com/forms/d/19FEq5Fmr95Du4eRdjp3Gsi1c9mxasBO1pdqD9Iy1nTU/viewform">Submit your feedback here.</a></p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">Who's responsible for this site?</p>
+		<p class="answer">This site is being developed as part of a class project for Stanford's CS247 class. Team members are Sierra Kaplan-Nelson, Marie Feng, and Natasha Prats.</a></p>
+	</div>
+	<br/>
+	<div class="QandA">
+		<p class="question">What does your name mean?</p>
+		<p class="answer">Vincere is Italian for "to conquer, overcome". We want to help you overcome your traumatic experience.</a></p>
+	</div>
+	<br/>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			jQuery.noConflict();
+			$(".about_nav").css('font-weight', 'bold');
+		});
+	</script>
+</body>
+</html>

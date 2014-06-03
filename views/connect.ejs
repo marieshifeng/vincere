@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include partials/header.ejs %>	
+     <%- include partials/nav.ejs %>
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+    <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
+</head>
+<body class="canvas">
+    <script>
+        var storyData = <%-story%>;
+        console.log(storyData);
+        console.log(storyData.story);
+        story = storyData.story;
+    </script>
+
+    <script src="/javascripts/audiostream.js"> </script>
+    <script src="/javascripts/paper.js"></script>
+    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
+	<script>
+        function saveImage(){
+            var canvas = document.getElementById("draw");
+            var dataURL = canvas.toDataURL();
+            var elem = document.getElementById("hidden_button");
+            elem.value = dataURL;
+            $("#save_drawing").submit();
+        };
+        $(window).bind('beforeunload', function(){
+            var message = 'Your current conversation will be closed if you leave, and your drawing will be lost.';
+            return message;
+        });
+    </script>
+    <div id="show_hide_right"  style="display:none">
+        <div class="icon-arrow-right3"><span id="hide_label">Display chat</span></div>
+    </div>
+
+    <div class="show_hide_left">
+        <div class="icon-arrow-left3"><span id="hide_label">Hide</span></div>
+    </div>
+
+     <div id="whole_chat_box">
+        <div id="instructions">
+            <p id="welcome">Welcome to your personal safe space.</p>
+            <ol>
+                <li> Enable your microphone</li>
+                <li> Say hi & share your story</li>
+                <li> Start drawing</li>
+                <p class="postscript_p"><span style="color:red; text-align:center">Be supportive.</span></p>
+            </ol>
+            <br/>
+        </div>
+
+        <div id="chat_box" class="chat_hover"></div>
+
+        <div class="hover_box chat_hover_box">Your chat will be enabled once both participants arrive and enable their microphones.</div>
+        <form id="message_form">
+            <input type=text id="message_input" placeholder="Say something..."  style="display: none">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send" style="display: none">
+        </form>
+        <p class="postscript_p">Talking about your sexual assault experience can be therapeutic.</p>
+        <br/>
+    </div>
+
+  	<div id="controls"> 
+        <div class="drawing_picker_label" id="color_label">Color<span class="opacity_label">Opacity</span></div>
+        <!--
+        <div id="userCountWrapper", style="opacity: 0"> 
+        <p> artists: </p>
+            <span id="userCount"> </span>
+        </div>
+        -->
+        <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
+
+        <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
+
+        <div data-color="233,34,41", class="color", style="background:rgb(233,34,41);"> </div>
+
+        <div data-color="57,178,73", class="color", style="background:rgb(57,178,73);" ></div>
+
+        <div data-color="247,219,31", class="color", style="background:rgb(247,219,31);"> </div>
+
+        <div data-color="248,172,60", class="color", style="background:rgb(248,172,60);" ></div>
+
+        <div data-color="142,42,140", class="color active", style="background:rgb(142,42,140);" ></div>
+
+        <div data-color="77,42,255", class="color", style="background:rgb(77,42,255);" ></div>
+
+        <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
+
+        <label>
+            <span id="opacity_slider">
+                <input type="range", min="0", max="255", value="200", id="opacity"> </input>
+            </span>
+        </label>
+
+        <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
+          <div class="sound-icon icon-volume-mute2"> </div>
+        </button> 
+
+        <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();" style="display: none">
+          <div class="sound-icon icon-volume-medium"> </div>
+        </button> 
+
+        
+        <form id="save_drawing" action="/" method="post">
+            <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly" value="Save drawing"></input>
+            <input id="hidden_button" type="hidden" name="img">
+        </form>       
+
+        <audio id="remoteaudio" autoplay> </audio>
+    </div>
+    <div id="canvas-holder">
+        <canvas id="draw" resize="true" keepalive="true"></canvas>
+    </div>
+
+    <div id="whole_chat_box">
+        <div id="chat_box"></div>
+        <form id="message_form">
+            <input type=text id="message_input" placeholder="Say something">
+            <input type="submit" id="send_button" class="button style4 scrolly" value="Send">
+        </form>
+    </div>
+   
+    <div id="friend_story" style="display:none">
+        <h3 style="text-align:center">Your partner's story</h3>
+        <br/>
+        <p id="friend_story_text"></p>
+        <br/>
+        <div id="intro_but">
+            <div class="button style4 scrolly">Nice to meet you</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery.noConflict();
+        $("#intro_but").click(function() {
+            $("#friend_story").fadeOut('slow');
+        });
+        $(".show_hide_left").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','94%');
+            $("#controls").css('width', '95%');
+            $("#show_hide_right").show();
+        });
+        $("#show_hide_right").click(function() {
+            $("#whole_chat_box").toggle("slide");
+            $("#canvas-holder").css('width','73%');
+            $("#controls").css('width', '78%');
+            $("#show_hide_right").hide();
+        });
+    });
+</script>
+
+   
+   <!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51450801-1', 'vincere.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+diff --git a/views/connect.ejs b/views/connect.ejs
+index b67bf83..26d52e6 100644
+--- a/views/connect.ejs
++++ b/views/connect.ejs
+@@ -1,41 +1,15 @@
+ <!DOCTYPE html>
+ <html lang="en">
+-	<%- include partials/header.ejs %>
++<head>
++	<%- include partials/header.ejs %>	
++	
++	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
++	<script src='/socket.io/socket.io.js'> </script>
++	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
++	
++	<script type="text/paperscript" src="javascripts/audiostream.js" canvas="draw"></script>
+ </head>
+ <body style="padding:0">
+-<<<<<<< HEAD
+-=======
+-	<%- include partials/nav.ejs %>
+-	<script>
+-		function doThis() {
+-/**
+- *    Ken Fyrstenberg Nilsen
+- *    Abidas Software
+-*/
+-	console.log("in function")
+-	var canvas = document.getElementById('draw');
+-
+-	// create a dataUrl from the canvas
+-var dataURL= canvas.toDataURL();
+-
+-// use jQuery to POST the dataUrl to you php server
+-$.ajax({
+-    type: "POST",
+-    url: "./public/php/upload.php",
+-    data: {image: dataURL}
+-}).done(function( respond ) {
+-    // Done...report success or failure
+-    // You will get back the temp file name
+-    // or "Unable to save this image."
+-    console.log(respond);
+-});
+-};
+-
+-</script>
+->>>>>>> FETCH_HEAD
+-	<canvas id="draw" resize="true" keepalive="true"></canvas>
+-	<script type="text/paperscript" src="javascripts/draw.js" canvas="draw"></script>
+-	<input id="save" type="button" class="button style2 scrolly" value="Connect and draw"></input>
+ 		<script>
+         $("#save").click(function(){
+         	console.log("1");
+@@ -54,6 +28,45 @@ $.ajax({
+                 console.log(respond);
+             });*/
+         });
+-	</script>
++		</script>
++  	<div id="controls"> 
++        <div id="userCountWrapper", style="opacity: 0"> 
++        <p> artists: </p>
++            <span id="userCount"> </span>
++        </div>
++        <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
++
++        <div data-color="109,73,37", class="color active", style="background:rgb(109,73,37);"> </div>
++
++        <div data-color="233,34,41", class="color", style="background:rgb(233,34,41);"> </div>
++
++        <div data-color="57,178,73", class="color", style="background:rgb(57,178,73);" ></div>
++
++        <div data-color="247,219,31", class="color", style="background:rgb(247,219,31);"> </div>
++
++        <div data-color="248,172,60", class="color", style="background:rgb(248,172,60);" ></div>
++
++        <div data-color="142,42,140", class="color", style="background:rgb(142,42,140);" ></div>
++
++        <div data-color="77,42,255", class="color", style="background:rgb(77,42,255);" ></div>
++
++        <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
++
++        <label>Opacity
++            <input type="range", min="0", max="255", value="200", id="opacity"> </input>
++        </label>
++
++        <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
++          <img src="/images/sound-drawn-blue-mute.png" class="sound-icon"> </img>
++        </button> 
++
++        <button class="soundButton" id="muteButton" type="button" onclick="muteAudio();">
++          <img src="/images/sound-drawn-blue.png" class="sound-icon"> </img>
++        </button> 
++
++        <audio id="remoteaudio" autoplay> </audio>
++    </div>
++    <canvas id="draw" resize="true" keepalive="true"></canvas>
++    <input id="save" type="button" class="button style2 scrolly" value="Save Drawing"></input>
+ </body>
+ </html>
+\ No newline at end of file
