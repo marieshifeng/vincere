@@ -1030,7 +1030,7 @@ top: 50px;
 		#header footer
 		{
 			position: absolute;
-			bottom: 200px;
+			bottom: 100px;
 			margin: 0;
 			width: 100%;
 			padding: 0 0 10px 0;
@@ -1155,7 +1155,7 @@ top: 50px;
 	#banner
 	{
 		position: relative;
-		top: -100px;
+		bottom: 125px;
 		color: #000000;
 		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
 		padding: 0em 0 0em 0;
@@ -1294,7 +1294,7 @@ top: 50px;
 
 #message_textarea {
 	position: inherit;
-	width:80%;
+	width:60%;
 	display: block;
     margin-left: auto;
     margin-right: auto;
@@ -1421,7 +1421,7 @@ top: 50px;
 }
 input#save {
 	position: relative;
-top: -20px !important;
+top: -25px !important;
 }
 
 .canvas {

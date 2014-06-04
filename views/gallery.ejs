@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 	<%- include partials/header.ejs %>
+	<script src="/javascripts/skel.min.js"></script>
+	<script src="/javascripts/init.js"></script>
+</head>
 <body>
 	<%- include partials/nav.ejs %>
-	<section>
+	<section>	
 	<article class="container box style2">
 		<header>
 			<h2>June 1 - June 7</h2>
-			<p>"There is no greater agony than bearing an untold story inside you."<span class="author">-Maya Angelou</span></p>
+			<p>"There is no greater agony than bearing an untold story inside you."<br><span class="author">-Maya Angelou</span></p>
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
 				<% images.forEach( function( image ){ %>
-					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
+					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="<%=image.written_date%>" /></a></div>
 				<% }); %>
 			</div>
 		</div>
 		<header>
 			<h2>May 25 - May 31</h2>
-			<p>"I am not what happened to me, I am what I choose to become."<span class="author">-Carl Jung</span></p>
+			<p>"I am not what happened to me, I am what I choose to become."<br><span class="author">-Carl Jung</span></p>
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
-				<div class="4u"><a href="images/image2_247.png" class="image full"><img src="images/image2_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
-				<div class="4u"><a href="images/image3_247.png" class="image full"><img src="images/image3_247.png" alt="" title="May 22: 15 minutes" /></a></div>
+				<div class="4u"><a href="images/image2_247.png" class="image full"><img src="images/image2_247.png" alt="" title="May 30" /></a></div>
+				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 27" /></a></div>
+				<div class="4u"><a href="images/image3_247.png" class="image full"><img src="images/image3_247.png" alt="" title="May 25" /></a></div>
 			</div>
 		</div>
 		<header>
@@ -33,9 +37,9 @@
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
-				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 12: 9 minutes" /></a></div>
-				<div class="4u"><a href="images/image5_247.png" class="image full"><img src="images/image5_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image6_247.png" class="image full"><img src="images/image6_247.png" alt="" title="May 14: 17 minutes" /></a></div>
+				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 23" /></a></div>
+				<div class="4u"><a href="images/image5_247.png" class="image full"><img src="images/image5_247.png" alt="" title="May 20" /></a></div>
+				<div class="4u"><a href="images/image6_247.png" class="image full"><img src="images/image6_247.png" alt="" title="May 18" /></a></div>
 			</div>
 		</div>
 	</article>

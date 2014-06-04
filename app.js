@@ -59,7 +59,7 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/contract', contract.view);
 app.get('/gallery', gallery.view);
-app.post('gallery', gallery.post);
+app.post('/gallery', gallery.post);
 app.post('/connect', connect.view);
 app.get('/audio', audio.view);
 app.get('/resources', resources.view);
