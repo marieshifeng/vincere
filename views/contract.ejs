@@ -5,26 +5,25 @@
 <body>
 	<%- include partials/nav.ejs %>
 	<!-- Banner -->
-	<section id="banner">
+	<section id="banner" class="contract_banner">
 		<article class="container">
-		<header>
-			<h2>Before you get started...</h2>
-		</header>
-		<br/>
-		<p class="contract_reminder">Did we mention that this site is only for <span style="font-weight:bold">survivors</span> of sexual assault? Not their friends or anyone else. Sorry, but we want survivors to feel like they’re in a safe space.</p>
-		<br/>
-		<p class="contract_reminder" style="text-transform: uppercase">So with that in mind, repeat after me:</p>
-		<p class="indent_p odd">I had an unwanted sexual experience.</p> 
-		<p class="indent_p even">I'm ready to talk to someone about it.</p>
-		<p class="indent_p odd">We’re going to help each other.</p>
-		<p class="indent_p even">We’re going to be supportive.</p>
-		<p class="indent_p odd">And we’re going to have as much fun as we can by drawing silly pictures.</p>
+		<header><h2>Before we get started</h2></header>
+		<p class="contract_reminder">If you are in danger, considering suicide, or need emergency<br>help, call 911 now. We are dedicated to providing survivors of<br>sexual assault a safe space. Please respect this.</p>
+		<!--<p>Did we mention that this site is only for <span style="font-weight:bold">survivors</span> of sexual assault? Not their friends or anyone else. Sorry, but we want survivors to feel like they’re in a safe space.</p>-->
+		<header><h2>Now repeat after me</h2></header>
+		<!-- <p class="contract_reminder" style="text-transform: uppercase">So with that in mind, repeat after me:</p> -->
+<!-- 		<p class="indent_p odd">I had an unwanted sexual experience.</p> 
+		<p class="indent_p even">I'm ready to talk to someone about it.</p> -->
+		<p class="indent_p odd">We are going to help each other.</p>
+		<p class="indent_p even">We are going to support each other.</p>
+		<p class="indent_p odd">And we are going to laugh over drawing silly pictures.</p>
+		<br>
 		<footer>
-			<div id="contract_agree">
+			<div id="contract_agree" class="center_button">
 				<form id="tell_story_connect" method="post" action="/connect">
-					<textarea id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea>
+					<div id="message_textarea"> <textarea id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea></div>
 					<br/>
-					<input type="button" class="button style2 scrolly" onClick="submitForm();" value="I agree. I'm ready to meet another survivor!">
+					<input type="button" class="contract_button button style2 scrolly scrolly-centered" onClick="submitForm();" value="I'm ready to meet another survivor">
 				</form>
 
 				<script>

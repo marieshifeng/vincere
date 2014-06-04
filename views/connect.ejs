@@ -8,8 +8,7 @@
     <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
     <script src="/javascripts/paper.js"></script>
-    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>
-    
+    <script type="text/paperscript" src="javascripts/canvas.js" canvas="draw"></script>  
 </head>
 <body class="canvas">
     <script>
@@ -29,26 +28,6 @@
             elem.value = dataURL;
             $("#save_drawing_button").submit();
         };
-/*        $(document).on('mousedown', '#save', offBeforeUnload)
-            .on('mouseleave', '#save', function () {
-                $(window).on('beforeunload', windowBeforeUnload);
-        });
-        function offBeforeUnload(event) {
-            $(window).off('beforeunload');
-            var canvas = document.getElementById("draw");
-            var dataURL = canvas.toDataURL();
-            var elem = document.getElementById("hidden_button");
-            elem.value = dataURL;
-            $("#save_drawing_button").submit();
-        }
-        function windowBeforeUnload() {
-            if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
-              return "If you leave, your current conversation will be closed and your drawing will be lost."; 
-            } else{ 
-            return false; 
-            } 
-        }*/
-
         function windowBeforeUnload() {
             if (!isSaved) {
                 if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
@@ -131,7 +110,7 @@
     <div id="canvas-holder">
         <canvas id="draw" resize="true" keepalive="true"></canvas>  
     </div>
-    <form id="save_drawing_button" action="/" method="post">
+    <form id="save_drawing_button" action="/gallery" method="post">
         <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
