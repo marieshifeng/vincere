@@ -7,9 +7,9 @@
 	<%- include partials/nav.ejs %>
 	<!-- Banner -->
 	<section id="banner" class="contract_banner">
-		<article class="container">
-			<p class="life_reminder">&nbsp;&nbsp;&nbsp;If you are in danger, considering suicide, or need emergency help, call 911 now.<p>
+		<article id="contract_banner_id" class="container">
 			<p class="contract_reminder">&nbsp;&nbsp;&nbsp;We are dedicated to providing a safe space for survivors of<br>&nbsp;&nbsp;&nbsp;sexual assault <span class="sa_color" style="font-weight:bold">only</span>. Please respect this.</p>
+			
 			<header><h2>As survivors of sexual assault</h2></header>
 		<p class="indent_p odd">We are going to help each other.</p>
 		<p class="indent_p even">We are going to support each other.</p>
@@ -18,7 +18,7 @@
 			<div id="contract_agree" class="center_button">
 				<form id="tell_story_connect" method="post" action="/connect">
 					<div id="message_textarea"> <textarea rows="4" id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea></div>
-					<input type="button" class="contract_button button style2 scrolly scrolly-centered" onClick="submitForm();" value="I'm ready to meet another survivor">
+					<input id="contract_button" type="button" class="contract_button button style2 scrolly scrolly-centered" onClick="submitForm();" value="I'm ready to meet another survivor">
 				</form>
 				<script>
 					function submitForm() {
@@ -32,6 +32,7 @@
 					}
 				</script>
 			</div>
+			<p class="life_reminder">&nbsp;&nbsp;&nbsp;If you are in danger, considering suicide, or need emergency help, call 911 now.<p>
 		</footer>
 	</article>		
 	</section>
