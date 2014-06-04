@@ -126,7 +126,7 @@
         <input id="hidden_button" type="hidden" name="img">
     </form> 
 
-    <div class="hover_box">Your partner has already saved your drawing to the gallery. If you've added more, save again!</div>
+    <div class="hover_box_save hover_box">Your partner has already saved your drawing to the gallery. If you've added more, save again!</div>
 
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
@@ -155,14 +155,14 @@
             $("#controls").css('width', '78%');
             $("#show_hide_right").hide();
         });
-        
+
         $("#hover_space").on({
             mouseenter: function() {
                 console.log("Mouse enter");
-                if(partnerSaved) $(".hover_box").fadeIn();
+                if(partnerSaved) $(".hover_box_save").fadeIn();
             },
             mouseleave: function() {
-                if(partnerSaved) $(".hover_box").fadeOut();
+                if(partnerSaved) $(".hover_box_save").fadeOut();
             }
         });
     });
