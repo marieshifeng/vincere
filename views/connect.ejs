@@ -34,6 +34,7 @@
 
         var partnerSaved = false;
         socket.on('user:saved_drawing', function() {
+            console.log("My partner has saved.");
             partnerSaved = true;
         });
 
