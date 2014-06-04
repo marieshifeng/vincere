@@ -1322,9 +1322,11 @@
 	border:2px solid #ccc; 
 	cursor:pointer; 
 	border-radius:25px;
+	opacity: 1;
 }
 .color.active { 
 	border:6px solid #454343;
+	opacity: 1;
 }
 
 #whole_chat_box {
