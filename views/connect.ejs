@@ -38,8 +38,9 @@
             partnerSaved = true;
         });
 
-        $("#save_drawing_button").on({
+        $("#save").on({
             mouseenter: function() {
+                console.log("Mouse enter");
                 if(partnerSaved) $(".hover_box").fadeIn();
             },
             mouseleave: function() {
