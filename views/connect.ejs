@@ -38,16 +38,6 @@
             partnerSaved = true;
         });
 
-        $("#hover_space").on({
-            mouseenter: function() {
-                console.log("Mouse enter");
-                if(partnerSaved) $(".hover_box").fadeIn();
-            },
-            mouseleave: function() {
-                if(partnerSaved) $(".hover_box").fadeOut();
-            }
-        });
-
         function windowBeforeUnload() {
             if (!isSaved) {
                 if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
@@ -164,6 +154,16 @@
             $("#canvas-holder").css('width','73%');
             $("#controls").css('width', '78%');
             $("#show_hide_right").hide();
+        });
+        
+        $("#hover_space").on({
+            mouseenter: function() {
+                console.log("Mouse enter");
+                if(partnerSaved) $(".hover_box").fadeIn();
+            },
+            mouseleave: function() {
+                if(partnerSaved) $(".hover_box").fadeOut();
+            }
         });
     });
 </script>
