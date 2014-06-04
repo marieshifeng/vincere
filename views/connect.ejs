@@ -38,7 +38,7 @@
             partnerSaved = true;
         });
 
-        $("#save").on({
+        $("#hover_space").on({
             mouseenter: function() {
                 console.log("Mouse enter");
                 if(partnerSaved) $(".hover_box").fadeIn();
@@ -132,7 +132,7 @@
     </div>
     <form id="save_drawing_button" action="/gallery" method="post">
         <!-- <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input> -->
-        <input id="save" type="button" onclick="saveImage();" class="contract_button button style2 scrolly scrolly-centered save_button" value="Exit and add drawing to gallery"></input>
+        <span id="hover_space"><input id="save" type="button" onclick="saveImage();" class="contract_button button style2 scrolly scrolly-centered save_button" value="Exit and add drawing to gallery"></input></span>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
 
