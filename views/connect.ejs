@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
 	<%- include partials/header.ejs %>	
-     <%- include partials/nav.ejs %>
+    <%- include partials/nav.ejs %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
     <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
@@ -16,8 +15,6 @@
     <script>
         var isSaved = false;
         var storyData = <%-story%>;
-        console.log("connect.ejs1:"+storyData);
-        console.log("connect.ejs2:"+storyData.story);
         story = storyData.story;
     </script>
     <script src="/javascripts/audiostream.js"> </script>    
@@ -79,12 +76,6 @@
     </div>
   	<div id="controls"> 
         <div class="drawing_picker_label" id="color_label">Color<span class="opacity_label">Opacity</span></div>
-        <!--
-        <div id="userCountWrapper", style="opacity: 0"> 
-        <p> artists: </p>
-            <span id="userCount"> </span>
-        </div>
-        -->
         <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
 
         <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
@@ -127,7 +118,6 @@
     </form> 
 
     <div class="hover_box_save hover_box">Your partner has already saved your drawing to the gallery. If you've added more, save again!</div>
-
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>
         <br/>

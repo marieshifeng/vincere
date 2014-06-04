@@ -5,14 +5,9 @@
 </head>
 <body>
 	<%- include partials/nav.ejs %>
-	<!-- Chrome pop-up -->
-	<!--<div class="notification normal_page">Use Google Chrome on desktop/laptop for the best experience on our site.<a href="#" class="close_x icon-close"></a></div>
-	<div id="when_to_login">Come talk to someone at <span id="login_bold">8pm</span>, it's the hour to connect.</div>-->
-	<!-- Header -->
 	<div>
 	</div>
 	<section id="header">
-		<!--<div class="hover_box">Vincere means to overcome. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>-->
 		<header>
 			<h1><span id="what_does_it_mean">Vincere</span><div id="definition">To overcome</div></h1>
 			<p><span style="font-weight:bold">Talk</span> to other sexual assault survivors.&nbsp;<span style="font-weight:bold">Overcome</span> the memory.<br>And <span style="font-weight:bold">start to heal</span> with someone who understands.</p>
@@ -23,16 +18,15 @@
 	</section>
 	<br><br><br><br><br><br>
 	<section id="banner">
-		<article class="container box style1">
+		<article class="container">
 			<header><h2>This is a safe space</h2></header>
-			<div class="inner">
-				<ul>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For anyone who has experienced <span style="font-weight:bold">sexual assault</span> or any kind of <span style="font-weight:bold">confusing and unwanted sexual experience</span>.</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To talk and draw together with another survivor to continue the healing process in a shared drawing space.</li>
-			</div>
-			<!--<header><h2>Connect with a survivor from 8PM-9PM PDT</h2></header>-->
+			<ul>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For anyone who has experienced <span class="sa_color" style="font-weight:bold">sexual assault</span> or any kind<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of <span  class="sa_color" style="font-weight:bold">confusing and unwanted sexual experience</span></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To talk and draw together with another survivor to continue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the healing process in a shared drawing space</li>
+			</ul>
+			<header><h2>Connect with a survivor<br>from 8PM-9PM PDT</h2></header>
 			<footer>
-				<div class="right_contract_button">
+				<div class="center_button">
 					<!--<a onclick="isClosed();" class="button style2 scrolly scrolly-centered">Talk to someone</a>-->
 					<a href="/contract" class="button style2 scrolly scrolly-centered">Talk to someone</a>
 				</div>
@@ -41,30 +35,9 @@
 		</article>
 	</section>	
 	<script type="text/javascript">
-		function isClosed() {
-			alert("Visit Vincere from 8PM-9PM PDT every night. For professional assistance, RAINN has a free, confidential, 24/7 sexual assault hotline at 1.800.656.HOPE(4673) and https://ohl.rainn.org/online/.");
-		}
 		jQuery(document).ready(function($) {
 			jQuery.noConflict();
 			$(".home_nav").css('font-weight', 'bold');
-			/*$(document).on("scroll", function() {
-				var scrollAmount = $(document).scrollTop();
-				if(scrollAmount > 1300) {
-					$(".gallery_nav").css('font-weight', 'bold');
-					$(".home_nav").css('font-weight', 'normal');
-				} else {
-					$(".gallery_nav").css('font-weight', 'normal');
-					$(".home_nav").css('font-weight', 'bold');					
-				}
-			});
-			$("#what_does_it_mean").on({
-				mouseenter: function() {
-					$(".hover_box").fadeIn();
-				},
-				mouseleave: function() {
-					$(".hover_box").fadeOut();
-				}
-			});*/
 		});
 	</script>
 	<!-- Google analytics -->
