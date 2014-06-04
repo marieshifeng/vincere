@@ -4,116 +4,48 @@
 </head>
 <body>
 	<%- include partials/nav.ejs %>
+	<!-- Chrome pop-up -->
+	<!--<div class="notification normal_page">Use Google Chrome on desktop/laptop for the best experience on our site.<a href="#" class="close_x icon-close"></a></div>
+	<div id="when_to_login">Come talk to someone at <span id="login_bold">8pm</span>, it's the hour to connect.</div>-->
 	<!-- Header -->
+	<div>
+	</div>
 	<section id="header">
-		<div class="hover_box">Vincere means to overcome in Italian. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>
+		<!--<div class="hover_box">Vincere means to overcome. We want to help you <span style="font-weight:bold">overcome your experience</span>.</div>-->
 		<header>
-			<h1><span id="what_does_it_mean">Vincere</span> the Memory</h1>
-			<p>Talk to other survivors. Overcome the memory of an unwanted sexual experience.</p>
+			<h1><span id="what_does_it_mean">Vincere</span><div id="definition">v. to overcome</div></h1>
+			<p>Talk to other sexual assault survivors.&nbsp;Overcome the memory.<br>And start the healing process with someone who understands.</p>
 		</header>
 		<footer>
-			<a href="#banner" class="button style2 scrolly scrolly-centered">How does it work?</a>
+			<a href="#banner" class="button style2 scrolly scrolly-centered">Continue</a>
 		</footer>
 	</section>
-
-	<!-- Chrome pop-up -->
-	<div class="notification normal_page">Use Google Chrome on desktop/laptop for the best experience on our site.
-		<a href="#" class="close_x icon-close"></a>
-	</div>
-
-	<div id="when_to_login">Come talk to someone at <span id="login_bold">8pm</span>, it's the hour to connect.</div>
-
-	<!-- Banner -->
+	<br><br><br><br><br>
 	<section id="banner">
 		<article class="container">
-			<header>
-				<h2>This is a Safe Space for You,</h2>
-			</header>
-			<p>someone who has experienced <span style="font-weight:bold">sexual assault</span> or any kind of confusing and <span style="font-weight:bold">unwanted sexual experience</span>, to talk with another survivor. <br/><br><span style="font-weight:bold">Talk, bond, draw together</span>...with our site, you’ll share a unique and anonymous conversation with another survivor over a 1:1 audio chat while painting on a shared online canvas.
-
+			<header><h2>This is a safe space for anyone</h2></header>
+			<p>who has experienced sexual assault or any kind of<br>confusing and unwanted sexual experience.<br>
+			<header><h2>Talk and draw together</h2></header>
+			<p>with another survivor to continue the healing<br>process with a shared drawing canvas.</p>
+			<header><h2>Join us from 8PM-9PM PDT</h2></header>
+			<br>
 			<footer>
 				<div class="center_button">
+					<!--<a onclick="isClosed();" class="button style2 scrolly scrolly-centered">Talk to someone</a>-->
 					<a href="/contract" class="button style2 scrolly scrolly-centered">Talk to someone</a>
 				</div>
-				<br/>
-				<p class="postscript_p">**If you don't have an experience of your own you want to talk about, this is not the place for you. We’re sorry, but we need to respect the privacy of our users. If you want to talk about anything else, call the <a href="http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.8778673/k.2A72/Domestic_Violence_and_Violence_Against_Women.html">YWCA</a> at (800) 572-2782.**</p>
+				<br>	
 			</footer>
 		</article>
-	</section>
-	<!-- Header -->
-	<section>
-	<article class="container box style2">
-		<section id="banner themes">
-			<section id="gallery">
-			<h1 id="gallery_title">Gallery</h1>
-			<br/>
-		</section>
-		<header>
-			<h2>June 1 - June 7</h2>
-			<p>"There is no greater agony than bearing an untold story inside you."<span class="author">-Maya Angelou</span></p>
-		</header>
-		<div class="inner gallery">
-			<div class="row flush">
-				<% images.forEach( function( image ){ %>
-					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
-				<% }); %>
-			</div>
-		</div>
-		<header>
-			<h2>May 25 - May 31</h2>
-			<p>"I am not what happened to me, I am what I choose to become."<span class="author">-Carl Jung</span></p>
-		</header>
-		<div class="inner gallery">
-			<div class="row flush">
-				<div class="4u"><a href="images/image2_247.png" class="image full"><img src="images/image2_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
-				<div class="4u"><a href="images/image3_247.png" class="image full"><img src="images/image3_247.png" alt="" title="May 22: 15 minutes" /></a></div>
-			</div>
-		</div>
-		<header>
-			<h2>May 18 - May 24</h2>
-			<p>"“If you do not tell the truth about yourself you cannot tell it about other people."<br /><span class="author">-Virginia Woolf</span></p>
-		</header>
-		<div class="inner gallery">
-			<div class="row flush">
-				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 12: 9 minutes" /></a></div>
-				<div class="4u"><a href="images/image5_247.png" class="image full"><img src="images/image5_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image6_247.png" class="image full"><img src="images/image6_247.png" alt="" title="May 14: 17 minutes" /></a></div>
-			</div>
-		</div>
-	</article>
-	<article class="container box style2">
-		<header>
-			<h2>May 11 - May 17</h2>
-			<p>"Listen to the mustn'ts, child. Listen to the don'ts. Listen to the shouldn'ts, the impossibles, the won'ts. Listen to the never haves, then listen close to me... Anything can happen, child. Anything can be."<br /><span class="author">-Shel Silverstein</span></p>
-		</header>
-		<div class="inner gallery">
-			<div class="row flush">
-				<div class="4u"><a href="images/2.png" class="image full"><img src="images/2.png" alt="" title="May 13: 32 minutes" /></a></div>
-				<div class="4u"><a href="images/1.png" class="image full"><img src="images/1.png" alt="" title="May 14: 17 minutes" /></a></div>
-				<div class="4u"><a href="images/3.png" class="image full"><img src="images/3.png" alt="" title="May 19: 6 minutes" /></a></div>
-			</div>
-		</div>
-	</article>
-	<article class="container box style2">
-		<header>
-			<h2>May 4 - May 10</h2>
-			<p>"The life of man is a self-evolving circle, which, from a ring imperceptibly small, rushes on all sides outwards to new and larger circles, and that without end. The extent to which this generation of circles, wheel without wheel, will go, depends on the force or truth of the individual soul."<br /><span class="author">-Ralph Waldo Emerson</span></p>
-		</header>
-		<div class="inner gallery">
-			<div class="row flush">
-				<div class="4u"><a href="images/7.png" class="image full"><img src="images/7.png" alt="" title="May 6: 19 minutes" /></a></div>
-				<div class="4u"><a href="images/5.png" class="image full"><img src="images/5.png" alt="" title="May 6: 19 minutes" /></a></div>
-				<div class="4u"><a href="images/6.png" class="image full"><img src="images/6.png" alt="" title="May 6: 19 minutes" /></a></div>
-			</div>
-		</div>
-	</article>
-	</section>
+	</section>	
 	<script type="text/javascript">
+		function isClosed() {
+			alert("Visit Vincere from 8PM-9PM PDT every night. For professional assistance, RAINN has a free, confidential, 24/7 sexual assault hotline at 1.800.656.HOPE(4673) and https://ohl.rainn.org/online/.");
+		}
 		jQuery(document).ready(function($) {
 			jQuery.noConflict();
 			$(".home_nav").css('font-weight', 'bold');
-			$(document).on("scroll", function() {
+			/*$(document).on("scroll", function() {
 				var scrollAmount = $(document).scrollTop();
 				if(scrollAmount > 1300) {
 					$(".gallery_nav").css('font-weight', 'bold');
@@ -130,7 +62,7 @@
 				mouseleave: function() {
 					$(".hover_box").fadeOut();
 				}
-			});
+			});*/
 		});
 	</script>
 	<!-- Google analytics -->

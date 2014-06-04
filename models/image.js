@@ -2,13 +2,17 @@ var mongoose = require('mongoose');
 
 // define the schema for our user model
 var ImageSchema = mongoose.Schema({  
-	url : String
+	url : String,
+	date : Date, 
+	written_date : String
 });
 
-ImageSchema.statics.save = function(url, done) {
+ImageSchema.statics.save = function(url, date, written_date, done) {
      var Image = this;
      Image.create({
-          url : url
+          url : url,
+          date : date,
+          written_date : written_date
      }, function(err){
           done(err);
      });

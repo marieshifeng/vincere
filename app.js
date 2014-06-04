@@ -4,6 +4,7 @@ var express = require('express')
   , routes = require('./routes')
   , index = require('./routes/index')
   , user = require('./routes/user')
+  , gallery = require ('./routes/gallery')
   , contract = require('./routes/contract')
   , connect = require('./routes/connect')
   , audio = require('./routes/audio')
@@ -55,9 +56,10 @@ app.configure('development', function(){
 
 // Setup Routes
 app.get('/', routes.index);
-app.post('/', index.post);
 app.get('/users', user.list);
 app.get('/contract', contract.view);
+app.get('/gallery', gallery.view);
+app.post('gallery', gallery.post);
 app.post('/connect', connect.view);
 app.get('/audio', audio.view);
 app.get('/resources', resources.view);
