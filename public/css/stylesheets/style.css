@@ -459,12 +459,20 @@
 
  		.convo_action {
  			right:225px;
- 			border:1px solid black;
+ 			border:1px solid #57210A;
  			border-radius:5px;
- 			background: white;
- 			color:#E35434 !important;
+ 			background-color: rgba(255, 255, 255, 0.7);
+ 			color: #57210A;
+ 		/*	color:#E35434 !important;*/
  			padding:3px 10px 3px 10px;
  		}
+
+ 		.convo_action:hover {
+			background-color: rgba(255, 255, 255, 0.78);
+	/*		text-shadow: 0px 0px 0.05px black !important;*/
+			border:2px solid #57210A;
+			color: black;
+		}
 
  		.feedback_action {
  			right:25px;
