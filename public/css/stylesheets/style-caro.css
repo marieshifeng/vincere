@@ -681,6 +681,10 @@
 			border-radius:125px;
 		}
 
+		#login_bold {
+			font-weight: bold;
+		}
+
 		#login_subtext {
 			font-size:0.6em;
 		}
