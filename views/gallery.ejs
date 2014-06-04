@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include partials/header.ejs %>
-</head>
 <body>
 	<%- include partials/nav.ejs %>
 	<section>
@@ -13,7 +12,7 @@
 		<div class="inner gallery">
 			<div class="row flush">
 				<% images.forEach( function( image ){ %>
-					<div class="4u"><a href="<%=image.url%>" data-toggle="lightbox" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
+					<div class="4u"><a href="<%=image.url%>" class="image full"><img src="<%=image.url%>" alt="" title="" /></a></div>
 				<% }); %>
 			</div>
 		</div>
@@ -23,9 +22,9 @@
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
-				<div class="4u"><a href="images/image2_247.png" data-toggle="lightbox" class="image full"><img src="images/image2_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image1_247.png" data-toggle="lightbox" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
-				<div class="4u"><a href="images/image3_247.png" data-toggle="lightbox" class="image full"><img src="images/image3_247.png" alt="" title="May 22: 15 minutes" /></a></div>
+				<div class="4u"><a href="images/image2_247.png" class="image full"><img src="images/image2_247.png" alt="" title="May 9: 4 minutes" /></a></div>
+				<div class="4u"><a href="images/image1_247.png" class="image full"><img src="images/image1_247.png" alt="" title="May 20: 23 minutes" /></a></div>
+				<div class="4u"><a href="images/image3_247.png" class="image full"><img src="images/image3_247.png" alt="" title="May 22: 15 minutes" /></a></div>
 			</div>
 		</div>
 		<header>
@@ -34,9 +33,9 @@
 		</header>
 		<div class="inner gallery">
 			<div class="row flush">
-				<div class="4u"><a href="images/image4_247.png" data-toggle="lightbox" class="image full"><img src="images/image4_247.png" alt="" title="May 12: 9 minutes" /></a></div>
-				<div class="4u"><a href="images/image5_247.png" data-toggle="lightbox" class="image full"><img src="images/image5_247.png" alt="" title="May 9: 4 minutes" /></a></div>
-				<div class="4u"><a href="images/image6_247.png" data-toggle="lightbox" class="image full"><img src="images/image6_247.png" alt="" title="May 14: 17 minutes" /></a></div>
+				<div class="4u"><a href="images/image4_247.png" class="image full"><img src="images/image4_247.png" alt="" title="May 12: 9 minutes" /></a></div>
+				<div class="4u"><a href="images/image5_247.png" class="image full"><img src="images/image5_247.png" alt="" title="May 9: 4 minutes" /></a></div>
+				<div class="4u"><a href="images/image6_247.png" class="image full"><img src="images/image6_247.png" alt="" title="May 14: 17 minutes" /></a></div>
 			</div>
 		</div>
 	</article>
@@ -44,56 +43,9 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			jQuery.noConflict();
-			$(".home_nav").css('font-weight', 'bold');
-			$(document).on("scroll", function() {
-				var scrollAmount = $(document).scrollTop();
-				if(scrollAmount > 1300) {
-					$(".gallery_nav").css('font-weight', 'bold');
-					$(".home_nav").css('font-weight', 'normal');
-				} else {
-					$(".gallery_nav").css('font-weight', 'normal');
-					$(".home_nav").css('font-weight', 'bold');					
-				}
-			});
-			$("#what_does_it_mean").on({
-				mouseenter: function() {
-					$(".hover_box").fadeIn();
-				},
-				mouseleave: function() {
-					$(".hover_box").fadeOut();
-				}
-			});
+			$("#gallery_nav").css('font-weight', 'bold');
 		});
 	</script>
-	<script src="//code.jquery.com/jquery.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="/javascripts/lightbox.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function ($) {
-            // delegate calls to data-toggle="lightbox"
-            $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                event.preventDefault();
-                return $(this).ekkoLightbox({
-                    onShown: function() {
-                        if (window.console) {
-                            return console.log('Checking our the events huh?');
-                        }
-                    }
-                });
-            });
-
-            //Programatically call
-            $('#open-image').click(function (e) {
-                e.preventDefault();
-                $(this).ekkoLightbox();
-            });
-            $('#open-youtube').click(function (e) {
-                e.preventDefault();
-                $(this).ekkoLightbox();
-            });
-
-        });
-    </script>
 	<!-- Google analytics -->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

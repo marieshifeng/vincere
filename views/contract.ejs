@@ -16,16 +16,13 @@
 		<p class="indent_p even">I'm ready to talk to someone about it.</p> -->
 		<p class="indent_p odd">We are going to help each other.</p>
 		<p class="indent_p even">We are going to support each other.</p>
-		<p class="indent_p odd">And we are going to laugh over drawing silly pictures.</p>
-		<br>
+		<p class="indent_p odd last">And we are going to laugh over drawing silly pictures.</p>
 		<footer>
 			<div id="contract_agree" class="center_button">
 				<form id="tell_story_connect" method="post" action="/connect">
-					<div id="message_textarea"> <textarea id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea></div>
-					<br/>
+					<div id="message_textarea"> <textarea rows="4" id="message_input" class="text_input" name="user_story" placeholder="Write a quick version of your story. Your partner will see this as an introduction to you."></textarea></div>
 					<input type="button" class="contract_button button style2 scrolly scrolly-centered" onClick="submitForm();" value="I'm ready to meet another survivor">
 				</form>
-
 				<script>
 					function submitForm() {
 						var storyText = $('#message_input').val();

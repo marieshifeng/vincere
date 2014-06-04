@@ -20,7 +20,7 @@
 
 		// skelJS
 			skelJS: {
-				prefix: 'css/style',
+				prefix: '/css/stylesheets/style',
 				resetCSS: true,
 				boxModel: 'border',
 				useOrientation: true,
@@ -106,13 +106,6 @@
 			var	$window = $(window),
 				$body = $('body');
 
-
-			//Scrolly links
-				$('.scrolly').n33_scrolly(function() {
-					return (skel.isActive('mobile') ? 70 : 190);
-				});
-
-
 			// Forms
 				if (skel.vars.IEVersion < 10)
 					$('form').n33_formerize();
@@ -171,10 +164,10 @@
 				}
 				
 			// Poptrox
-			/*
+			
 				if (skel.vars.IEVersion < 9)
 					_settings.poptrox.overlayOpacity = 0;
 			
 				$('.gallery').poptrox(_settings.poptrox);
-*/
+
 		});
