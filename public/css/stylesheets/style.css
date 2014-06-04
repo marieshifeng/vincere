@@ -1440,14 +1440,15 @@ top: -20px !important;
 	width:50px; 
 	height:50px; 
 	margin:5px 5px 0 0; 
-	border:2px solid #ccc; 
+	border:2px solid #454343; 
 	cursor:pointer; 
 	opacity:1 ;
 	border-radius:25px;
 }
 .color.active { 
 	opacity:1; 
-	border:6px solid #454343;
+	border:6px solid #ccc;
+	border-radius: 30px;
 }
 
 #whole_chat_box {
