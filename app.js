@@ -108,6 +108,11 @@ io.sockets.on('connection', function (socket) {
     console.log("User connecting: " + user);
     socket.broadcast.to(socket.room).emit('user:connecting', user);
   }); 
+
+  socket.on('user:saving_drawing', function() {
+    console.log("User " + user + " saved drawing");
+    socket.broadcast.to(socket.room).emit('user:saved_drawing');
+  });
     
 
   // (2): The server recieves a ping event

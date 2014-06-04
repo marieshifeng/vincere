@@ -26,8 +26,24 @@
             var dataURL = canvas.toDataURL();
             var elem = document.getElementById("hidden_button");
             elem.value = dataURL;
+            socket.emit('user:saving_drawing');
             $("#save_drawing_button").submit();
         };
+
+        var partnerSaved = false;
+        socket.on('user:saved_drawing', function() {
+            partnerSaved = true;
+        });
+
+        $("#what_does_it_mean").on({
+            mouseenter: function() {
+                if(partnerSaved) $(".hover_box").fadeIn();
+            },
+            mouseleave: function() {
+                if(partnerSaved) $(".hover_box").fadeOut();
+            }
+        });
+
         function windowBeforeUnload() {
             if (!isSaved) {
                 if (!confirm("If you leave, your current conversation will be closed and your drawing will be lost.")) { 
@@ -115,6 +131,8 @@
         <input id="save" type="button" onclick="saveImage();" class="contract_button button style2 scrolly scrolly-centered save_button" value="Exit and add drawing to gallery"></input>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
+
+    <div class="hover_box">Your partner has already saved your drawing to the gallery. If you've added more, save again!</div>
 
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>

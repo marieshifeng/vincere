@@ -1055,10 +1055,8 @@ top: 50px;
 		.hover_box {
 			background-color:#B9E6ED;	
 			border:2px solid #999999;
-			position:absolute;
-			top:15%;
-			left:30%;
-			z-index:100;
+			float: right;
+			margin-right: 60px;
 			font-size:14px;
 			border-radius:25px;
 			padding:10px;
