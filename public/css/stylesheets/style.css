@@ -1447,9 +1447,10 @@ top: -20px !important;
 }
 .color.active { 
 	opacity:1; 
-	border:5px solid #454343;
-	width: 60px;
-	height: 60px;
+	border:5px solid #000;
+	width: 56px;
+	height: 56px;
+	border-radius: 28;
 }
 
 #whole_chat_box {
