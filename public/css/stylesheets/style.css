@@ -1233,9 +1233,13 @@ margin-left: 60px;
 
 		.postscript_p {
 			font-size:17px !important;
+<<<<<<< HEAD
 			color:#575554;
 			line-height: 17px;
 			margin-left: 5px;
+=======
+			color:#575554;;
+>>>>>>> parent of 08ec2af... contract/index
 		}
 
 		#banner .themes {
@@ -1316,10 +1320,17 @@ margin-left: 60px;
 
 #message_textarea {
 	position: inherit;
+<<<<<<< HEAD
 	width:500px;
 	margin-left: 70px !important;
     margin-bottom: 20px;
     margin-top: 20px;
+=======
+	width:60%;
+	margin-left: -35px !important;
+    margin-bottom: 15px;
+    margin-top: 10px;
+>>>>>>> parent of 08ec2af... contract/index
 }
 
 .contract_button {
