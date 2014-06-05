@@ -150,6 +150,7 @@ $color.on('click', function() {
     $(this).addClass('active');
 
     update_active_color();
+    console.log("Picked color ");
 
 });
 
