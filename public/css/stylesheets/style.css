@@ -526,9 +526,9 @@
 	}
 
 	.QandA_block {
-		margin-top: 25px;
-		margin-left: 40px;
-		margin-right: 60px;
+		margin-top: 40px;
+		margin-left: 70px;
+		margin-right: 70px;
 	}
 
 	.answer {
@@ -584,7 +584,6 @@
 
 .resources_intro {
   position:relative;
-  left:2%;
   width:95%;
   font-size:24px;
   font-family: 'BariolReg', Helvetica, sans-serif;
@@ -593,7 +592,6 @@
 .resources_type {
   position:relative;
 	font-family: 'BariolReg', Helvetica, sans-serif;
-  left:2%;
   font-size:45px;
   float:left;
   width:100%;
@@ -1241,7 +1239,9 @@ margin-left: 60px;
 
 		.postscript_p {
 			font-size:17px !important;
-			color:#575554;;
+			color:#575554;
+			line-height: 17px;
+			margin-left: 5px;
 		}
 		header#safe_space {
 			margin-bottom: 10px !important;
@@ -1335,10 +1335,10 @@ margin-left: 60px;
 
 #message_textarea {
 	position: inherit;
-	width:60%;
-	margin-left: -35px !important;
-    margin-bottom: 15px;
-    margin-top: 10px;
+	width:500px;
+	margin-left: 70px !important;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 #message_input {
 	border:1px solid black;
@@ -1368,7 +1368,7 @@ margin-left: 60px;
 
 #show_hide_right {
 	position:fixed;
-	top:20px;
+	top:30px;
 	padding:20px 20px 5px 20px;
 	width:21%;
 	left:-10px;
@@ -1381,7 +1381,7 @@ margin-left: 60px;
 
 .show_hide_left {
 	position:fixed;
-	top:20px;
+	top:30px;
 	padding:20px 20px 5px 20px;
 	width:21%;
 	left:-10px;
@@ -1404,7 +1404,17 @@ margin-left: 60px;
 }
 
 #instructions {
-	padding:0 10px 0 0;
+	margin-top: 25px;
+}
+ol#rules {
+	padding: 0 !important;
+margin: 0 !important;
+line-height: 15px !important;
+
+}
+
+ol#rules li {
+	font-size: 15px;	
 }
 
 #friend_story {
@@ -1422,16 +1432,17 @@ margin-left: 60px;
 }
 
 #intro_but {
-	position:relative;
-	bottom:-20px;
-	left:110px}
+	position: relative;
+left: -10px;
+bottom: -20px;
+}
 
 .soundButton {
-	position:relative;
-  display: inline-block;
+	position:fixed;
   width: 55px;
   height: 55px;
-  top:-10px;
+  top:70px;
+  right:70px;
   margin: 5px; /* 30px 0 0; */
   border: 2px solid background:##FA8970;
   background-color:white;
@@ -1444,18 +1455,28 @@ margin-left: 60px;
  	color:#FA8970;
 }
 
-
+#opacity_range {
+	width: 500px;
+position: absolute;
+left: 25px;
+}
 .drawing_picker_label {
 	font-size:20px;
+	position: absolute;
+
+top: 85px;
+left: 400px;
 }
 
 .opacity_label {
-	position:relative;
-	left:520px;
+		font-size:20px;
+	position: absolute;
+left: 400px;
+top: 125px;
 }
 
 #canvas-holder {
-	margin:20px 45px 20px 20px;
+	margin:190px 45px 20px 20px;
 	
 	float:right;
 	width:73%;
@@ -1477,9 +1498,12 @@ top: -25px !important;
 }
 
 #controls     { 
-	padding:50px 0px 0px 0px; 
-	float:right;
-	width:77%;
+padding: 30px 0px 0px 0px;
+float: right;
+width: 60%;
+position: absolute;
+left: 500px;
+top: 35px;
 }
 .color      { 
 	display:inline-block; 
@@ -1517,6 +1541,7 @@ top: -25px !important;
     padding:5px;
     resize: none;
     font-size:17px;
+    line-height: 17px;
 }
 
 .save_drawing {
@@ -1538,6 +1563,8 @@ margin-right: 60px;
 #welcome {
 	font-size:24px;
 	font-weight:bold;
+	line-height: 24px;
+	margin-bottom: 0px !important;
 }
 
 ol {
@@ -1581,7 +1608,7 @@ span.myMessage {
 	width:100%;
 	height: 30px; 
 	margin: 2px;
-	font-size:17px;
+	font-size:20px;
 }
 
 #send_button {
