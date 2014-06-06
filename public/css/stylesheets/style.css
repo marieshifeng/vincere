@@ -1448,7 +1448,7 @@ bottom: -20px;
  	color:#FA8970;
 }
 
-#opacity_range {
+/*#opacity_range {
 	width: 500px;
 position: absolute;
 left: 25px;
@@ -1466,7 +1466,18 @@ left: 400px;
 	position: absolute;
 left: 400px;
 top: 125px;
+}*/
+
+
+.drawing_picker_label {
+	font-size:20px;
 }
+
+.opacity_label {
+	position:relative;
+	left:520px;
+}
+
 
 #canvas-holder {
 	margin:190px 45px 20px 20px;
