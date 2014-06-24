@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%- include partials/header.ejs %>	
+    <%- include partials/header.ejs %>  
     <%- include partials/nav.ejs %>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-	<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+    <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
     <script type="text/javascript" src="/javascripts/html2canvas.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.plugin.html2canvas.js"></script>
     <script src="/javascripts/paper.js"></script>
@@ -18,7 +18,7 @@
         story = storyData.story;
     </script>
     <script src="/javascripts/audiostream.js"> </script>    
-	<script>
+    <script>
         function saveImage(){
             isSaved = true;
             var canvas = document.getElementById("draw");
@@ -74,13 +74,8 @@
         <p class="postscript_p">Talking about your sexual assault experience can be therapeutic.</p>
         <br/>
     </div>
-<!--            
- -->
-<!--     <span class="drawing_picker_label" id="color_label">Color</span>
-     <span class="opacity_label">Opacity</span> -->
-  	<div id="controls"> 
+    <div id="controls"> 
         <div class="drawer_picker_label" id="color_label">Color</div>
-      <!--    <div class="drawing_picker_label" id="color_label">Color<span class="opacity_label">Opacity</span></div> -->
         <div data-color="47,47,47", class="color", style="background:rgb(37,37,37);"> </div>
         <div data-color="109,73,37", class="color", style="background:rgb(109,73,37);"> </div>
         <div data-color="233,34,41", class="color", style="background:rgb(233,34,41);"> </div>
@@ -91,11 +86,11 @@
         <div data-color="77,42,255", class="color", style="background:rgb(77,42,255);" ></div>
         <div data-color="255,255,255", class="color", style="background:rgb(255,255,255);"> </div>
         <br>
-        <div class="opacity_label"><br>Opacity</div>
+        <div id="opacity_slider" class="opacity_label"><br>Opacity</div>
        
         <label>
             <span id="opacity_slider">
-                <input id="opacity_range" type="range", min="0", max="255", value="255", id="opacity"> </input>
+                <input type="range", min="0", max="255", value="255", id="opacity"> </input>
             </span>
         </label>
         <button class="soundButton" id="unmuteButton" type="button" onclick="unmuteAudio();" style="display: none">
@@ -111,11 +106,9 @@
         <canvas id="draw" resize="true" keepalive="true"></canvas>  
     </div>
     <form id="save_drawing_button" action="/gallery" method="post">
-        <!-- <input id="save" type="button" onclick="saveImage();" class="button style4 scrolly save_drawing" value="Exit and add drawing to gallery"></input> -->
         <span id="hover_space"><input id="save" type="button" onclick="saveImage();" class="contract_button button style2 scrolly scrolly-centered save_button" value="Exit and add drawing to gallery"></input></span>
         <input id="hidden_button" type="hidden" name="img">
     </form> 
-
     <div class="hover_box_save hover_box">Your partner has already saved your drawing to the gallery. If you've added more, save again!</div>
     <div id="friend_story" style="display:none">
         <h3 style="text-align:center">Your partner's story</h3>

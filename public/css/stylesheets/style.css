@@ -17,7 +17,6 @@
 	font-weight: bold;
 }
 
-
 /*
 	Overflow 1.1 by HTML5 UP
 	html5up.net | @n33co
@@ -27,7 +26,18 @@
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
-
+#color_label {
+	position: absolute;
+	top: 50px;
+	left: -90px;
+	font-size: 20px !important;
+}
+#opacity_slider {
+	position: absolute;
+	top: 70px;
+	left: -90px;
+	font-size: 20px !important;
+}
 	body
 	{
 		/*background-color:white;*/
@@ -1149,7 +1159,7 @@ top: 50px;
 		}
 
 		#contractBanner .container {
-			padding:80px 0 40px 0;
+			padding:80px 0 40px 0 !important;
 		}
 
 		#gallery {
@@ -1184,6 +1194,7 @@ top: 50px;
 p.life_reminder {
 	color: red;
 	font-size: 20px !important;
+	padding-left: 5px;
 }
 		#banner header
 		{
@@ -1233,19 +1244,9 @@ margin-left: 60px;
 
 		.postscript_p {
 			font-size:17px !important;
-<<<<<<< HEAD
 			color:#575554;
 			line-height: 17px;
 			margin-left: 5px;
-=======
-			color:#575554;;
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 08ec2af... contract/index
-=======
->>>>>>> parent of 08ec2af... contract/index
-=======
->>>>>>> parent of 08ec2af... contract/index
 		}
 
 		#banner .themes {
@@ -1254,7 +1255,7 @@ margin-left: 60px;
 		}
 
 		#banner .container {
-			padding:80px 0 40px 0;
+			padding:60px 0 40px 0;
 		}
 
 		#gallery {
@@ -1326,23 +1327,15 @@ margin-left: 60px;
 
 #message_textarea {
 	position: inherit;
-<<<<<<< HEAD
 	width:500px;
 	margin-left: 70px !important;
     margin-bottom: 20px;
     margin-top: 20px;
-=======
-	width:60%;
+	/*width:60%;
 	margin-left: -35px !important;
     margin-bottom: 15px;
-    margin-top: 10px;
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 08ec2af... contract/index
-=======
->>>>>>> parent of 08ec2af... contract/index
-=======
->>>>>>> parent of 08ec2af... contract/index
+    margin-top: 10px;*/
+
 }
 
 .contract_button {
@@ -1448,10 +1441,11 @@ bottom: -20px;
  	color:#FA8970;
 }
 
-/*#opacity_range {
+#opacity {
 	width: 500px;
 position: absolute;
-left: 25px;
+left: 115px;
+top: 45px;
 }
 .drawing_picker_label {
 	font-size:20px;
@@ -1466,18 +1460,7 @@ left: 400px;
 	position: absolute;
 left: 400px;
 top: 125px;
-}*/
-
-
-.drawing_picker_label {
-	font-size:20px;
 }
-
-.opacity_label {
-	position:relative;
-	left:520px;
-}
-
 
 #canvas-holder {
 	margin:190px 45px 20px 20px;
