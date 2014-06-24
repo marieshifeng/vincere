@@ -1082,6 +1082,13 @@ top: 50px;
 			width:20%;
 			display:none;
 		}
+		.hover_box_save {
+position: relative;
+top: -5px !important;
+left: 100px;
+line-height: 16px;
+text-align: center;
+		}
 
 		.chat_hover_box {
 			position:fixed;
@@ -1424,10 +1431,10 @@ bottom: -20px;
 }
 
 .soundButton {
-	position:fixed;
+	position:absolute;
   width: 55px;
   height: 55px;
-  top:70px;
+  top:50px;
   right:70px;
   margin: 5px; /* 30px 0 0; */
   border: 2px solid background:##FA8970;
@@ -1599,9 +1606,9 @@ span.myMessage {
 }
 
 #send_button {
-	width:50%;
-	left:50%;
-	margin: 15px 0 0 0;
+width: 100%;
+left: 0;
+margin: 15px 0 0 0;
 }
 
 
